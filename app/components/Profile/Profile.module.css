@@ -1,0 +1,88 @@
+.wrapper {
+  margin-top: 40px;
+}
+
+.avatarBox {
+  position: relative;
+  height: 56px;
+  width: 56px;
+}
+
+.avatarInner {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(to bottom right, #0ea5e9, #059669);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.statusDot {
+  position: absolute;
+  bottom: -1px;
+  right: -5px;
+  height: 12px;
+  width: 12px;
+  border-radius: 9999px;
+  outline: 3px solid #000000;
+  background: #16BF5E;
+}
+
+.nameRow {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.role {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.bio {
+  margin-top: 20px;
+  max-width: 100%;
+  font-size: 15px;
+  line-height: 1.625;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.company {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.copyButton {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 150ms;
+  cursor: pointer;
+}
+
+.copyButton:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.kbd {
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  font-size: 12px;
+}
