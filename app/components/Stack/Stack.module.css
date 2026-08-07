@@ -1,0 +1,12 @@
+.section {
+  margin-top: 96px;
+}
+
+.row {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}

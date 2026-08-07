@@ -1,0 +1,31 @@
+.nav {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  gap: 4px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 6px;
+  backdrop-filter: blur(8px);
+}
+
+.item {
+  display: flex;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: background-color 150ms, color 150ms;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}

@@ -1,0 +1,99 @@
+.section {
+  margin-top: 96px;
+}
+
+.blurb {
+  margin-top: 12px;
+  max-width: 32rem;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.musicCard {
+  margin-top: 20px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.musicTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.albumArt {
+  height: 48px;
+  width: 48px;
+  flex: none;
+  border-radius: 8px;
+}
+
+.musicTitle {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.musicArtist {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.musicBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 16px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.listenLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.photoStrip {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.photo {
+  height: 144px;
+  width: 128px;
+  flex: none;
+  border-radius: 6px;
+  border: 4px solid #ffffff;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 640px) {
+  .photo {
+    height: 160px;
+    width: 144px;
+  }
+}
+
+.photoOverlap {
+  margin-left: -24px;
+}
+
+.captionRow {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.igLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

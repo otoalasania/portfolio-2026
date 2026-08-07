@@ -1,0 +1,27 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.label {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--foreground-subdued);
+}
+
+.clock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  line-height: 16px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--foreground-subdued);
+}
