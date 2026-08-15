@@ -238,10 +238,3 @@ export const ArrowUpRight = () => (
     <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
-
-export const CheckBadge = () => (
-  <svg viewBox="0 0 24 24" fill="none" width={16} height={16} style={{ flexShrink: 0 }}>
-    <circle cx="12" cy="12" r="9" fill="#3b82f6" />
-    <path d="M8 12.5l2.5 2.5L16 9.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
