@@ -142,12 +142,6 @@ export const SpotifyIcon = () => (
   </Icon>
 );
 
-export const FramerIcon = () => (
-  <Icon size={20}>
-    <path d="M5 3h14v6h-7l7 7h-7v7l-7-7v-7h7L5 3Z" fill="currentColor" />
-  </Icon>
-);
-
 export const FigmaIcon = () => (
   <Icon size={20}>
     <circle cx="15" cy="16.5" r="2.7" fill="#1abcfe" />
@@ -158,41 +152,49 @@ export const FigmaIcon = () => (
   </Icon>
 );
 
-export const OpenAIIcon = () => (
+export const CursorIcon = () => (
+  <Icon size={20}>
+    <path d="M6 4l13 7.5-6 1.5-2 6L6 4Z" fill="currentColor" />
+  </Icon>
+);
+
+export const ClaudeIcon = () => (
+  <Icon size={20}>
+    <circle cx="12" cy="12" r="9" fill="#0a0a0a" />
+    <g stroke="#D97757" strokeWidth="1.6" strokeLinecap="round">
+      <path d="M12 6v3M12 15v3M6 12h3M15 12h3" />
+      <path d="M8.1 8.1l2.1 2.1M13.8 13.8l2.1 2.1M15.9 8.1l-2.1 2.1M10.2 13.8l-2.1 2.1" />
+    </g>
+  </Icon>
+);
+
+export const NextJsIcon = () => (
   <Icon size={20}>
     <circle cx="12" cy="12" r="9" fill="currentColor" />
     <path
-      d="M9 8.5 12 7l3 1.5v3l-3 1.5-3-1.5v-3Zm0 5 3-1.5 3 1.5v3l-3 1.5-3-1.5v-3Z"
+      d="M8.3 7.8v8.4M8.3 7.8l7.4 8.4M14.7 7.8v6"
       stroke="#0a0a0a"
-      strokeWidth="1.1"
+      strokeWidth="1.3"
+      strokeLinecap="round"
       strokeLinejoin="round"
     />
   </Icon>
 );
 
-export const SlackIcon = () => (
+export const TypeScriptIcon = () => (
   <Icon size={20}>
-    <circle cx="12" cy="12" r="9" fill="#5b5bd6" />
-    <rect x="8.5" y="6.5" width="2.2" height="6" rx="1.1" fill="white" />
-    <rect x="13.3" y="11.5" width="2.2" height="6" rx="1.1" fill="white" />
-    <rect x="11.5" y="8.5" width="6" height="2.2" rx="1.1" fill="white" />
-    <rect x="6.5" y="13.3" width="6" height="2.2" rx="1.1" fill="white" />
+    <rect x="3" y="3" width="18" height="18" rx="4" fill="#3178c6" />
+    <text x="12" y="16.3" textAnchor="middle" fontSize="10" fontWeight="700" fill="white">
+      TS
+    </text>
   </Icon>
 );
 
-export const CubeIcon = () => (
+export const BitbucketIcon = () => (
   <Icon size={20}>
-    <path d="M12 3.5 20 8v8l-8 4.5L4 16V8l8-4.5Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
-    <path d="M4 8l8 4.5L20 8M12 12.5V21" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
-  </Icon>
-);
-
-export const SparkleIcon = () => (
-  <Icon size={20}>
-    <path
-      d="M12 3.5c.6 3 2 4.4 5 5-3 .6-4.4 2-5 5-.6-3-2-4.4-5-5 3-.6 4.4-2 5-5Z"
-      fill="currentColor"
-    />
+    <rect x="3" y="3" width="18" height="18" rx="4" fill="#0052cc" />
+    <path d="M6.3 8h11.4l-1.5 9.3a.9.9 0 0 1-.9.7H8.7a.9.9 0 0 1-.9-.7L6.3 8Z" fill="white" />
+    <path d="M14.5 13H9.5l-.6-3.5h6.2l-.6 3.5Z" fill="#0052cc" />
   </Icon>
 );
 

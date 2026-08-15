@@ -11,13 +11,13 @@ import {
   XIcon,
   GitHubIcon,
   LinkedInIcon,
-  FramerIcon,
+  CursorIcon,
+  ClaudeIcon,
+  NextJsIcon,
+  TypeScriptIcon,
   FigmaIcon,
-  OpenAIIcon,
-  SlackIcon,
+  BitbucketIcon,
   SpotifyIcon,
-  CubeIcon,
-  SparkleIcon,
   CommandIcon,
   GlobeIcon,
   PlusIcon,
@@ -80,7 +80,15 @@ export const testimonials = [
   },
 ];
 
-export const stack = [FramerIcon, FigmaIcon, SparkleIcon, OpenAIIcon, CubeIcon, GitHubIcon, SlackIcon, SpotifyIcon];
+export const stack = [
+  CursorIcon,
+  ClaudeIcon,
+  NextJsIcon,
+  TypeScriptIcon,
+  FigmaIcon,
+  BitbucketIcon,
+  SpotifyIcon,
+];
 
 export const ventures = [
   {
