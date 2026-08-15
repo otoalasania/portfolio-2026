@@ -11,13 +11,6 @@ import {
   XIcon,
   GitHubIcon,
   LinkedInIcon,
-  CursorIcon,
-  ClaudeIcon,
-  NextJsIcon,
-  TypeScriptIcon,
-  FigmaIcon,
-  BitbucketIcon,
-  SpotifyIcon,
   CommandIcon,
   GlobeIcon,
   PlusIcon,
@@ -81,13 +74,13 @@ export const testimonials = [
 ];
 
 export const stack = [
-  CursorIcon,
-  ClaudeIcon,
-  NextJsIcon,
-  TypeScriptIcon,
-  FigmaIcon,
-  BitbucketIcon,
-  SpotifyIcon,
+  { src: "/vscode.svg", alt: "VS Code" },
+  { src: "/claudecode.svg", alt: "Claude Code" },
+  { src: "/nextdotjs.svg", alt: "Next.js" },
+  { src: "/typescript.svg", alt: "TypeScript" },
+  { src: "/figma.svg", alt: "Figma" },
+  { src: "/bitbucket.svg", alt: "Bitbucket" },
+  { src: "/spotify.svg", alt: "Spotify" },
 ];
 
 export const ventures = [

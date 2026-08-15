@@ -142,62 +142,6 @@ export const SpotifyIcon = () => (
   </Icon>
 );
 
-export const FigmaIcon = () => (
-  <Icon size={20}>
-    <circle cx="15" cy="16.5" r="2.7" fill="#1abcfe" />
-    <path d="M9.3 21.2a2.7 2.7 0 1 1 0-5.4h2.7v2.7a2.7 2.7 0 0 1-2.7 2.7Z" fill="#0acf83" />
-    <path d="M9.3 15.8a2.7 2.7 0 0 1 0-5.4h2.7v5.4H9.3Z" fill="#a259ff" />
-    <path d="M9.3 10.4a2.7 2.7 0 0 1 0-5.4h2.7v5.4H9.3Z" fill="#f24e1e" />
-    <path d="M12 5h2.7a2.7 2.7 0 1 1 0 5.4H12V5Z" fill="#ff7262" />
-  </Icon>
-);
-
-export const CursorIcon = () => (
-  <Icon size={20}>
-    <path d="M6 4l13 7.5-6 1.5-2 6L6 4Z" fill="currentColor" />
-  </Icon>
-);
-
-export const ClaudeIcon = () => (
-  <Icon size={20}>
-    <circle cx="12" cy="12" r="9" fill="#0a0a0a" />
-    <g stroke="#D97757" strokeWidth="1.6" strokeLinecap="round">
-      <path d="M12 6v3M12 15v3M6 12h3M15 12h3" />
-      <path d="M8.1 8.1l2.1 2.1M13.8 13.8l2.1 2.1M15.9 8.1l-2.1 2.1M10.2 13.8l-2.1 2.1" />
-    </g>
-  </Icon>
-);
-
-export const NextJsIcon = () => (
-  <Icon size={20}>
-    <circle cx="12" cy="12" r="9" fill="currentColor" />
-    <path
-      d="M8.3 7.8v8.4M8.3 7.8l7.4 8.4M14.7 7.8v6"
-      stroke="#0a0a0a"
-      strokeWidth="1.3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </Icon>
-);
-
-export const TypeScriptIcon = () => (
-  <Icon size={20}>
-    <rect x="3" y="3" width="18" height="18" rx="4" fill="#3178c6" />
-    <text x="12" y="16.3" textAnchor="middle" fontSize="10" fontWeight="700" fill="white">
-      TS
-    </text>
-  </Icon>
-);
-
-export const BitbucketIcon = () => (
-  <Icon size={20}>
-    <rect x="3" y="3" width="18" height="18" rx="4" fill="#0052cc" />
-    <path d="M6.3 8h11.4l-1.5 9.3a.9.9 0 0 1-.9.7H8.7a.9.9 0 0 1-.9-.7L6.3 8Z" fill="white" />
-    <path d="M14.5 13H9.5l-.6-3.5h6.2l-.6 3.5Z" fill="#0052cc" />
-  </Icon>
-);
-
 export const InstagramIcon = () => (
   <Icon>
     <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.6" />
