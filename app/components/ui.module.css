@@ -2,7 +2,7 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-40);
 }
 
 .mockCard {
@@ -12,7 +12,7 @@
   border-width: 4px;
   border-style: solid;
   padding: 8px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 25px 50px -12px var(--black-25);
 }
 
 @media (min-width: 640px) {
@@ -22,13 +22,13 @@
 }
 
 .mockCardDark {
-  border-color: rgba(255, 255, 255, 0.9);
-  background: #161616;
+  border-color: var(--white-90);
+  background: var(--mock-card-dark);
 }
 
 .mockCardLight {
-  border-color: #ffffff;
-  background: #f3f3f0;
+  border-color: var(--color-white);
+  background: var(--mock-card-light);
 }
 
 .mockCardInner {
@@ -44,11 +44,11 @@
 }
 
 .mockCardInnerDark {
-  background: #101010;
+  background: var(--mock-card-dark-inner);
 }
 
 .mockCardInnerLight {
-  background: #ffffff;
+  background: var(--color-white);
 }
 
 .bar {
@@ -77,27 +77,27 @@
 }
 
 .barDark {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-10);
 }
 
 .barLight {
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--black-10);
 }
 
 .barTitleDark {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--white-15);
 }
 
 .barTitleLight {
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--black-10);
 }
 
 .barGhostDark {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--white-05);
 }
 
 .barGhostLight {
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--black-05);
 }
 
 .tile {
@@ -110,5 +110,5 @@
   border-radius: 6px;
   font-size: 10px;
   font-weight: 700;
-  color: #000000;
+  color: var(--color-black);
 }

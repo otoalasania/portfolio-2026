@@ -7,8 +7,8 @@
   display: flex;
   gap: 4px;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--white-10);
+  background: var(--black-70);
   padding: 6px;
   backdrop-filter: blur(8px);
 }
@@ -20,12 +20,12 @@
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--white-50);
   transition: background-color 150ms, color 150ms;
   cursor: pointer;
 }
 
 .item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background: var(--white-10);
+  color: var(--color-white);
 }

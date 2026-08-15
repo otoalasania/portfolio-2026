@@ -20,7 +20,7 @@
 }
 
 .row:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--white-03);
 }
 
 .left {
@@ -37,7 +37,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  color: #000000;
+  color: var(--color-black);
 }
 
 .name {
@@ -47,5 +47,5 @@
 
 .desc {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--white-50);
 }

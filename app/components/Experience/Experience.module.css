@@ -4,7 +4,7 @@
 
 .subtitle {
   margin-top: 8px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-60);
 }
 
 .list {
@@ -32,7 +32,7 @@
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-40);
 }
 
 .roleRow {
@@ -50,5 +50,5 @@
   margin-top: 6px;
   max-width: 28rem;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-60);
 }

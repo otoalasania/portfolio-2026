@@ -4,7 +4,7 @@
 
 .subtitle {
   margin-top: 8px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-60);
 }
 
 .form {
@@ -26,8 +26,8 @@
 .textarea {
   width: 100%;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--white-15);
+  background: var(--white-03);
   padding: 12px 16px;
   font-size: 14px;
   outline: none;
@@ -35,12 +35,12 @@
 
 .input::placeholder,
 .textarea::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--white-30);
 }
 
 .input:focus,
 .textarea:focus {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--white-30);
 }
 
 .textarea {
@@ -57,11 +57,11 @@
 
 .submit {
   border-radius: 9999px;
-  background: #ffffff;
+  background: var(--color-white);
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 500;
-  color: #000000;
+  color: var(--color-black);
   transition: opacity 150ms;
   cursor: pointer;
 }
@@ -72,12 +72,12 @@
 
 .hint {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-40);
 }
 
 .hintKbd {
   border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--white-15);
   padding: 0 4px;
 }
 
@@ -85,13 +85,13 @@
   margin-top: 40px;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--white-10);
+  border-bottom: 1px solid var(--white-10);
   font-size: 14px;
 }
 
 .socials > * + * {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--white-10);
 }
 
 .socialRow {
@@ -104,14 +104,14 @@
 }
 
 .socialRow:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--white-03);
 }
 
 .socialLabel {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-60);
 }
 
 .socialValue {

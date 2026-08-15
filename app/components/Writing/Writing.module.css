@@ -9,7 +9,7 @@
 }
 
 .list > * + * {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--white-10);
 }
 
 .row {
@@ -25,7 +25,7 @@
   flex: none;
   font-family: var(--font-geist-mono), monospace;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-40);
 }
 
 .title {
@@ -39,5 +39,5 @@
   align-items: center;
   gap: 4px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--white-40);
 }

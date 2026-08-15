@@ -8,5 +8,5 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--white-80);
 }
