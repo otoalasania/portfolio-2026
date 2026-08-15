@@ -1,8 +1,19 @@
 .sectionLabel {
+  font-family: var(--font-geist-mono), monospace;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--white-40);
+}
+
+.section {
+  margin-top: 96px;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: var(--white-60);
+  border: 1px solid red;
 }
 
 .mockCard {

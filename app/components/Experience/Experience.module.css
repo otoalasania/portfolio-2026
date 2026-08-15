@@ -1,12 +1,3 @@
-.section {
-  margin-top: 80px;
-}
-
-.subtitle {
-  margin-top: 8px;
-  color: var(--white-60);
-}
-
 .list {
   margin-top: 40px;
   display: flex;

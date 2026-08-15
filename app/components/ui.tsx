@@ -4,6 +4,28 @@ export function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className={styles.sectionLabel}>{children}</p>;
 }
 
+export function Section({
+  id,
+  title,
+  subtitle,
+  style,
+  children,
+}: {
+  id: string;
+  title: string;
+  subtitle?: React.ReactNode;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+}) {
+  return (
+    <section id={id} className={styles.section} style={style}>
+      <SectionLabel>{title}</SectionLabel>
+      {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+      {children}
+    </section>
+  );
+}
+
 export function MockCard({
   rotate,
   dark,

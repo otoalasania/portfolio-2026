@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SectionLabel } from "../ui";
+import { Section } from "../ui";
 import { ArrowUpRight } from "../icons";
 import { EMAIL, socials } from "../../data";
 import styles from "./Contact.module.css";
@@ -18,12 +18,11 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className={styles.section}>
-      <SectionLabel>Contact</SectionLabel>
-      <p className={styles.subtitle}>
-        You can contact me using the form or via the links below.
-      </p>
-
+    <Section
+      id="contact"
+      title="Contact"
+      subtitle="You can contact me using the form or via the links below."
+    >
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -83,6 +82,6 @@ export function Contact() {
           </a>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

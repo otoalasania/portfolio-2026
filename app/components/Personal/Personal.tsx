@@ -1,12 +1,11 @@
-import { SectionLabel } from "../ui";
+import { Section } from "../ui";
 import { SpotifyIcon, InstagramIcon, LeicaWordmark } from "../icons";
 import { personal } from "../../data";
 import styles from "./Personal.module.css";
 
 export function Personal() {
   return (
-    <section id="personal" className={styles.section}>
-      <SectionLabel>Personal</SectionLabel>
+    <Section id="personal" title="Personal">
       <p className={styles.blurb}>{personal.blurb}</p>
 
       <div className={styles.musicCard}>
@@ -45,6 +44,6 @@ export function Personal() {
           <InstagramIcon />
         </span>
       </div>
-    </section>
+    </Section>
   );
 }

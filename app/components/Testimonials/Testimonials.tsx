@@ -1,12 +1,10 @@
-import { SectionLabel } from "../ui";
+import { Section } from "../ui";
 import { testimonials } from "../../data";
 import styles from "./Testimonials.module.css";
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className={styles.section}>
-      <SectionLabel>Testimonials</SectionLabel>
-
+    <Section id="testimonials" title="Testimonials">
       <div
         className={styles.row}
         style={{
@@ -27,6 +25,6 @@ export function Testimonials() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

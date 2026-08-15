@@ -1,17 +1,15 @@
-import { SectionLabel, Tile } from "../ui";
+import { Section, Tile } from "../ui";
 import { experience } from "../../data";
 import styles from "./Experience.module.css";
 
 export function Experience() {
   return (
-    <section id="experience" className={styles.section}>
-      <SectionLabel>Experience</SectionLabel>
-      <p className={styles.subtitle}>
-        Throughout my career, I&rsquo;ve worked on various projects, from
-        building scalable systems to designing user-friendly interfaces.
-        Here&rsquo;s a brief overview.
-      </p>
-
+    <Section
+      id="experience"
+      title="Experience"
+      subtitle="Throughout my career, I’ve worked on various projects, from building scalable systems to designing user-friendly interfaces. Here’s a brief overview."
+      style={{ marginTop: 80 }}
+    >
       <div className={styles.list}>
         {experience.map((e) => (
           <div key={`${e.company.name}-${e.range}`} className={styles.row}>
@@ -27,6 +25,6 @@ export function Experience() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

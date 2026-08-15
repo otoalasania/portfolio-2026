@@ -1,14 +1,14 @@
-import { SectionLabel, MockCard } from "../ui";
+import { Section, MockCard } from "../ui";
 import styles from "./Work.module.css";
 
 export function Work() {
   return (
-    <section id="work" className={styles.section}>
-      <SectionLabel>Work</SectionLabel>
-      <p className={styles.subtitle}>
-        Below are some select projects, full walkthroughs on request
-      </p>
-
+    <Section
+      id="work"
+      title="Work"
+      subtitle="Below are some select projects, full walkthroughs on request"
+      style={{ marginTop: 40 }}
+    >
       <div
         className={styles.stage}
         style={{
@@ -22,6 +22,6 @@ export function Work() {
         <MockCard rotate={-3} dark className={styles.card} />
         <MockCard rotate={7} dark={false} />
       </div>
-    </section>
+    </Section>
   );
 }

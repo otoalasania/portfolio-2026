@@ -1,12 +1,11 @@
-import { SectionLabel } from "../ui";
+import { Section } from "../ui";
 import { ArrowUpRight } from "../icons";
 import { ventures } from "../../data";
 import styles from "./Ventures.module.css";
 
 export function Ventures() {
   return (
-    <section id="ventures" className={styles.section}>
-      <SectionLabel>Ventures</SectionLabel>
+    <Section id="ventures" title="Ventures">
       <div className={styles.list}>
         {ventures.map((v) => (
           <a key={v.name} href={v.href} className={styles.row}>
@@ -23,6 +22,6 @@ export function Ventures() {
           </a>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

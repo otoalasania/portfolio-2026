@@ -1,12 +1,11 @@
-import { SectionLabel } from "../ui";
+import { Section } from "../ui";
 import { ClockIcon } from "../icons";
 import { writing } from "../../data";
 import styles from "./Writing.module.css";
 
 export function Writing() {
   return (
-    <section id="writing" className={styles.section}>
-      <SectionLabel>Writing</SectionLabel>
+    <Section id="writing" title="Writing">
       <div className={styles.list}>
         {writing.map((w) => (
           <div key={w.title} className={styles.row}>
@@ -19,6 +18,6 @@ export function Writing() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }
