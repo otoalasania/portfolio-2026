@@ -44,7 +44,7 @@ export function Profile() {
         {t.profile.bioLocationPrefix}{" "}
         <span className={styles.location}>
           {t.profile.bioLocation}
-          <FlagSpain width={20} height={20} className={styles.flag} aria-hidden="true" />
+          <FlagSpain className={styles.flag} aria-hidden="true" />
         </span>{" "}
         {t.profile.bioAfter}
       </p>

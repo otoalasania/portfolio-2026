@@ -12,7 +12,7 @@ export function Stack() {
     <Section id="stack" title={t.stack.title}>
       <div className={styles.row}>
         {stack.map(({ Icon, alt }) => (
-          <Icon key={alt} width={40} height={40} role="img" aria-label={alt} />
+          <Icon key={alt} className={styles.icon} role="img" aria-label={alt} />
         ))}
       </div>
     </Section>
