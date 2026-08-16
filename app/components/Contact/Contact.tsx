@@ -4,25 +4,24 @@ import { useState } from "react";
 import { Section } from "../ui";
 import { ArrowUpRight } from "../icons";
 import { EMAIL, socials } from "../../data";
+import { useLocale } from "../../i18n/LocaleContext";
 import styles from "./Contact.module.css";
 
 export function Contact() {
+  const { t } = useLocale();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   function sendMessage() {
-    const subject = encodeURIComponent(`Portfolio contact from ${form.name || "someone"}`);
+    const m = t.contact.mailto;
+    const subject = encodeURIComponent(`${m.subjectPrefix} ${form.name || m.someone}`);
     const body = encodeURIComponent(
-      `${form.message}\n\n— ${form.name || "unknown"} (${form.email || "no email given"})`
+      `${form.message}\n\n— ${form.name || m.unknown} (${form.email || m.noEmailGiven})`
     );
     window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
   }
 
   return (
-    <Section
-      id="contact"
-      title="Contact"
-      subtitle="You can contact me using the form or via the links below."
-    >
+    <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -34,13 +33,13 @@ export function Contact() {
           <input
             value={form.name}
             onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-            placeholder="Name"
+            placeholder={t.contact.namePlaceholder}
             className={styles.input}
           />
           <input
             value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-            placeholder="Email"
+            placeholder={t.contact.emailPlaceholder}
             type="email"
             className={styles.input}
           />
@@ -54,16 +53,16 @@ export function Contact() {
               sendMessage();
             }
           }}
-          placeholder="Message"
+          placeholder={t.contact.messagePlaceholder}
           rows={5}
           className={styles.textarea}
         />
         <div className={styles.formFooter}>
           <button type="submit" className={styles.submit}>
-            Send message
+            {t.contact.send}
           </button>
           <span className={styles.hint}>
-            or <kbd className={styles.hintKbd}>⏎</kbd> to send
+            {t.contact.orPrefix} <kbd className={styles.hintKbd}>⏎</kbd> {t.contact.orEnterToSend}
           </span>
         </div>
       </form>
@@ -73,7 +72,7 @@ export function Contact() {
           <a key={s.label} href={s.href} className={styles.socialRow}>
             <span className={styles.socialLabel}>
               <s.icon />
-              {s.label}
+              {t.contact.socialLabels[s.label] ?? s.label}
             </span>
             <span className={styles.socialValue}>
               {s.value}

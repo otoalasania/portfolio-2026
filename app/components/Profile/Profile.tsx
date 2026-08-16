@@ -1,9 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import { Tile } from "../ui";
 import { profile } from "../../data";
+import { useLocale } from "../../i18n/LocaleContext";
 import styles from "./Profile.module.css";
 
 export function Profile() {
+  const { t } = useLocale();
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.avatarBox}>
@@ -21,20 +25,22 @@ export function Profile() {
         <h1 className={styles.name}>{profile.name}</h1>
         <Image
           src="/twitter-verified-badge.svg"
-          alt="Verified"
-          width={16}
-          height={16}
+          alt={t.profile.verified}
+          width={18}
+          height={18}
         />
       </div>
-      <p className={styles.role}>{profile.role}</p>
+      <p className={styles.role}>{t.profile.role}</p>
 
       <p className={styles.bio}>
-        {profile.bioBefore}{" "}
+        {t.profile.bioBefore}{" "}
         <span className={styles.company}>
           {profile.company.name}
-          <Tile color={profile.company.color}>{profile.company.name[0]}</Tile>
+          <span className={styles.companyLogo}>
+            <Image src={profile.company.logo} alt="" width={20} height={20} style={{ objectFit: "contain" }} />
+          </span>
         </span>{" "}
-        {profile.bioAfter}
+        {t.profile.bioAfter}
       </p>
     </div>
   );

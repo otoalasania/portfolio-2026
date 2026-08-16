@@ -5,13 +5,33 @@
   gap: 10px;
 }
 
-.label {
+.langSwitcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-geist-mono), monospace;
   font-size: 12px;
   line-height: 16px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+}
+
+.langOption {
+  cursor: pointer;
   color: var(--foreground-subdued);
+  transition: color 0.15s ease;
+}
+
+.langOption:hover {
+  color: var(--foreground);
+}
+
+.langOptionActive {
+  color: var(--foreground);
+}
+
+.langDivider {
+  color: var(--white-15);
 }
 
 .clock {

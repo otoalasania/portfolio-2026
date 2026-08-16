@@ -1,14 +1,14 @@
+"use client";
+
 import { Section, MockCard } from "../ui";
+import { useLocale } from "../../i18n/LocaleContext";
 import styles from "./Work.module.css";
 
 export function Work() {
+  const { t } = useLocale();
+
   return (
-    <Section
-      id="work"
-      title="Work"
-      subtitle="Below are some select projects, full walkthroughs on request"
-      style={{ marginTop: 40 }}
-    >
+    <Section id="work" title={t.work.title} subtitle={t.work.subtitle} style={{ marginTop: 40 }}>
       <div
         className={styles.stage}
         style={{

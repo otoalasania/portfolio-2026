@@ -27,10 +27,10 @@ export const BriefcaseIcon = () => (
   </Icon>
 );
 
-export const ChatIcon = () => (
+export const StarIcon = () => (
   <Icon>
     <path
-      d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5v-7Z"
+      d="M12 3.5l2.6 5.4 5.9.8-4.3 4.2 1 5.9L12 16.9l-5.2 2.9 1-5.9-4.3-4.2 5.9-.8L12 3.5Z"
       stroke="currentColor"
       strokeWidth="1.6"
       strokeLinejoin="round"

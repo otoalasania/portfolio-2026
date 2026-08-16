@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { ClockIcon } from "../icons";
-import { profile } from "../../data";
+import { useLocale } from "../../i18n/LocaleContext";
 import styles from "./Header.module.css";
 
 export function Header() {
   const [now, setNow] = useState("");
+  const { locale, setLocale } = useLocale();
 
   useEffect(() => {
     function tick() {
@@ -23,7 +24,23 @@ export function Header() {
 
   return (
     <div id="top" className={styles.bar}>
-      <span className={styles.label}>EST. {profile.estYear}</span>
+      <div className={styles.langSwitcher} role="group" aria-label="Language">
+        <button
+          type="button"
+          onClick={() => setLocale("en")}
+          className={`${styles.langOption} ${locale === "en" ? styles.langOptionActive : ""}`}
+        >
+          EN
+        </button>
+        <span className={styles.langDivider}>·</span>
+        <button
+          type="button"
+          onClick={() => setLocale("es")}
+          className={`${styles.langOption} ${locale === "es" ? styles.langOptionActive : ""}`}
+        >
+          ES
+        </button>
+      </div>
       <span className={styles.clock}>
         <ClockIcon />
         {now || " "}

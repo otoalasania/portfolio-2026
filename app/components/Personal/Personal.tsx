@@ -1,12 +1,17 @@
+"use client";
+
 import { Section } from "../ui";
 import { SpotifyIcon, InstagramIcon, LeicaWordmark } from "../icons";
 import { personal } from "../../data";
+import { useLocale } from "../../i18n/LocaleContext";
 import styles from "./Personal.module.css";
 
 export function Personal() {
+  const { t } = useLocale();
+
   return (
-    <Section id="personal" title="Personal">
-      <p className={styles.blurb}>{personal.blurb}</p>
+    <Section id="personal" title={t.personal.title}>
+      <p className={styles.blurb}>{t.personal.blurb}</p>
 
       <div className={styles.musicCard}>
         <div className={styles.musicTop}>
@@ -17,9 +22,9 @@ export function Personal() {
           </div>
         </div>
         <div className={styles.musicBottom}>
-          <span>Most replayed this month</span>
+          <span>{t.personal.mostReplayed}</span>
           <span className={styles.listenLink}>
-            Listen on Spotify
+            {t.personal.listenOnSpotify}
             <SpotifyIcon />
           </span>
         </div>
@@ -37,10 +42,10 @@ export function Personal() {
 
       <div className={styles.captionRow}>
         <span>
-          Shot with Leica M6 <LeicaWordmark />
+          {t.personal.shotWith} <LeicaWordmark />
         </span>
         <span className={styles.igLink}>
-          See more on IG
+          {t.personal.seeMoreIG}
           <InstagramIcon />
         </span>
       </div>
