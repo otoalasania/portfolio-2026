@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "motion/react";
 import styles from "./ui.module.css";
 
 export function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -18,11 +21,19 @@ export function Section({
   children?: React.ReactNode;
 }) {
   return (
-    <section id={id} className={styles.section} style={style}>
+    <motion.section
+      id={id}
+      className={styles.section}
+      style={style}
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
+      transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.6 }}
+    >
       <SectionLabel>{title}</SectionLabel>
       {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
       {children}
-    </section>
+    </motion.section>
   );
 }
 

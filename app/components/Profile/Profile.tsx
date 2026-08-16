@@ -1,17 +1,25 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "motion/react";
 import FlagSpain from "@assets/svgs/flags/flag-spain.svg";
 import { profile } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
+import { staggerContainer, staggerItem } from "../../lib/motion";
 import styles from "./Profile.module.css";
 
 export function Profile() {
   const { t } = useLocale();
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.avatarBox}>
+    <motion.div className={styles.wrapper} initial="hidden" animate="visible" variants={staggerContainer}>
+      <motion.div
+        className={styles.avatarBox}
+        variants={staggerItem}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 260, damping: 18 }}
+      >
         <Image
           src="/knight-in-chair.webp"
           alt=""
@@ -20,9 +28,9 @@ export function Profile() {
           className={styles.avatarInner}
         />
         <span className={styles.statusDot} />
-      </div>
+      </motion.div>
 
-      <div className={styles.nameRow}>
+      <motion.div className={styles.nameRow} variants={staggerItem}>
         <h1 className={styles.name}>{profile.name}</h1>
         <Image
           src="/Twitter_Verified_Badge.svg.webp"
@@ -30,10 +38,12 @@ export function Profile() {
           width={20}
           height={20}
         />
-      </div>
-      <p className={styles.role}>{t.profile.role}</p>
+      </motion.div>
+      <motion.p className={styles.role} variants={staggerItem}>
+        {t.profile.role}
+      </motion.p>
 
-      <p className={styles.bio}>
+      <motion.p className={styles.bio} variants={staggerItem}>
         {t.profile.bioBefore}{" "}
         <span className={styles.company}>
           {profile.company.name}
@@ -47,8 +57,10 @@ export function Profile() {
           <FlagSpain className={styles.flag} aria-hidden="true" />
         </span>{" "}
         {t.profile.bioAfter}
-      </p>
-      <p className={styles.bioShort}>{t.profile.bioShort}</p>
-    </div>
+      </motion.p>
+      <motion.p className={styles.bioShort} variants={staggerItem}>
+        {t.profile.bioShort}
+      </motion.p>
+    </motion.div>
   );
 }

@@ -1,8 +1,10 @@
 "use client";
 
+import { motion } from "motion/react";
 import { Section, Tile } from "../ui";
 import { experience } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
+import { staggerContainer, staggerItem } from "../../lib/motion";
 import styles from "./Experience.module.css";
 
 export function Experience() {
@@ -15,11 +17,17 @@ export function Experience() {
       subtitle={t.experience.subtitle}
       style={{ marginTop: 80 }}
     >
-      <div className={styles.list}>
+      <motion.div
+        className={styles.list}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={staggerContainer}
+      >
         {experience.map((e, i) => {
           const text = t.experience.items[i]!;
           return (
-            <div key={`${e.company.name}-${e.range}`} className={styles.row}>
+            <motion.div key={`${e.company.name}-${e.range}`} className={styles.row} variants={staggerItem}>
               <span className={styles.range}>{e.range}</span>
               <div>
                 <div className={styles.roleRow}>
@@ -33,10 +41,10 @@ export function Experience() {
                 </div>
                 {text.desc && <p className={styles.desc}>{text.desc}</p>}
               </div>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </Section>
   );
 }

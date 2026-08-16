@@ -1,3 +1,4 @@
+import { MotionConfig } from "motion/react";
 import { LocaleProvider } from "../../i18n/LocaleContext";
 import { Header } from "../Header/Header";
 import { Profile } from "../Profile/Profile";
@@ -15,24 +16,26 @@ import styles from "./PortfolioHome.module.css";
 
 export default function PortfolioHome() {
   return (
-    <LocaleProvider>
-      <div className={styles.page}>
-        <div className={styles.content}>
-          <Header />
-          <Profile />
-          <Work />
-          <Experience />
-          <Skills />
-          <Stack />
-          <Ventures />
-          <Writing />
-          <Personal />
-          <Contact />
-          <Footer />
-        </div>
+    <MotionConfig reducedMotion="user">
+      <LocaleProvider>
+        <div className={styles.page}>
+          <div className={styles.content}>
+            <Header />
+            <Profile />
+            <Work />
+            <Experience />
+            <Skills />
+            <Stack />
+            <Ventures />
+            <Writing />
+            <Personal />
+            <Contact />
+            <Footer />
+          </div>
 
-        <Dock />
-      </div>
-    </LocaleProvider>
+          <Dock />
+        </div>
+      </LocaleProvider>
+    </MotionConfig>
   );
 }

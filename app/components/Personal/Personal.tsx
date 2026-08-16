@@ -1,9 +1,11 @@
 "use client";
 
+import { motion } from "motion/react";
 import { Section } from "../ui";
 import { SpotifyIcon, InstagramIcon, LeicaWordmark } from "../icons";
 import { personal } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
+import { staggerContainer, fadeItem } from "../../lib/motion";
 import styles from "./Personal.module.css";
 
 export function Personal() {
@@ -30,15 +32,22 @@ export function Personal() {
         </div>
       </div>
 
-      <div className={styles.photoStrip}>
+      <motion.div
+        className={styles.photoStrip}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={staggerContainer}
+      >
         {personal.photos.map((p, i) => (
-          <div
+          <motion.div
             key={i}
             style={{ "--rotate": `${p.rotate}deg`, backgroundColor: p.color } as React.CSSProperties}
             className={`${styles.photo} ${i > 0 ? styles.photoOverlap : ""}`}
+            variants={fadeItem}
           />
         ))}
-      </div>
+      </motion.div>
 
       <div className={styles.captionRow}>
         <span className={styles.leicaCaption}>
