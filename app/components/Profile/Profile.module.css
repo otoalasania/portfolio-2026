@@ -4,8 +4,27 @@
 
 .avatarBox {
   position: relative;
+  display: block;
   height: 60px;
   width: 60px;
+  cursor: pointer;
+}
+
+.avatarBox:disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.cowTrain {
+  position: fixed;
+  top: 30%;
+  left: 0;
+  z-index: 9999;
+  font-size: min(36vw, 320px);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.4));
 }
 
 .avatarInner {
@@ -13,6 +32,14 @@
   width: 100%;
   border-radius: 12px;
   object-fit: cover;
+}
+
+.avatarGradient {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.16), rgba(0, 0, 0, 0.3) 75%);
+  pointer-events: none;
 }
 
 .statusDot {

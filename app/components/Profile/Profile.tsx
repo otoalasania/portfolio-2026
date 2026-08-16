@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { motion } from "motion/react";
 import FlagSpain from "@assets/svgs/flags/flag-spain.svg";
@@ -10,15 +12,20 @@ import styles from "./Profile.module.css";
 
 export function Profile() {
   const { t } = useLocale();
+  const [cowRunning, setCatRunning] = useState(false);
 
   return (
     <motion.div className={styles.wrapper} initial="hidden" animate="visible" variants={staggerContainer}>
-      <motion.div
+      <motion.button
+        type="button"
+        onClick={() => setCatRunning(true)}
+        disabled={cowRunning}
         className={styles.avatarBox}
         variants={staggerItem}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.97 }}
         transition={{ type: "spring", stiffness: 260, damping: 18 }}
+        aria-label={profile.name}
       >
         <Image
           src="/knight-in-chair.webp"
@@ -27,8 +34,27 @@ export function Profile() {
           height={60}
           className={styles.avatarInner}
         />
+        <span className={styles.avatarGradient} />
         <span className={styles.statusDot} />
-      </motion.div>
+      </motion.button>
+
+      {cowRunning &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <motion.div
+            className={styles.cowTrain}
+            initial={{ x: "115vw" }}
+            animate={{ x: "-45vw", y: [0, -16, 0, -16, 0, -16, 0] }}
+            transition={{
+              x: { duration: 1.8, ease: "linear" },
+              y: { duration: 1.8, ease: "easeInOut" },
+            }}
+            onAnimationComplete={() => setCatRunning(false)}
+          >
+            🐈
+          </motion.div>,
+          document.body
+        )}
 
       <motion.div className={styles.nameRow} variants={staggerItem}>
         <h1 className={styles.name}>{profile.name}</h1>

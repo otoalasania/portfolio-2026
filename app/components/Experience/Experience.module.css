@@ -55,6 +55,17 @@
   color: var(--foreground);
 }
 
+.companyLogo {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--color-white);
+}
+
 .desc {
   margin-top: 2px;
   font-size: 16px;

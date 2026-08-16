@@ -39,16 +39,12 @@ export const translations = {
       at: "at",
       items: [
         {
-          role: "Design engineer",
-          desc: "Designed a real-time waitlist and dashboard for monitoring sign ups with live updates, reducing latency by 15%",
+          role: "Frontend Developer",
+          desc: "Building and maintaining frontend features and interfaces at Noxtton.",
         },
         {
-          role: "Design engineer",
-          desc: "Designed and built an admin panel for enterprise clients, scaling to support over 500 active users per instance.",
-        },
-        {
-          role: "Software engineer",
-          desc: "Developed the user interface for a crypto payment gateway, ensuring compliance with global accessibility standards.",
+          role: "Intern",
+          desc: "Supported the frontend team, learning the codebase and contributing to UI work.",
         },
       ],
     },
@@ -168,16 +164,12 @@ export const translations = {
       at: "en",
       items: [
         {
-          role: "Ingeniero de diseño",
-          desc: "Diseñé una lista de espera en tiempo real y un panel para monitorear registros con actualizaciones en vivo, reduciendo la latencia en un 15%",
+          role: "Desarrollador Frontend",
+          desc: "Construyendo y manteniendo funcionalidades e interfaces frontend en Noxtton.",
         },
         {
-          role: "Ingeniero de diseño",
-          desc: "Diseñé y construí un panel de administración para clientes empresariales, escalando para soportar más de 500 usuarios activos por instancia.",
-        },
-        {
-          role: "Ingeniero de software",
-          desc: "Desarrollé la interfaz de usuario de una pasarela de pago cripto, garantizando el cumplimiento de los estándares globales de accesibilidad.",
+          role: "Becario",
+          desc: "Apoyé al equipo de frontend, aprendiendo la base de código y contribuyendo al trabajo de UI.",
         },
       ],
     },

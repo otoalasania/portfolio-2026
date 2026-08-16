@@ -32,9 +32,8 @@ export const profile = {
 
 // role/desc text lives in i18n/translations.ts, matched by index
 export const experience = [
-  { range: "2024 — NOW", company: { name: "Wait", color: "#e4ff3a" } },
-  { range: "2024 — NOW", company: { name: "Omega", color: "#5ec8e8" } },
-  { range: "2017 — 2020", company: { name: "Theta", color: "#5fe37f" } },
+  { range: "2022 — NOW", company: profile.company },
+  { range: "2022", company: profile.company },
 ];
 
 export const stack = [

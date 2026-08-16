@@ -9,30 +9,19 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  cursor: pointer;
   font-family: var(--font-geist-mono), monospace;
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-}
-
-.langOption {
-  cursor: pointer;
   color: var(--foreground-subdued);
   transition: color 0.15s ease;
 }
 
-.langOption:hover {
+.langSwitcher:hover {
   color: var(--foreground);
-}
-
-.langOptionActive {
-  color: var(--foreground);
-}
-
-.langDivider {
-  color: var(--white-15);
 }
 
 .clock {
