@@ -23,10 +23,10 @@ export function Personal() {
         </div>
         <div className={styles.musicBottom}>
           <span>{t.personal.mostReplayed}</span>
-          <span className={styles.listenLink}>
+          <a href="#" className={styles.listenLink}>
             {t.personal.listenOnSpotify}
             <SpotifyIcon />
-          </span>
+          </a>
         </div>
       </div>
 
@@ -34,20 +34,21 @@ export function Personal() {
         {personal.photos.map((p, i) => (
           <div
             key={i}
-            style={{ transform: `rotate(${p.rotate}deg)`, backgroundColor: p.color }}
+            style={{ "--rotate": `${p.rotate}deg`, backgroundColor: p.color } as React.CSSProperties}
             className={`${styles.photo} ${i > 0 ? styles.photoOverlap : ""}`}
           />
         ))}
       </div>
 
       <div className={styles.captionRow}>
-        <span>
-          {t.personal.shotWith} <LeicaWordmark />
+        <span className={styles.leicaCaption}>
+          {t.personal.shotWith}
+          <LeicaWordmark />
         </span>
-        <span className={styles.igLink}>
+        <a href="#" target="_blank" rel="noopener noreferrer" className={styles.igLink}>
           {t.personal.seeMoreIG}
           <InstagramIcon />
-        </span>
+        </a>
       </div>
     </Section>
   );

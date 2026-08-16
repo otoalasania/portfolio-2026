@@ -23,11 +23,13 @@ export function Experience() {
               <span className={styles.range}>{e.range}</span>
               <div>
                 <div className={styles.roleRow}>
-                  <h3>
+                  <h3 className={styles.role}>
                     {text.role} {t.experience.at}
                   </h3>
-                  <Tile color={e.company.color}>{e.company.name[0]}</Tile>
-                  <span>{e.company.name}</span>
+                  <span className={styles.companyGroup}>
+                    <Tile color={e.company.color}>{e.company.name[0]}</Tile>
+                    {e.company.name}
+                  </span>
                 </div>
                 {text.desc && <p className={styles.desc}>{text.desc}</p>}
               </div>

@@ -4,6 +4,13 @@ import { Section, MockCard } from "../ui";
 import { useLocale } from "../../i18n/LocaleContext";
 import styles from "./Work.module.css";
 
+const cards = [
+  { dark: true },
+  { dark: false },
+  { dark: true },
+  { dark: false },
+];
+
 export function Work() {
   const { t } = useLocale();
 
@@ -17,10 +24,13 @@ export function Work() {
           backgroundSize: "18px 18px",
         }}
       >
-        <MockCard rotate={-8} dark className={styles.card} />
-        <MockCard rotate={4} dark={false} className={styles.cardFront} />
-        <MockCard rotate={-3} dark className={styles.card} />
-        <MockCard rotate={7} dark={false} />
+        <div className={styles.canvas}>
+          {cards.map((c, i) => (
+            <div key={i} className={styles.cardSlot}>
+              <MockCard rotate={0} dark={c.dark} />
+            </div>
+          ))}
+        </div>
       </div>
     </Section>
   );

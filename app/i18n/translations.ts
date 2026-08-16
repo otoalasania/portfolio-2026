@@ -14,12 +14,18 @@ export const translations = {
       writing: "Writing",
       personal: "Personal",
       contact: "Contact",
+      more: "More",
+      less: "Less",
     },
     profile: {
       role: "Mid Frontend Developer",
       bioBefore: "Hey, I'm Otar a frontend developer at",
+      bioLocationPrefix: "based in",
+      bioLocation: "Alicante, Spain",
       bioAfter:
-        "based in Alicante, Spain 🇪🇸 (originally from Tbilisi, Georgia), where I specialize in building fast, accessible interfaces with a strong focus on performance and clean UI engineering.",
+        "(originally from Tbilisi, Georgia), where I specialize in building fast, accessible interfaces with a strong focus on performance and clean UI engineering.",
+      bioShort:
+        "Frontend developer at Noxtton, based in Alicante. I build fast, accessible interfaces with clean UI engineering.",
       verified: "Verified",
     },
     work: {
@@ -137,12 +143,18 @@ export const translations = {
       writing: "Escritura",
       personal: "Personal",
       contact: "Contacto",
+      more: "Más",
+      less: "Menos",
     },
     profile: {
       role: "Desarrollador Frontend Mid",
       bioBefore: "Hola, soy Otar, desarrollador frontend en",
+      bioLocationPrefix: "con base en",
+      bioLocation: "Alicante, España",
       bioAfter:
-        "con base en Alicante, España 🇪🇸 (originario de Tiflis, Georgia), donde me especializo en construir interfaces rápidas y accesibles con un fuerte enfoque en el rendimiento y una ingeniería de UI limpia.",
+        "(originario de Tiflis, Georgia), donde me especializo en construir interfaces rápidas y accesibles con un fuerte enfoque en el rendimiento y una ingeniería de UI limpia.",
+      bioShort:
+        "Desarrollador frontend en Noxtton, con base en Alicante. Construyo interfaces rápidas y accesibles con una ingeniería de UI limpia.",
       verified: "Verificado",
     },
     work: {

@@ -71,7 +71,7 @@ export function Contact() {
         {socials.map((s) => (
           <a key={s.label} href={s.href} className={styles.socialRow}>
             <span className={styles.socialLabel}>
-              <s.icon />
+              <s.icon size={20} />
               {t.contact.socialLabels[s.label] ?? s.label}
             </span>
             <span className={styles.socialValue}>

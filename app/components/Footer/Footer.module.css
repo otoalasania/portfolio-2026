@@ -12,8 +12,11 @@
 .copyright {
   margin-top: 24px;
   text-align: center;
-  font-size: 12px;
-  color: var(--white-30);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
 }
 
 .meta {
@@ -23,6 +26,8 @@
   justify-content: space-between;
   font-family: var(--font-geist-mono), monospace;
   font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--foreground-subdued);
@@ -31,5 +36,5 @@
 .metaItem {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }

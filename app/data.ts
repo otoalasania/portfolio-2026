@@ -15,6 +15,13 @@ import {
   GlobeIcon,
   PlusIcon,
 } from "./components/icons";
+import VsCodeLogo from "@assets/svgs/logos/vscode.svg";
+import ClaudeCodeLogo from "@assets/svgs/logos/claudecode.svg";
+import NextJsLogo from "@assets/svgs/logos/nextdotjs.svg";
+import TypeScriptLogo from "@assets/svgs/logos/typescript.svg";
+import FigmaLogo from "@assets/svgs/logos/figma.svg";
+import BitbucketLogo from "@assets/svgs/logos/bitbucket.svg";
+import SpotifyLogo from "@assets/svgs/logos/spotify.svg";
 
 export const EMAIL = "otoalasania@gmail.com";
 
@@ -31,13 +38,13 @@ export const experience = [
 ];
 
 export const stack = [
-  { src: "/vscode.svg", alt: "VS Code" },
-  { src: "/claudecode.svg", alt: "Claude Code" },
-  { src: "/nextdotjs.svg", alt: "Next.js" },
-  { src: "/typescript.svg", alt: "TypeScript" },
-  { src: "/figma.svg", alt: "Figma" },
-  { src: "/bitbucket.svg", alt: "Bitbucket" },
-  { src: "/spotify.svg", alt: "Spotify" },
+  { Icon: VsCodeLogo, alt: "VS Code" },
+  { Icon: ClaudeCodeLogo, alt: "Claude Code" },
+  { Icon: NextJsLogo, alt: "Next.js" },
+  { Icon: TypeScriptLogo, alt: "TypeScript" },
+  { Icon: FigmaLogo, alt: "Figma" },
+  { Icon: BitbucketLogo, alt: "Bitbucket" },
+  { Icon: SpotifyLogo, alt: "Spotify" },
 ];
 
 // desc/title text lives in i18n/translations.ts, matched by index
@@ -48,11 +55,11 @@ export const ventures = [
 ];
 
 export const writing = [
-  { date: "21/02/25", minutes: 2 },
-  { date: "16/02/25", minutes: 4 },
-  { date: "12/02/25", minutes: 2 },
-  { date: "11/01/25", minutes: 2 },
-  { date: "01/01/25", minutes: 1 },
+  { date: "2025-02-21", minutes: 2 },
+  { date: "2025-02-16", minutes: 4 },
+  { date: "2025-02-12", minutes: 2 },
+  { date: "2025-01-11", minutes: 2 },
+  { date: "2025-01-01", minutes: 1 },
 ];
 
 export const personal = {
@@ -62,10 +69,10 @@ export const personal = {
     color: "#1f5f63",
   },
   photos: [
-    { color: "#8fae7a", rotate: -6 },
-    { color: "#3d6b7a", rotate: 3 },
+    { color: "#8fae7a", rotate: -2 },
+    { color: "#3d6b7a", rotate: 2 },
     { color: "#a68a6b", rotate: -2 },
-    { color: "#7a6a8f", rotate: 5 },
+    { color: "#7a6a8f", rotate: 2 },
   ],
 };
 

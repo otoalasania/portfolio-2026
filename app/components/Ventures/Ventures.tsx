@@ -23,7 +23,9 @@ export function Ventures() {
                 <p className={styles.desc}>{t.ventures.items[i]!.desc}</p>
               </div>
             </div>
-            <ArrowUpRight />
+            <span className={styles.arrow}>
+              <ArrowUpRight size={24} strokeWidth={1.75} />
+            </span>
           </a>
         ))}
       </div>

@@ -11,6 +11,7 @@
   gap: 6px;
   font-family: var(--font-geist-mono), monospace;
   font-size: 12px;
+  font-weight: 400;
   line-height: 16px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -36,10 +37,13 @@
 
 .clock {
   display: flex;
+  width: 132px;
   align-items: center;
+  justify-content: flex-end;
   gap: 8px;
   font-family: var(--font-geist-mono), monospace;
   font-size: 12px;
+  font-weight: 400;
   line-height: 16px;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.04em;

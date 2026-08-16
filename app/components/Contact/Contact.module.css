@@ -1,5 +1,8 @@
 .form {
-  margin-top: 24px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .fieldGrid {
@@ -16,54 +19,66 @@
 .input,
 .textarea {
   width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--white-15);
-  background: var(--white-03);
-  padding: 12px 16px;
-  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  padding: 10px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4em;
+  letter-spacing: 0em;
+  color: var(--foreground);
   outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: var(--white-30);
+  color: var(--foreground-subdued);
 }
 
 .input:focus,
 .textarea:focus {
-  border-color: var(--white-30);
+  border-color: var(--foreground);
+  box-shadow: 0 1px 0 3px var(--focus-ring);
 }
 
 .textarea {
-  margin-top: 12px;
-  resize: none;
+  min-height: 200px;
+  resize: vertical;
 }
 
 .formFooter {
-  margin-top: 16px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .submit {
-  border-radius: 9999px;
-  background: var(--color-white);
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-black);
-  transition: opacity 150ms;
+  min-width: 80px;
+  border-radius: 80px;
+  background: var(--button-bg);
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--foreground);
+  transition: background-color 0.2s ease;
   cursor: pointer;
 }
 
 .submit:hover {
-  opacity: 0.85;
+  background: var(--button-bg-hover);
 }
 
 .hint {
-  font-size: 12px;
-  color: var(--white-40);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--foreground-subdued);
 }
 
 .hintKbd {
@@ -73,16 +88,9 @@
 }
 
 .socials {
-  margin-top: 40px;
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--white-10);
-  border-bottom: 1px solid var(--white-10);
-  font-size: 14px;
-}
-
-.socials > * + * {
-  border-top: 1px solid var(--white-10);
 }
 
 .socialRow {
@@ -90,23 +98,32 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 14px 0;
-  transition: background-color 150ms;
+  padding: 8px 16px;
+  transition: background-color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .socialRow:hover {
-  background: var(--white-03);
+  background: var(--hover-surface);
 }
 
 .socialLabel {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: var(--white-60);
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground);
 }
 
 .socialValue {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
 }
