@@ -2,13 +2,13 @@
   min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
 .content {
   margin-left: auto;
   margin-right: auto;
-  max-width: 608px;
+  max-width: 640px;
   padding-left: 16px;
   padding-right: 16px;
   padding-top: 40px;

@@ -1,12 +1,14 @@
-.section {
-  margin-top: 96px;
-}
-
 .row {
-  margin-top: 20px;
+  margin-top: 16px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
-  color: rgba(255, 255, 255, 0.8);
+  justify-content: space-between;
+  color: var(--white-80);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  flex: none;
 }

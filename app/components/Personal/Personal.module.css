@@ -1,99 +1,170 @@
-.section {
-  margin-top: 96px;
-}
-
 .blurb {
-  margin-top: 12px;
-  max-width: 32rem;
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.7);
+  margin-top: 16px;
+  max-width: 608px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
 }
 
 .musicCard {
-  margin-top: 20px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
   overflow: hidden;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  background: var(--hover-surface);
 }
 
 .musicTop {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--player-panel);
+}
+
+@media (min-width: 640px) {
+  .musicTop {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .albumArt {
   height: 48px;
   width: 48px;
   flex: none;
-  border-radius: 8px;
+  border-radius: 6px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.27),
+    0 4px 8px rgba(0, 0, 0, 0.14);
 }
 
 .musicTitle {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground);
 }
 
 .musicArtist {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
 }
 
 .musicBottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 12px 16px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  height: 18px;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
 }
 
 .listenLink {
   display: flex;
   align-items: center;
   gap: 6px;
+  opacity: 0.5;
+  transition: opacity 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.listenLink:hover {
+  opacity: 1;
 }
 
 .photoStrip {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  padding: 16px 0;
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .photoStrip {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+  }
 }
 
 .photo {
-  height: 144px;
-  width: 128px;
+  width: 100%;
+  aspect-ratio: 0.74;
   flex: none;
-  border-radius: 6px;
-  border: 4px solid #ffffff;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 5px solid var(--color-white);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 6px 12px rgba(0, 0, 0, 0.04);
+  transform: none;
 }
 
 @media (min-width: 640px) {
   .photo {
-    height: 160px;
-    width: 144px;
+    width: 184px;
+    height: 248px;
+    aspect-ratio: unset;
+    transform: rotate(var(--rotate, 0deg));
   }
 }
 
 .photoOverlap {
-  margin-left: -24px;
+  margin-left: 0;
+}
+
+@media (min-width: 640px) {
+  .photoOverlap {
+    margin-left: -24px;
+  }
 }
 
 .captionRow {
-  margin-top: 16px;
+  margin-top: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
+}
+
+.leicaCaption {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
 }
 
 .igLink {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
+  opacity: 0.5;
+  transition: opacity 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.igLink:hover {
+  opacity: 1;
 }

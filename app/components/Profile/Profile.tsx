@@ -1,65 +1,92 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { CheckBadge } from "../icons";
-import { Tile } from "../ui";
-import { EMAIL, profile } from "../../data";
+import { useState } from "react";
+import { createPortal } from "react-dom";
+import Image from "next/image";
+import { motion } from "motion/react";
+import FlagSpain from "@assets/svgs/flags/flag-spain.svg";
+import { profile } from "../../data";
+import { useLocale } from "../../i18n/LocaleContext";
+import { staggerContainer, staggerItem } from "../../lib/motion";
 import styles from "./Profile.module.css";
 
 export function Profile() {
-  const [copied, setCopied] = useState(false);
-
-  async function copyEmail() {
-    try {
-      await navigator.clipboard.writeText(EMAIL);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {
-      // clipboard API unavailable — ignore
-    }
-  }
-
-  useEffect(() => {
-    function handleKey(e: KeyboardEvent) {
-      const tag = (document.activeElement?.tagName || "").toLowerCase();
-      if (tag === "input" || tag === "textarea") return;
-      if (e.key.toLowerCase() === "c") copyEmail();
-    }
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, []);
+  const { t } = useLocale();
+  const [cowRunning, setCatRunning] = useState(false);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.avatarBox}>
-        <div className={styles.avatarInner}>JV</div>
+    <motion.div className={styles.wrapper} initial="hidden" animate="visible" variants={staggerContainer}>
+      <motion.button
+        type="button"
+        onClick={() => setCatRunning(true)}
+        disabled={cowRunning}
+        className={styles.avatarBox}
+        variants={staggerItem}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 260, damping: 18 }}
+        aria-label={profile.name}
+      >
+        <Image
+          src="/knight-in-chair.webp"
+          alt=""
+          width={60}
+          height={60}
+          className={styles.avatarInner}
+        />
+        <span className={styles.avatarGradient} />
         <span className={styles.statusDot} />
-      </div>
+      </motion.button>
 
-      <div className={styles.nameRow}>
+      {cowRunning &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <motion.div
+            className={styles.cowTrain}
+            initial={{ x: "115vw" }}
+            animate={{ x: "-45vw", y: [0, -16, 0, -16, 0, -16, 0] }}
+            transition={{
+              x: { duration: 1.8, ease: "linear" },
+              y: { duration: 1.8, ease: "easeInOut" },
+            }}
+            onAnimationComplete={() => setCatRunning(false)}
+          >
+            🐈
+          </motion.div>,
+          document.body
+        )}
+
+      <motion.div className={styles.nameRow} variants={staggerItem}>
         <h1 className={styles.name}>{profile.name}</h1>
-        <CheckBadge />
-      </div>
-      <p className={styles.role}>{profile.role}</p>
+        <Image
+          src="/Twitter_Verified_Badge.svg.webp"
+          alt={t.profile.verified}
+          width={20}
+          height={20}
+        />
+      </motion.div>
+      <motion.p className={styles.role} variants={staggerItem}>
+        {t.profile.role}
+      </motion.p>
 
-      <p className={styles.bio}>
-        {profile.bioBefore}{" "}
+      <motion.p className={styles.bio} variants={staggerItem}>
+        {t.profile.bioBefore}{" "}
         <span className={styles.company}>
           {profile.company.name}
-          <Tile color={profile.company.color}>{profile.company.name[0]}</Tile>
+          <span className={styles.companyLogo}>
+            <Image src={profile.company.logo} alt="" width={17} height={17} style={{ objectFit: "contain" }} />
+          </span>
         </span>{" "}
-        {profile.bioAfter}
-      </p>
-
-      <button type="button" onClick={copyEmail} className={styles.copyButton}>
-        {copied ? (
-          "Copied!"
-        ) : (
-          <>
-            Press <kbd className={styles.kbd}>C</kbd> to copy my email
-          </>
-        )}
-      </button>
-    </div>
+        {t.profile.bioLocationPrefix}{" "}
+        <span className={styles.location}>
+          {t.profile.bioLocation}
+          <FlagSpain className={styles.flag} aria-hidden="true" />
+        </span>{" "}
+        {t.profile.bioAfter}
+      </motion.p>
+      <motion.p className={styles.bioShort} variants={staggerItem}>
+        {t.profile.bioShort}
+      </motion.p>
+    </motion.div>
   );
 }

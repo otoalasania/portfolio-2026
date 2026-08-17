@@ -4,31 +4,53 @@
 
 .avatarBox {
   position: relative;
-  height: 56px;
-  width: 56px;
+  display: block;
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+}
+
+.avatarBox:disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.cowTrain {
+  position: fixed;
+  top: 30%;
+  left: 0;
+  z-index: 9999;
+  font-size: min(36vw, 320px);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.4));
 }
 
 .avatarInner {
-  display: flex;
   height: 100%;
   width: 100%;
-  align-items: center;
-  justify-content: center;
   border-radius: 12px;
-  background: linear-gradient(to bottom right, #0ea5e9, #059669);
-  font-size: 14px;
-  font-weight: 600;
+  object-fit: cover;
+}
+
+.avatarGradient {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.16), rgba(0, 0, 0, 0.3) 75%);
+  pointer-events: none;
 }
 
 .statusDot {
   position: absolute;
   bottom: -1px;
-  right: -5px;
+  right: -6px;
   height: 12px;
   width: 12px;
   border-radius: 9999px;
-  outline: 3px solid #000000;
-  background: #16BF5E;
+  outline: 3px solid var(--background);
+  background: var(--color-accent-online);
 }
 
 .nameRow {
@@ -39,50 +61,82 @@
 }
 
 .name {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
 }
 
 .role {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
 }
 
 .bio {
-  margin-top: 20px;
-  max-width: 100%;
-  font-size: 15px;
-  line-height: 1.625;
-  color: rgba(255, 255, 255, 0.7);
+  display: none;
+  margin-top: 24px;
+  max-width: 608px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  text-wrap: balance;
+  color: var(--foreground-subdued);
+}
+
+.bioShort {
+  margin-top: 24px;
+  max-width: 358px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
+}
+
+@media (min-width: 640px) {
+  .bio {
+    display: block;
+  }
+
+  .bioShort {
+    display: none;
+  }
 }
 
 .company {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-weight: 500;
-  color: #ffffff;
+  font-weight: 400;
+  color: var(--foreground);
 }
 
-.copyButton {
-  margin-top: 20px;
+.companyLogo {
   display: flex;
+  height: 20px;
+  width: 20px;
+  flex: none;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
-  transition: color 150ms;
-  cursor: pointer;
-}
-
-.copyButton:hover {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.kbd {
+  justify-content: center;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2px 6px;
-  font-size: 12px;
+  background: var(--color-white);
+}
+
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+  color: var(--foreground-subdued);
+}
+
+.flag {
+  width: 20px;
+  height: 20px;
+  flex: none;
 }

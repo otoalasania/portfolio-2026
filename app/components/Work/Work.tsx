@@ -1,14 +1,21 @@
-import { SectionLabel, MockCard } from "../ui";
+"use client";
+
+import { Section, MockCard } from "../ui";
+import { useLocale } from "../../i18n/LocaleContext";
 import styles from "./Work.module.css";
 
-export function Work() {
-  return (
-    <section id="work" className={styles.section}>
-      <SectionLabel>Work</SectionLabel>
-      <p className={styles.subtitle}>
-        Below are some select projects, full walkthroughs on request
-      </p>
+const cards = [
+  { dark: true },
+  { dark: false },
+  { dark: true },
+  { dark: false },
+];
 
+export function Work() {
+  const { t } = useLocale();
+
+  return (
+    <Section id="work" title={t.work.title} subtitle={t.work.subtitle} style={{ marginTop: 40 }}>
       <div
         className={styles.stage}
         style={{
@@ -17,11 +24,14 @@ export function Work() {
           backgroundSize: "18px 18px",
         }}
       >
-        <MockCard rotate={-8} dark className={styles.card} />
-        <MockCard rotate={4} dark={false} className={styles.cardFront} />
-        <MockCard rotate={-3} dark className={styles.card} />
-        <MockCard rotate={7} dark={false} />
+        <div className={styles.canvas}>
+          {cards.map((c, i) => (
+            <div key={i} className={styles.cardSlot}>
+              <MockCard rotate={0} dark={c.dark} />
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
+    </Section>
   );
 }

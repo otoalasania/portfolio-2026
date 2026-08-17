@@ -27,10 +27,10 @@ export const BriefcaseIcon = () => (
   </Icon>
 );
 
-export const ChatIcon = () => (
+export const StarIcon = () => (
   <Icon>
     <path
-      d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5v-7Z"
+      d="M12 3.5l2.6 5.4 5.9.8-4.3 4.2 1 5.9L12 16.9l-5.2 2.9 1-5.9-4.3-4.2 5.9-.8L12 3.5Z"
       stroke="currentColor"
       strokeWidth="1.6"
       strokeLinejoin="round"
@@ -73,17 +73,17 @@ export const BoltIcon = () => (
   </Icon>
 );
 
-export const MailIcon = () => (
-  <Icon>
+export const MailIcon = ({ size = 16 }: { size?: number }) => (
+  <Icon size={size}>
     <rect x="3.5" y="5.5" width="17" height="13" rx="2" stroke="currentColor" strokeWidth="1.6" />
     <path d="M4.5 7l7.5 6 7.5-6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
   </Icon>
 );
 
-export const ClockIcon = () => (
+export const ClockIcon = ({ strokeWidth = 1.6 }: { strokeWidth?: number }) => (
   <Icon>
-    <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.6" />
-    <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth={strokeWidth} />
+    <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
   </Icon>
 );
 
@@ -92,10 +92,10 @@ export const PinIcon = () => (
     <path
       d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="1.75"
       strokeLinejoin="round"
     />
-    <circle cx="12" cy="9.5" r="2.2" stroke="currentColor" strokeWidth="1.6" />
+    <circle cx="12" cy="9.5" r="2.2" stroke="currentColor" strokeWidth="1.75" />
   </Icon>
 );
 
@@ -104,20 +104,20 @@ export const CloudIcon = () => (
     <path
       d="M7.5 17.5h9a3.5 3.5 0 0 0 .5-6.96A5 5 0 0 0 7.6 9.55 4 4 0 0 0 7.5 17.5Z"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="1.75"
       strokeLinejoin="round"
     />
   </Icon>
 );
 
-export const XIcon = () => (
-  <Icon>
+export const XIcon = ({ size = 16 }: { size?: number }) => (
+  <Icon size={size}>
     <path d="M5 4.5h3.6l4 5.4 4.6-5.4H19l-6.3 7.3L19.4 19.5H15.8l-4.3-5.8-5 5.8H4.4l6.7-7.8L5 4.5Z" fill="currentColor" />
   </Icon>
 );
 
-export const GitHubIcon = () => (
-  <Icon>
+export const GitHubIcon = ({ size = 16 }: { size?: number }) => (
+  <Icon size={size}>
     <path
       d="M12 3.5a8.5 8.5 0 0 0-2.69 16.57c.42.08.58-.19.58-.4v-1.44c-2.37.51-2.87-1.14-2.87-1.14-.39-.98-.95-1.24-.95-1.24-.77-.53.06-.52.06-.52.86.06 1.31.88 1.31.88.76 1.3 1.99.92 2.48.71.08-.55.3-.92.54-1.14-1.89-.21-3.88-.95-3.88-4.2 0-.93.33-1.68.87-2.28-.09-.21-.38-1.07.08-2.24 0 0 .71-.23 2.34.87a8.05 8.05 0 0 1 4.26 0c1.63-1.1 2.34-.87 2.34-.87.46 1.17.17 2.03.08 2.24.54.6.87 1.35.87 2.28 0 3.26-1.99 3.98-3.89 4.19.31.27.58.79.58 1.6v2.37c0 .21.16.48.59.4A8.5 8.5 0 0 0 12 3.5Z"
       fill="currentColor"
@@ -125,8 +125,8 @@ export const GitHubIcon = () => (
   </Icon>
 );
 
-export const LinkedInIcon = () => (
-  <Icon>
+export const LinkedInIcon = ({ size = 16 }: { size?: number }) => (
+  <Icon size={size}>
     <rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke="currentColor" strokeWidth="1.6" />
     <circle cx="8" cy="8.2" r="1.2" fill="currentColor" />
     <path d="M8 11v6M12 11v6M12 13.5c0-1.4 1-2.5 2.3-2.5S16.5 12.1 16.5 13.5V17" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
@@ -134,65 +134,11 @@ export const LinkedInIcon = () => (
 );
 
 export const SpotifyIcon = () => (
-  <Icon size={20}>
+  <Icon size={16}>
     <circle cx="12" cy="12" r="9" fill="#1DB954" />
     <path d="M7 10.2c3-.8 6.6-.5 9 1" stroke="#0a0a0a" strokeWidth="1.3" strokeLinecap="round" />
     <path d="M7.3 13c2.5-.65 5.5-.4 7.5.85" stroke="#0a0a0a" strokeWidth="1.2" strokeLinecap="round" />
     <path d="M7.6 15.7c2-.5 4.4-.3 6 .7" stroke="#0a0a0a" strokeWidth="1.1" strokeLinecap="round" />
-  </Icon>
-);
-
-export const FramerIcon = () => (
-  <Icon size={20}>
-    <path d="M5 3h14v6h-7l7 7h-7v7l-7-7v-7h7L5 3Z" fill="currentColor" />
-  </Icon>
-);
-
-export const FigmaIcon = () => (
-  <Icon size={20}>
-    <circle cx="15" cy="16.5" r="2.7" fill="#1abcfe" />
-    <path d="M9.3 21.2a2.7 2.7 0 1 1 0-5.4h2.7v2.7a2.7 2.7 0 0 1-2.7 2.7Z" fill="#0acf83" />
-    <path d="M9.3 15.8a2.7 2.7 0 0 1 0-5.4h2.7v5.4H9.3Z" fill="#a259ff" />
-    <path d="M9.3 10.4a2.7 2.7 0 0 1 0-5.4h2.7v5.4H9.3Z" fill="#f24e1e" />
-    <path d="M12 5h2.7a2.7 2.7 0 1 1 0 5.4H12V5Z" fill="#ff7262" />
-  </Icon>
-);
-
-export const OpenAIIcon = () => (
-  <Icon size={20}>
-    <circle cx="12" cy="12" r="9" fill="currentColor" />
-    <path
-      d="M9 8.5 12 7l3 1.5v3l-3 1.5-3-1.5v-3Zm0 5 3-1.5 3 1.5v3l-3 1.5-3-1.5v-3Z"
-      stroke="#0a0a0a"
-      strokeWidth="1.1"
-      strokeLinejoin="round"
-    />
-  </Icon>
-);
-
-export const SlackIcon = () => (
-  <Icon size={20}>
-    <circle cx="12" cy="12" r="9" fill="#5b5bd6" />
-    <rect x="8.5" y="6.5" width="2.2" height="6" rx="1.1" fill="white" />
-    <rect x="13.3" y="11.5" width="2.2" height="6" rx="1.1" fill="white" />
-    <rect x="11.5" y="8.5" width="6" height="2.2" rx="1.1" fill="white" />
-    <rect x="6.5" y="13.3" width="6" height="2.2" rx="1.1" fill="white" />
-  </Icon>
-);
-
-export const CubeIcon = () => (
-  <Icon size={20}>
-    <path d="M12 3.5 20 8v8l-8 4.5L4 16V8l8-4.5Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
-    <path d="M4 8l8 4.5L20 8M12 12.5V21" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
-  </Icon>
-);
-
-export const SparkleIcon = () => (
-  <Icon size={20}>
-    <path
-      d="M12 3.5c.6 3 2 4.4 5 5-3 .6-4.4 2-5 5-.6-3-2-4.4-5-5 3-.6 4.4-2 5-5Z"
-      fill="currentColor"
-    />
   </Icon>
 );
 
@@ -229,19 +175,32 @@ export const PlusIcon = () => (
   </Icon>
 );
 
+export const ChevronIcon = () => (
+  <Icon>
+    <path d="M6 15l6-6 6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </Icon>
+);
+
 export const LeicaWordmark = () => (
-  <span style={{ fontFamily: "cursive", fontStyle: "italic" }}>Leica</span>
+  <span
+    style={{
+      display: "inline-flex",
+      alignItems: "center",
+      width: 32,
+      height: 14,
+      fontFamily: "cursive",
+      fontStyle: "italic",
+      fontSize: 12,
+      lineHeight: "14px",
+      opacity: 0.5,
+    }}
+  >
+    Leica
+  </span>
 );
 
-export const ArrowUpRight = () => (
-  <svg viewBox="0 0 24 24" fill="none" width={14} height={14} style={{ flexShrink: 0 }}>
-    <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-export const CheckBadge = () => (
-  <svg viewBox="0 0 24 24" fill="none" width={16} height={16} style={{ flexShrink: 0 }}>
-    <circle cx="12" cy="12" r="9" fill="#3b82f6" />
-    <path d="M8 12.5l2.5 2.5L16 9.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+export const ArrowUpRight = ({ size = 14, strokeWidth = 1.8 }: { size?: number; strokeWidth?: number }) => (
+  <svg viewBox="0 0 24 24" fill="none" width={size} height={size} style={{ flexShrink: 0 }}>
+    <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
