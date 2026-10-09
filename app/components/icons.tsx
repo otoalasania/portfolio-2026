@@ -175,6 +175,12 @@ export const PlusIcon = () => (
   </Icon>
 );
 
+export const CloseIcon = () => (
+  <Icon>
+    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+  </Icon>
+);
+
 export const ChevronIcon = () => (
   <Icon>
     <path d="M6 15l6-6 6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />

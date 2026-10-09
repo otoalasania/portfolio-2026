@@ -39,7 +39,7 @@
 @media (min-width: 640px) {
   .canvas {
     display: block;
-    height: 692px;
+    height: 460px;
     padding: 0;
   }
 
@@ -53,35 +53,35 @@
   }
 
   .cardSlot:nth-child(1) {
-    --tx: -210px;
-    --ty: -80px;
+    --tx: -230px;
+    --ty: -85px;
     --rot: 4deg;
   }
 
   .cardSlot:nth-child(2) {
-    --tx: -70px;
+    --tx: -75px;
     --ty: -20px;
     --rot: -4deg;
     z-index: 2;
   }
 
   .cardSlot:nth-child(3) {
-    --tx: 70px;
+    --tx: 75px;
     --ty: 20px;
     --rot: 4deg;
     z-index: 3;
   }
 
   .cardSlot:nth-child(4) {
-    --tx: 210px;
-    --ty: 80px;
+    --tx: 230px;
+    --ty: 85px;
     --rot: -4deg;
   }
 }
 
 @media (min-width: 1024px) {
   .canvas {
-    height: 540px;
+    height: 340px;
   }
 
   .cardSlot {
@@ -94,22 +94,62 @@
   }
 
   .cardSlot:nth-child(1) {
-    --tx: -356px;
+    --tx: -390px;
     --ty: -20px;
   }
 
   .cardSlot:nth-child(2) {
-    --tx: -119px;
+    --tx: -130px;
     --ty: 15px;
   }
 
   .cardSlot:nth-child(3) {
-    --tx: 119px;
+    --tx: 130px;
     --ty: -20px;
   }
 
   .cardSlot:nth-child(4) {
-    --tx: 356px;
+    --tx: 390px;
     --ty: 15px;
   }
 }
+
+.card {
+  display: flex;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 4 / 3;
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  background: var(--color-white);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 6px 12px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+@media (min-width: 640px) {
+  .card {
+    width: 340px;
+    max-width: none;
+  }
+}
+
+.cardImage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.cardImageEl {
+  object-fit: cover;
+}
+

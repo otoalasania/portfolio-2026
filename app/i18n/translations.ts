@@ -2,6 +2,7 @@ export type Locale = "en" | "es";
 
 // Item arrays below are matched by index to the corresponding arrays in
 // ../data.ts (experience, ventures, writing) — keep the order in sync.
+// work.items is keyed by project slug instead (see `projects` in ../data.ts).
 export const translations = {
   en: {
     nav: {
@@ -31,6 +32,112 @@ export const translations = {
     work: {
       title: "Work",
       subtitle: "Below are some select projects, full walkthroughs on request",
+      closeLabel: "Close",
+      viewSite: "View live site",
+      moreLabel: "More projects",
+      prevImage: "Previous image",
+      nextImage: "Next image",
+      showAll: "Show all",
+      showLess: "Show less",
+      viewProject: "View project",
+      items: {
+        "aurora-dashboard": {
+          title: "Aurora Dashboard",
+          summary: "Real-time usage and billing analytics for a SaaS team",
+          description:
+            "An internal analytics dashboard built to help a small SaaS team track usage and billing metrics in real time. Focused on fast data loading, accessible charts, and a component library that scaled across the rest of the product.",
+          highlights: [
+            "Designed and built the component library from scratch",
+            "Cut initial dashboard load time by optimizing data fetching",
+            "Built accessible charts usable with keyboard and screen readers",
+          ],
+        },
+        "cedar-commerce": {
+          title: "Cedar Commerce",
+          summary: "Headless storefront rebuild off a legacy CMS",
+          description:
+            "A headless storefront rebuild for a mid-size e-commerce brand, moving off a legacy CMS onto a fast, componentized frontend. Cut page load times noticeably while keeping the checkout flow accessible and easy to maintain.",
+          highlights: [
+            "Migrated the storefront off a legacy CMS to a headless setup",
+            "Rebuilt the checkout flow with accessibility as a first-class concern",
+            "Set up a componentized frontend the team could maintain long-term",
+          ],
+        },
+        "pulse-analytics": {
+          title: "Pulse Analytics",
+          summary: "Product analytics with fast, accessible charts",
+          description:
+            "A lightweight analytics widget embedded across partner sites, designed to drop into any page with minimal setup. Built with strict performance budgets, keeping the bundle small without sacrificing the interface.",
+          highlights: [
+            "Built an embeddable widget that drops into any page with one script tag",
+            "Kept the bundle under a strict size budget for partner sites",
+            "Designed the interface to stay legible at small embedded sizes",
+          ],
+        },
+        "wayfarer-app": {
+          title: "Wayfarer",
+          summary: "Trip planning app for independent travelers",
+          description:
+            "A trip-planning web app for sketching out itineraries and sharing them with friends. Explored a playful, card-based interface with smooth transitions and a strong focus on mobile usability.",
+          highlights: [
+            "Designed a card-based itinerary builder with drag-to-reorder",
+            "Added shareable trip links for planning with friends",
+            "Tuned the whole flow for mobile-first usability",
+          ],
+        },
+        "meridian-crm": {
+          title: "Meridian CRM",
+          summary: "Lightweight CRM for a small sales team",
+          description:
+            "A lightweight CRM built for a small B2B sales team to track leads and deals without the overhead of an enterprise tool. Focused on quick data entry and a pipeline view the whole team actually used.",
+          highlights: [
+            "Built a drag-and-drop pipeline board for tracking deal stages",
+            "Simplified lead entry down to a handful of required fields",
+            "Added email reminders for deals that had gone quiet",
+          ],
+        },
+        "foundry-blog": {
+          title: "Foundry Blog",
+          summary: "Statically generated blog with a calm writing flow",
+          description:
+            "A fast, minimal blogging platform for indie writers, with a focus on clean typography and near-instant page loads. Kept the writing experience distraction-free while still supporting drafts and scheduling.",
+          highlights: [
+            "Set up static generation for near-instant page loads",
+            "Designed a distraction-free writing and scheduling flow",
+          ],
+        },
+        "northwind-inventory": {
+          title: "Northwind Inventory",
+          summary: "Real-time stock tracking for a warehouse floor",
+          description:
+            "An inventory tracking tool for a small warehouse operation, replacing a shared spreadsheet with real-time stock counts and low-stock alerts. Built to work reliably on tablets on the warehouse floor.",
+          highlights: [
+            "Replaced a shared spreadsheet with real-time stock tracking",
+            "Added low-stock alerts to prevent fulfillment delays",
+            "Optimized the interface for tablet use on the warehouse floor",
+          ],
+        },
+        "lumen-builder": {
+          title: "Lumen",
+          summary: "Drag-and-drop site builder for freelancers",
+          description:
+            "A drag-and-drop site builder aimed at freelancers who wanted a portfolio site without touching code. Focused on a small set of well-designed templates over endless configuration.",
+          highlights: [
+            "Built a drag-and-drop editor backed by a small set of curated templates",
+            "Kept the publishing flow to a single click from draft to live",
+          ],
+        },
+        "tidal-booking": {
+          title: "Tidal Booking",
+          summary: "Class booking widget for surf and dive schools",
+          description:
+            "A booking widget for small surf and dive schools to manage class reservations and capacity, replacing manual phone bookings. Kept the embed lightweight enough to drop into an existing site.",
+          highlights: [
+            "Built a capacity-aware booking widget to replace manual phone bookings",
+            "Kept the embeddable widget lightweight enough for existing marketing sites",
+          ],
+        },
+      },
     },
     experience: {
       title: "Experience",
@@ -156,6 +263,112 @@ export const translations = {
     work: {
       title: "Trabajo",
       subtitle: "A continuación, algunos proyectos seleccionados; recorridos completos bajo pedido",
+      closeLabel: "Cerrar",
+      viewSite: "Ver sitio en vivo",
+      moreLabel: "Más proyectos",
+      prevImage: "Imagen anterior",
+      nextImage: "Imagen siguiente",
+      showAll: "Ver todos",
+      showLess: "Ver menos",
+      viewProject: "Ver proyecto",
+      items: {
+        "aurora-dashboard": {
+          title: "Aurora Dashboard",
+          summary: "Analítica de uso y facturación en tiempo real para un equipo SaaS",
+          description:
+            "Un panel de analítica interno creado para ayudar a un pequeño equipo de SaaS a monitorizar el uso y la facturación en tiempo real. Centrado en una carga de datos rápida, gráficos accesibles y una librería de componentes que se extendió al resto del producto.",
+          highlights: [
+            "Diseñé y construí la librería de componentes desde cero",
+            "Reduje el tiempo de carga inicial optimizando la obtención de datos",
+            "Construí gráficos accesibles usables con teclado y lectores de pantalla",
+          ],
+        },
+        "cedar-commerce": {
+          title: "Cedar Commerce",
+          summary: "Reconstrucción headless de una tienda sobre un CMS heredado",
+          description:
+            "Una reconstrucción de tienda headless para una marca de comercio electrónico de tamaño medio, migrando de un CMS heredado a un frontend rápido y basado en componentes. Redujo notablemente los tiempos de carga manteniendo el checkout accesible y fácil de mantener.",
+          highlights: [
+            "Migré la tienda de un CMS heredado a una configuración headless",
+            "Reconstruí el flujo de checkout priorizando la accesibilidad",
+            "Configuré un frontend basado en componentes fácil de mantener a largo plazo",
+          ],
+        },
+        "pulse-analytics": {
+          title: "Pulse Analytics",
+          summary: "Analítica de producto con gráficos rápidos y accesibles",
+          description:
+            "Un widget de analítica ligero integrado en varios sitios de partners, diseñado para instalarse en cualquier página con una configuración mínima. Construido con presupuestos de rendimiento estrictos, manteniendo el paquete pequeño sin sacrificar la interfaz.",
+          highlights: [
+            "Construí un widget integrable que se instala con una sola etiqueta de script",
+            "Mantuve el paquete dentro de un presupuesto de tamaño estricto",
+            "Diseñé la interfaz para que fuera legible incluso en tamaños pequeños",
+          ],
+        },
+        "wayfarer-app": {
+          title: "Wayfarer",
+          summary: "App de planificación de viajes para viajeros independientes",
+          description:
+            "Una aplicación web de planificación de viajes para esbozar itinerarios y compartirlos con amigos. Se exploró una interfaz lúdica basada en tarjetas, con transiciones suaves y un fuerte enfoque en la usabilidad móvil.",
+          highlights: [
+            "Diseñé un creador de itinerarios basado en tarjetas con reordenamiento",
+            "Añadí enlaces de viaje compartibles para planificar con amigos",
+            "Ajusté todo el flujo priorizando la usabilidad móvil",
+          ],
+        },
+        "meridian-crm": {
+          title: "Meridian CRM",
+          summary: "CRM ligero para un pequeño equipo de ventas",
+          description:
+            "Un CRM ligero creado para un pequeño equipo de ventas B2B, para hacer seguimiento de leads y negocios sin la complejidad de una herramienta empresarial. Centrado en una entrada de datos rápida y una vista de pipeline que todo el equipo usaba de verdad.",
+          highlights: [
+            "Construí un tablero de pipeline con arrastrar y soltar para las etapas de cada negocio",
+            "Simplifiqué la entrada de leads a unos pocos campos obligatorios",
+            "Añadí recordatorios por email para negocios que llevaban tiempo sin movimiento",
+          ],
+        },
+        "foundry-blog": {
+          title: "Foundry Blog",
+          summary: "Blog estático con un flujo de escritura tranquilo",
+          description:
+            "Una plataforma de blogging rápida y minimalista para escritores independientes, centrada en una tipografía cuidada y cargas de página casi instantáneas. Mantuve la experiencia de escritura libre de distracciones sin dejar de soportar borradores y programación de publicaciones.",
+          highlights: [
+            "Configuré generación estática para cargas de página casi instantáneas",
+            "Diseñé un flujo de escritura y programación libre de distracciones",
+          ],
+        },
+        "northwind-inventory": {
+          title: "Northwind Inventory",
+          summary: "Control de stock en tiempo real para un almacén",
+          description:
+            "Una herramienta de control de inventario para una pequeña operación de almacén, que sustituyó una hoja de cálculo compartida por conteos de stock en tiempo real y alertas de stock bajo. Construida para funcionar de forma fiable en tablets en el almacén.",
+          highlights: [
+            "Sustituí una hoja de cálculo compartida por seguimiento de stock en tiempo real",
+            "Añadí alertas de stock bajo para evitar retrasos en los pedidos",
+            "Optimicé la interfaz para su uso en tablets dentro del almacén",
+          ],
+        },
+        "lumen-builder": {
+          title: "Lumen",
+          summary: "Constructor de webs drag-and-drop para freelancers",
+          description:
+            "Un creador de sitios de arrastrar y soltar pensado para freelancers que querían un portfolio sin tocar código. Centrado en un pequeño conjunto de plantillas bien diseñadas en lugar de una configuración interminable.",
+          highlights: [
+            "Construí un editor de arrastrar y soltar respaldado por un pequeño conjunto de plantillas cuidadas",
+            "Reduje la publicación a un solo clic entre borrador y sitio en vivo",
+          ],
+        },
+        "tidal-booking": {
+          title: "Tidal Booking",
+          summary: "Widget de reservas para escuelas de surf y buceo",
+          description:
+            "Un widget de reservas para pequeñas escuelas de surf y buceo, para gestionar reservas de clases y aforo, sustituyendo las reservas manuales por teléfono. Mantuve el widget lo bastante ligero para integrarlo en un sitio ya existente.",
+          highlights: [
+            "Construí un widget de reservas consciente del aforo para sustituir las reservas manuales por teléfono",
+            "Mantuve el widget lo bastante ligero para sitios de marketing existentes",
+          ],
+        },
+      },
     },
     experience: {
       title: "Experiencia",

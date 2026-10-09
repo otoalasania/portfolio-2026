@@ -15,6 +15,7 @@ import {
   GlobeIcon,
   PlusIcon,
 } from "./components/icons";
+import type { translations } from "./i18n/translations";
 import VsCodeLogo from "@assets/svgs/logos/vscode.svg";
 import ClaudeCodeLogo from "@assets/svgs/logos/claudecode.svg";
 import NextJsLogo from "@assets/svgs/logos/nextdotjs.svg";
@@ -45,6 +46,108 @@ export const stack = [
   { Icon: BitbucketLogo, alt: "Bitbucket" },
   { Icon: SpotifyLogo, alt: "Spotify" },
 ];
+
+// title/summary/description/highlights text lives in i18n/translations.ts under
+// work.items, keyed by slug — the slug type below makes a missing entry a type error
+export type ProjectSlug = keyof (typeof translations)["en"]["work"]["items"];
+
+export type Project = {
+  slug: ProjectSlug;
+  year: number;
+  stack: string[]; // names matching `stack[].alt` above, so the modal can resolve logos
+  featured: boolean; // true → Work's hero deck, false → ProjectIndex
+  href?: string; // omit for NDA/client work — rendered as a plain row, not a link
+  images: string[]; // first is the cover/preview, the rest feed WorkModal's slider
+};
+
+export function stackLogo(name: string) {
+  return stack.find((s) => s.alt === name);
+}
+
+// TODO: swap for real screenshots — picsum.photos placeholders, stable per project via seed
+function projectImages(seed: string, count: number): string[] {
+  return Array.from({ length: count }, (_, i) => `https://picsum.photos/seed/${seed}-${i + 1}/960/720`);
+}
+
+const projects: Project[] = [
+  {
+    slug: "aurora-dashboard",
+    year: 2025,
+    stack: ["Next.js", "TypeScript", "Figma"],
+    featured: true,
+    href: "#",
+    images: projectImages("aurora-dashboard", 5),
+  },
+  {
+    slug: "cedar-commerce",
+    year: 2025,
+    stack: ["Next.js", "TypeScript"],
+    featured: true,
+    href: "#",
+    images: projectImages("cedar-commerce", 4),
+  },
+  {
+    slug: "pulse-analytics",
+    year: 2024,
+    stack: ["TypeScript", "Figma"],
+    featured: true,
+    href: "#",
+    images: projectImages("pulse-analytics", 3),
+  },
+  {
+    slug: "wayfarer-app",
+    year: 2024,
+    stack: ["Next.js", "TypeScript", "Figma"],
+    featured: true,
+    href: "#",
+    images: projectImages("wayfarer-app", 5),
+  },
+  {
+    slug: "meridian-crm",
+    year: 2025,
+    stack: ["Next.js", "TypeScript"],
+    featured: false,
+    href: "#",
+    images: projectImages("meridian-crm", 3),
+  },
+  {
+    slug: "foundry-blog",
+    year: 2023,
+    stack: ["Next.js", "TypeScript", "Figma"],
+    featured: false,
+    href: "#",
+    images: projectImages("foundry-blog", 2),
+  },
+  {
+    slug: "northwind-inventory",
+    year: 2024,
+    stack: ["TypeScript"],
+    featured: false,
+    images: projectImages("northwind-inventory", 4),
+  },
+  {
+    slug: "lumen-builder",
+    year: 2023,
+    stack: ["Next.js", "Figma"],
+    featured: false,
+    href: "#",
+    images: projectImages("lumen-builder", 3),
+  },
+  {
+    slug: "tidal-booking",
+    year: 2022,
+    stack: ["Next.js", "TypeScript"],
+    featured: false,
+    href: "#",
+    images: projectImages("tidal-booking", 1),
+  },
+];
+
+const newestFirst = (a: Project, b: Project) => b.year - a.year;
+
+// Work's fan is hand-tuned for exactly 4 cards — see DESIGN_SYSTEM.md before changing how many are featured
+export const featuredProjects = projects.filter((p) => p.featured).sort(newestFirst);
+export const moreProjects = projects.filter((p) => !p.featured).sort(newestFirst);
 
 // desc/title text lives in i18n/translations.ts, matched by index
 export const ventures = [

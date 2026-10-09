@@ -1,18 +1,17 @@
 "use client";
 
-import { Section, MockCard } from "../ui";
+import { useState } from "react";
+import Image from "next/image";
+import { Section } from "../ui";
+import { WorkModal } from "./WorkModal";
+import { featuredProjects, type Project } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import styles from "./Work.module.css";
 
-const cards = [
-  { dark: true },
-  { dark: false },
-  { dark: true },
-  { dark: false },
-];
-
 export function Work() {
   const { t } = useLocale();
+  const [selected, setSelected] = useState<Project | null>(null);
+  const selectedText = selected ? t.work.items[selected.slug] : undefined;
 
   return (
     <Section id="work" title={t.work.title} subtitle={t.work.subtitle} style={{ marginTop: 40 }}>
@@ -25,13 +24,37 @@ export function Work() {
         }}
       >
         <div className={styles.canvas}>
-          {cards.map((c, i) => (
-            <div key={i} className={styles.cardSlot}>
-              <MockCard rotate={0} dark={c.dark} />
+          {featuredProjects.map((project) => (
+            <div key={project.slug} className={styles.cardSlot}>
+              <button
+                type="button"
+                className={styles.card}
+                onClick={() => setSelected(project)}
+                aria-haspopup="dialog"
+                aria-label={t.work.items[project.slug].title}
+              >
+                <span className={styles.cardImage}>
+                  <Image
+                    src={project.images[0]!}
+                    alt=""
+                    fill
+                    sizes="(min-width: 640px) 340px, 340px"
+                    className={styles.cardImageEl}
+                  />
+                </span>
+              </button>
             </div>
           ))}
         </div>
       </div>
+
+      <WorkModal
+        project={selected}
+        title={selectedText?.title}
+        description={selectedText?.description}
+        highlights={selectedText?.highlights}
+        onClose={() => setSelected(null)}
+      />
     </Section>
   );
 }

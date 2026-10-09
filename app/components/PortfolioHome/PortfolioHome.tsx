@@ -3,6 +3,7 @@ import { LocaleProvider } from "../../i18n/LocaleContext";
 import { Header } from "../Header/Header";
 import { Profile } from "../Profile/Profile";
 import { Work } from "../Work/Work";
+import { ProjectIndex } from "../ProjectIndex/ProjectIndex";
 import { Experience } from "../Experience/Experience";
 import { Skills } from "../Skills/Skills";
 import { Stack } from "../Stack/Stack";
@@ -23,6 +24,7 @@ export default function PortfolioHome() {
             <Header />
             <Profile />
             <Work />
+            <ProjectIndex />
             <Experience />
             <Skills />
             <Stack />

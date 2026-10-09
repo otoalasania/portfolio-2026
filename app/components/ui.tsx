@@ -11,12 +11,14 @@ export function Section({
   id,
   title,
   subtitle,
+  meta,
   style,
   children,
 }: {
   id: string;
   title: string;
   subtitle?: React.ReactNode;
+  meta?: React.ReactNode; // right-aligned mono text on the label row (e.g. a count)
   style?: React.CSSProperties;
   children?: React.ReactNode;
 }) {
@@ -30,7 +32,14 @@ export function Section({
       viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
       transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.6 }}
     >
-      <SectionLabel>{title}</SectionLabel>
+      {meta !== undefined ? (
+        <div className={styles.labelRow}>
+          <SectionLabel>{title}</SectionLabel>
+          <p className={styles.sectionLabel}>{meta}</p>
+        </div>
+      ) : (
+        <SectionLabel>{title}</SectionLabel>
+      )}
       {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
       {children}
     </motion.section>
