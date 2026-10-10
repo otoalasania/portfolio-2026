@@ -16,6 +16,12 @@
   }
 }
 
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .input,
 .textarea {
   width: 100%;
@@ -45,9 +51,39 @@
   box-shadow: 0 1px 0 3px var(--focus-ring);
 }
 
+.input[aria-invalid="true"],
+.textarea[aria-invalid="true"] {
+  border-color: var(--foreground-subdued);
+}
+
 .textarea {
   min-height: 200px;
   resize: vertical;
+}
+
+.fieldError,
+.status {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  color: var(--foreground);
+}
+
+.status:empty {
+  margin-top: -12px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .formFooter {
@@ -74,6 +110,17 @@
   background: var(--button-bg-hover);
 }
 
+.submit:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.submit:focus-visible,
+.socialRow:focus-visible {
+  outline: 2px solid var(--foreground-subdued);
+  outline-offset: 2px;
+}
+
 .hint {
   font-size: 16px;
   font-weight: 400;
@@ -83,7 +130,7 @@
 
 .hintKbd {
   border-radius: 4px;
-  border: 1px solid var(--white-15);
+  border: 1px solid var(--divider);
   padding: 0 4px;
 }
 

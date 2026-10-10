@@ -110,9 +110,67 @@ export const CloudIcon = () => (
   </Icon>
 );
 
-export const XIcon = ({ size = 16 }: { size?: number }) => (
-  <Icon size={size}>
-    <path d="M5 4.5h3.6l4 5.4 4.6-5.4H19l-6.3 7.3L19.4 19.5H15.8l-4.3-5.8-5 5.8H4.4l6.7-7.8L5 4.5Z" fill="currentColor" />
+const raisedCloud = "M7.5 14.5h9a3.5 3.5 0 0 0 .5-6.96A5 5 0 0 0 7.6 6.55 4 4 0 0 0 7.5 14.5Z";
+
+export const SunIcon = () => (
+  <Icon>
+    <circle cx="12" cy="12" r="3.75" stroke="currentColor" strokeWidth="1.75" />
+    <path
+      d="M12 3.5v1.75M12 18.75v1.75M3.5 12h1.75M18.75 12h1.75M6 6l1.24 1.24M16.76 16.76 18 18M6 18l1.24-1.24M16.76 7.24 18 6"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+    />
+  </Icon>
+);
+
+export const PartlyCloudyIcon = () => (
+  <Icon>
+    <path
+      d="M12.6 8.1A3.25 3.25 0 1 0 6.9 11.5M9 3.25v1.25M3.25 9H4.5M4.9 4.9l.9.9M13.1 4.9l-.9.9"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+    />
+    <path
+      d="M9.5 19.5h7.25a3 3 0 0 0 .45-5.97 4.25 4.25 0 0 0-8.06-1.23A3.6 3.6 0 0 0 9.5 19.5Z"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinejoin="round"
+    />
+  </Icon>
+);
+
+export const FogIcon = () => (
+  <Icon>
+    <path d="M4 8h16M6 12h14M4 16h12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+  </Icon>
+);
+
+export const RainIcon = () => (
+  <Icon>
+    <path d={raisedCloud} stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
+    <path d="M9 17.5 8 20M12.5 17.5l-1 2.5M16 17.5l-1 2.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+  </Icon>
+);
+
+export const StormIcon = () => (
+  <Icon>
+    <path d={raisedCloud} stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
+    <path
+      d="M12.5 15.5 10.75 18.5h2.75L11.75 21.5"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Icon>
+);
+
+export const SnowIcon = () => (
+  <Icon>
+    <path d={raisedCloud} stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
+    <path d="M8.5 18h.01M12 19.5h.01M15.5 18h.01M10.25 21.5h.01M13.75 21.5h.01" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" />
   </Icon>
 );
 
@@ -130,23 +188,6 @@ export const LinkedInIcon = ({ size = 16 }: { size?: number }) => (
     <rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke="currentColor" strokeWidth="1.6" />
     <circle cx="8" cy="8.2" r="1.2" fill="currentColor" />
     <path d="M8 11v6M12 11v6M12 13.5c0-1.4 1-2.5 2.3-2.5S16.5 12.1 16.5 13.5V17" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-  </Icon>
-);
-
-export const SpotifyIcon = () => (
-  <Icon size={16}>
-    <circle cx="12" cy="12" r="9" fill="#1DB954" />
-    <path d="M7 10.2c3-.8 6.6-.5 9 1" stroke="#0a0a0a" strokeWidth="1.3" strokeLinecap="round" />
-    <path d="M7.3 13c2.5-.65 5.5-.4 7.5.85" stroke="#0a0a0a" strokeWidth="1.2" strokeLinecap="round" />
-    <path d="M7.6 15.7c2-.5 4.4-.3 6 .7" stroke="#0a0a0a" strokeWidth="1.1" strokeLinecap="round" />
-  </Icon>
-);
-
-export const InstagramIcon = () => (
-  <Icon>
-    <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.6" />
-    <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" />
-    <circle cx="16.7" cy="7.3" r="1" fill="currentColor" />
   </Icon>
 );
 
@@ -175,28 +216,16 @@ export const PlusIcon = () => (
   </Icon>
 );
 
+export const CloseIcon = () => (
+  <Icon>
+    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+  </Icon>
+);
+
 export const ChevronIcon = () => (
   <Icon>
     <path d="M6 15l6-6 6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
   </Icon>
-);
-
-export const LeicaWordmark = () => (
-  <span
-    style={{
-      display: "inline-flex",
-      alignItems: "center",
-      width: 32,
-      height: 14,
-      fontFamily: "cursive",
-      fontStyle: "italic",
-      fontSize: 12,
-      lineHeight: "14px",
-      opacity: 0.5,
-    }}
-  >
-    Leica
-  </span>
 );
 
 export const ArrowUpRight = ({ size = 14, strokeWidth = 1.8 }: { size?: number; strokeWidth?: number }) => (

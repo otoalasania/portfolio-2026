@@ -1,0 +1,51 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: var(--black-70);
+  backdrop-filter: blur(8px);
+}
+
+.sheet {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 640px;
+  height: calc(100dvh - 24px);
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  background: var(--background);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 6px 12px rgba(0, 0, 0, 0.04);
+}
+
+.sheet:focus {
+  outline: none;
+}
+
+.scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: clip;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 16px env(safe-area-inset-bottom);
+}
+
+@media (min-width: 640px) {
+  .sheet {
+    height: auto;
+    max-height: calc(100dvh - 48px);
+  }
+
+  .scroll {
+    padding: 0 24px;
+  }
+}

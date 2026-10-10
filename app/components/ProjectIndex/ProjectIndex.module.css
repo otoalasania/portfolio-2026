@@ -1,0 +1,266 @@
+.list {
+  position: relative;
+  margin-top: 16px;
+  list-style: none;
+}
+
+.item {
+  border-top: 1px solid var(--divider);
+}
+
+.year,
+.stackName,
+.stackLine,
+.toggle {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--foreground-subdued);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground);
+}
+
+.polaroid {
+  width: 176px;
+  padding: 4px;
+  border-radius: 8px;
+  background: var(--color-white);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 6px 12px rgba(0, 0, 0, 0.04);
+}
+
+.polaroidImage {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.polaroidImageEl {
+  object-fit: cover;
+}
+
+.row,
+.previewAnchor {
+  display: none;
+}
+
+.trigger {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 16px;
+  width: 100%;
+  padding: 16px 0;
+  text-align: left;
+  cursor: pointer;
+  scroll-margin-bottom: 96px;
+}
+
+.trigger:focus-visible,
+.viewLink:focus-visible,
+.toggle:focus-visible {
+  outline: 2px solid var(--foreground-subdued);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.triggerTop {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.touchSummary {
+  grid-column: 1;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
+}
+
+.chevron {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  display: flex;
+  color: var(--foreground-subdued);
+  transform: rotate(180deg);
+}
+
+.chevron[data-open="true"] {
+  transform: rotate(0deg);
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+
+.panel[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.panelInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.panelContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 8px 8px 24px;
+  scroll-margin-bottom: 96px;
+}
+
+.panelPolaroid {
+  width: 200px;
+  transform: rotate(-4deg);
+}
+
+.stackLine {
+  text-transform: none;
+}
+
+.viewLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .chevron {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .panel {
+    transition:
+      grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.3s ease;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .touch {
+    display: none;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) auto 16px;
+    align-items: baseline;
+    gap: 16px;
+    padding: 12px 0;
+  }
+
+  .row:focus-visible {
+    outline: 2px solid var(--foreground-subdued);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .list:has(.row:hover) .row:not(:hover),
+  .list:has(.row:focus-visible) .row:not(:focus-visible) {
+    opacity: 0.35;
+  }
+
+  .text {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .title {
+    flex: none;
+  }
+
+  .summary {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    color: var(--foreground-subdued);
+  }
+
+  .arrow {
+    display: flex;
+    align-self: center;
+    color: var(--foreground-subdued);
+  }
+
+  .row:hover .arrow,
+  .row:focus-visible .arrow {
+    color: var(--foreground);
+  }
+
+  .previewAnchor {
+    position: absolute;
+    top: calc(var(--row-y) - 160px);
+    right: 32px;
+    z-index: 5;
+    display: block;
+    pointer-events: none;
+  }
+
+  .polaroidImageEl {
+    opacity: 0;
+  }
+
+  .polaroidImageEl[data-active="true"] {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .row {
+      transition: opacity 0.3s ease;
+    }
+
+    .previewAnchor[data-jump="false"] {
+      transition: top 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .polaroidImageEl {
+      transition: opacity 0.2s ease;
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .previewAnchor {
+    top: calc(var(--row-y) - 60px);
+    right: auto;
+    left: calc(100% + 16px);
+  }
+}
+
+.toggle {
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  color: var(--foreground);
+}

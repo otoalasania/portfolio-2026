@@ -1,15 +1,11 @@
 "use client";
 
-import { Section, MockCard } from "../ui";
+import Image from "next/image";
+import Link from "next/link";
+import { Section } from "../ui";
+import { featuredProjects } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import styles from "./Work.module.css";
-
-const cards = [
-  { dark: true },
-  { dark: false },
-  { dark: true },
-  { dark: false },
-];
 
 export function Work() {
   const { t } = useLocale();
@@ -25,9 +21,25 @@ export function Work() {
         }}
       >
         <div className={styles.canvas}>
-          {cards.map((c, i) => (
-            <div key={i} className={styles.cardSlot}>
-              <MockCard rotate={0} dark={c.dark} />
+          {featuredProjects.map((project) => (
+            <div key={project.slug} className={styles.cardSlot}>
+              <Link
+                href={`/work/${project.slug}`}
+                scroll={false}
+                className={styles.card}
+                aria-label={t.work.items[project.slug].title}
+                data-project-card={project.slug}
+              >
+                <span className={styles.cardImage}>
+                  <Image
+                    src={project.images[0]!}
+                    alt=""
+                    fill
+                    sizes="(min-width: 640px) 340px, 340px"
+                    className={styles.cardImageEl}
+                  />
+                </span>
+              </Link>
             </div>
           ))}
         </div>
