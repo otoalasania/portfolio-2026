@@ -174,12 +174,6 @@ export const SnowIcon = () => (
   </Icon>
 );
 
-export const XIcon = ({ size = 16 }: { size?: number }) => (
-  <Icon size={size}>
-    <path d="M5 4.5h3.6l4 5.4 4.6-5.4H19l-6.3 7.3L19.4 19.5H15.8l-4.3-5.8-5 5.8H4.4l6.7-7.8L5 4.5Z" fill="currentColor" />
-  </Icon>
-);
-
 export const GitHubIcon = ({ size = 16 }: { size?: number }) => (
   <Icon size={size}>
     <path

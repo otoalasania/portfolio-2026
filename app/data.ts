@@ -8,7 +8,6 @@ import {
   PencilIcon,
   BoltIcon,
   MailIcon,
-  XIcon,
   GitHubIcon,
   LinkedInIcon,
   CommandIcon,
@@ -25,7 +24,7 @@ import FigmaLogo from "@assets/svgs/logos/figma.svg";
 import GitHubLogo from "@assets/svgs/logos/github.svg";
 import BitbucketLogo from "@assets/svgs/logos/bitbucket.svg";
 
-export const EMAIL = "otoalasania@gmail.com";
+export const EMAIL = "otar.alasania@gmail.com";
 
 export const profile = {
   name: "Otar Alasania",
@@ -189,9 +188,13 @@ export const personal = {
 
 export const socials = [
   { label: "Email", value: EMAIL, href: `mailto:${EMAIL}`, icon: MailIcon },
-  { label: "X.com", value: "@jacob", href: "#", icon: XIcon },
-  { label: "GitHub", value: "@jv", href: "#", icon: GitHubIcon },
-  { label: "LinkedIn", value: "/in/jacobvos", href: "#", icon: LinkedInIcon },
+  { label: "GitHub", value: "@otoalasania", href: "https://github.com/otoalasania", icon: GitHubIcon },
+  {
+    label: "LinkedIn",
+    value: "/in/oto-alasania",
+    href: "https://www.linkedin.com/in/oto-alasania-437551217",
+    icon: LinkedInIcon,
+  },
 ];
 
 export const HIDDEN_SECTIONS: ReadonlySet<string> = new Set(["skills", "ventures", "writing"]);

@@ -234,23 +234,33 @@ export const translations = {
     },
     contact: {
       title: "Contact",
-      subtitle: "You can contact me using the form or via the links below.",
+      subtitle: "Got a role or a project in mind? Write me.",
+      nameLabel: "Name",
+      emailLabel: "Email",
+      messageLabel: "Message",
       namePlaceholder: "Name",
       emailPlaceholder: "Email",
       messagePlaceholder: "Message",
       send: "Send message",
+      sending: "Sending…",
       orPrefix: "or",
       orEnterToSend: "to send",
-      socialLabels: { Email: "Email", "X.com": "X.com", GitHub: "GitHub", LinkedIn: "LinkedIn" } as Record<
-        string,
-        string
-      >,
-      mailto: {
-        subjectPrefix: "Portfolio contact from",
-        someone: "someone",
-        unknown: "unknown",
-        noEmailGiven: "no email given",
+      success: "Thanks, I'll get back to you soon.",
+      error: "Something went wrong. You can email me directly at otar.alasania@gmail.com.",
+      errors: {
+        name: { required: "Please enter your name.", tooLong: "Keep your name under 100 characters." },
+        email: {
+          required: "Please enter your email.",
+          invalid: "That email doesn't look right.",
+          tooLong: "Keep your email under 200 characters.",
+        },
+        message: {
+          required: "Please write a message.",
+          tooShort: "Please write at least 10 characters.",
+          tooLong: "Keep your message under 5000 characters.",
+        },
       },
+      socialLabels: { Email: "Email", GitHub: "GitHub", LinkedIn: "LinkedIn" } as Record<string, string>,
     },
   },
   es: {
@@ -484,23 +494,33 @@ export const translations = {
     },
     contact: {
       title: "Contacto",
-      subtitle: "Puedes contactarme usando el formulario o a través de los enlaces de abajo.",
+      subtitle: "¿Tienes un puesto o un proyecto en mente? Escríbeme.",
+      nameLabel: "Nombre",
+      emailLabel: "Correo electrónico",
+      messageLabel: "Mensaje",
       namePlaceholder: "Nombre",
       emailPlaceholder: "Correo electrónico",
       messagePlaceholder: "Mensaje",
       send: "Enviar mensaje",
+      sending: "Enviando…",
       orPrefix: "o",
       orEnterToSend: "para enviar",
-      socialLabels: { Email: "Correo", "X.com": "X.com", GitHub: "GitHub", LinkedIn: "LinkedIn" } as Record<
-        string,
-        string
-      >,
-      mailto: {
-        subjectPrefix: "Contacto desde el portafolio de",
-        someone: "alguien",
-        unknown: "desconocido",
-        noEmailGiven: "sin correo",
+      success: "Gracias, te responderé pronto.",
+      error: "Algo salió mal. Puedes escribirme directamente a otar.alasania@gmail.com.",
+      errors: {
+        name: { required: "Escribe tu nombre.", tooLong: "El nombre debe tener menos de 100 caracteres." },
+        email: {
+          required: "Escribe tu correo electrónico.",
+          invalid: "Ese correo no parece válido.",
+          tooLong: "El correo debe tener menos de 200 caracteres.",
+        },
+        message: {
+          required: "Escribe un mensaje.",
+          tooShort: "Escribe al menos 10 caracteres.",
+          tooLong: "El mensaje debe tener menos de 5000 caracteres.",
+        },
       },
+      socialLabels: { Email: "Correo", GitHub: "GitHub", LinkedIn: "LinkedIn" } as Record<string, string>,
     },
   },
 };
