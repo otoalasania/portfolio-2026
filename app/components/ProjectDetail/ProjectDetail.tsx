@@ -15,10 +15,6 @@ import styles from "./ProjectDetail.module.css";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/**
- * Project detail (hero deck or ProjectIndex). Rendered inside ProjectSheet for the intercepted
- * route, or on its own as the full /work/[slug] page — useSheet() tells which.
- */
 export function ProjectDetail({ slug }: { slug: string }) {
   const { t } = useLocale();
   const router = useRouter();
@@ -28,7 +24,6 @@ export function ProjectDetail({ slug }: { slug: string }) {
   const found = findProject(slug);
   const title = found ? t.work.items[found.project.slug].title : null;
 
-  // Same "%s — Otar Alasania" shape as the root layout's title template
   useEffect(() => {
     if (sheet && title) document.title = `${title} — Otar Alasania`;
   }, [sheet, title]);
@@ -48,9 +43,6 @@ export function ProjectDetail({ slug }: { slug: string }) {
     </>
   );
 
-  // In the sheet, replace (not push) so closing returns to / in one step. On the
-  // full page, use plain <a>: a client navigation to /work/* would get intercepted
-  // into the modal on top of this page.
   function navLink(target: typeof prev, label: React.ReactNode, aria: string) {
     const href = `/work/${target.slug}`;
     return sheet ? (

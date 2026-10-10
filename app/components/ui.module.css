@@ -138,10 +138,6 @@
   color: var(--color-black);
 }
 
-/*
- * Floating name label above a trigger (Dock items, Stack logos). The parent needs
- * position: relative; reveal it with `opacity: 1; transform: translateX(-50%) translateY(0)`.
- */
 .tooltip {
   position: absolute;
   bottom: calc(100% + 8px);

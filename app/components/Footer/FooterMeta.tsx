@@ -15,7 +15,6 @@ const weatherIcons: Record<WeatherKind, () => React.JSX.Element> = {
   snow: SnowIcon,
 };
 
-// Client only for the translated location; the weather arrives from the server
 export function FooterMeta({ weather }: { weather: Weather | null }) {
   const { t } = useLocale();
   const WeatherIcon = weather ? weatherIcons[weather.kind] : null;

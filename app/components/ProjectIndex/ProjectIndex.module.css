@@ -1,10 +1,3 @@
-/*
- * Two layouts live in the DOM per project and are switched purely with CSS
- * (no JS media checks → no hydration flash):
- *   - default / touch: .touch accordion row
- *   - (hover: hover) and (pointer: fine): .row single-line link + .previewAnchor
- */
-
 .list {
   position: relative;
   margin-top: 16px;
@@ -14,8 +7,6 @@
 .item {
   border-top: 1px solid var(--divider);
 }
-
-/* ---------- shared text ---------- */
 
 .year,
 .stackName,
@@ -37,8 +28,6 @@
   letter-spacing: 0.01em;
   color: var(--foreground);
 }
-
-/* ---------- polaroid (shared by floating preview + accordion panel) ---------- */
 
 .polaroid {
   width: 176px;
@@ -62,8 +51,6 @@
   object-fit: cover;
 }
 
-/* ---------- touch: accordion ---------- */
-
 .row,
 .previewAnchor {
   display: none;
@@ -77,7 +64,6 @@
   padding: 16px 0;
   text-align: left;
   cursor: pointer;
-  /* keep a just-tapped row clear of the floating Dock */
   scroll-margin-bottom: 96px;
 }
 
@@ -139,7 +125,6 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  /* room for the tilted polaroid's corners inside the clipped panel */
   padding: 8px 8px 24px;
   scroll-margin-bottom: 96px;
 }
@@ -174,8 +159,6 @@
       opacity 0.3s ease;
   }
 }
-
-/* ---------- hover-capable: single-line rows + floating preview ---------- */
 
 @media (hover: hover) and (pointer: fine) {
   .touch {
@@ -233,7 +216,6 @@
     color: var(--foreground);
   }
 
-  /* Anchored next to the hovered row via --row-y (row's vertical center, set from JS) */
   .previewAnchor {
     position: absolute;
     top: calc(var(--row-y) - 160px);
@@ -266,7 +248,6 @@
   }
 }
 
-/* Enough side room on desktop: sit beside the row, outside the content column */
 @media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
   .previewAnchor {
     top: calc(var(--row-y) - 60px);
@@ -274,8 +255,6 @@
     left: calc(100% + 16px);
   }
 }
-
-/* ---------- show all / less ---------- */
 
 .toggle {
   margin-top: 16px;

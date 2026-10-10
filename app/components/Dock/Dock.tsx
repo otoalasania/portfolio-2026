@@ -8,7 +8,6 @@ import styles from "./Dock.module.css";
 
 type DockItem = (typeof dock)[number];
 
-// Hidden sections aren't rendered, so their items would scroll nowhere
 const items = dock.filter((item) => !HIDDEN_SECTIONS.has(item.id));
 
 export function Dock() {

@@ -2,14 +2,13 @@
   margin-top: 80px;
 }
 
-/* Reserves the line before the lazy-loaded ink arrives, so nothing below shifts */
 .signature {
   display: flex;
   justify-content: center;
   height: 70px;
   font-size: 56px;
-  line-height: 70px; /* Italianno's ascender + descender = 1.25em */
-  color: var(--foreground); /* tegaki reads the ink color from computed `color` */
+  line-height: 70px;
+  color: var(--foreground);
 }
 
 .signatureInk {

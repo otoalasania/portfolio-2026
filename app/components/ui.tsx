@@ -18,7 +18,7 @@ export function Section({
   id: string;
   title: string;
   subtitle?: React.ReactNode;
-  meta?: React.ReactNode; // right-aligned mono text on the label row (e.g. a count)
+  meta?: React.ReactNode;
   style?: React.CSSProperties;
   children?: React.ReactNode;
 }) {

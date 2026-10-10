@@ -21,7 +21,6 @@ export function Stack() {
       >
         {stack.map(({ Icon, name }) => (
           <motion.li key={name} className={styles.item} variants={fadeItem}>
-            {/* Focusable so keyboard users get the same name tooltip as mouse users */}
             <motion.span
               className={styles.logo}
               tabIndex={0}

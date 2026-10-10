@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   description: "Mid frontend developer specializing in fast, accessible interfaces.",
 };
 
-// cover → env(safe-area-inset-*) is non-zero on notched phones (used by the project sheet)
 export const viewport: Viewport = {
   viewportFit: "cover",
 };

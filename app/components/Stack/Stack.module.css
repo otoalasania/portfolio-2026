@@ -29,13 +29,11 @@
   flex: none;
 }
 
-/* Same recipe as the Dock's tooltip (shared in ui.module.css) */
 .tooltip {
   composes: tooltip from "../ui.module.css";
   z-index: 1;
 }
 
-/* Hover only where hover is real — touch never gets a stuck tooltip; keyboard focus works everywhere */
 @media (hover: hover) and (pointer: fine) {
   .item:hover .tooltip {
     opacity: 1;

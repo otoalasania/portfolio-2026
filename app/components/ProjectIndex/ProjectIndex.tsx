@@ -39,7 +39,6 @@ export function ProjectIndex() {
 
   function showPreview(project: Project, row: HTMLElement) {
     const rowY = row.offsetTop + row.offsetHeight / 2;
-    // jump straight to the row when appearing, glide between rows once already visible
     setPreview((prev) => ({ slug: project.slug, rowY, visible: true, jump: !prev?.visible }));
   }
 
@@ -102,11 +101,8 @@ export function ProjectIndex() {
               key={project.slug}
               className={styles.item}
               variants={staggerItem}
-              // Rows mounted by "Show all" arrive after the list's once-only whileInView
-              // has fired, so they never inherit "visible" — animate them in themselves.
               {...(index >= INITIAL_COUNT && { initial: "hidden", animate: "visible" })}
             >
-              {/* Hover-capable devices: single-line row + shared floating preview; opens the detail sheet */}
               <MotionLink
                 {...rowProps}
                 href={`/work/${project.slug}`}
@@ -116,7 +112,6 @@ export function ProjectIndex() {
                 {rowContent}
               </MotionLink>
 
-              {/* Touch devices: accordion row */}
               <div className={styles.touch}>
                 <button
                   type="button"
@@ -170,7 +165,6 @@ export function ProjectIndex() {
           );
         })}
 
-        {/* One shared preview for all rows; only displayed on hover-capable devices (see CSS) */}
         <li
           className={styles.previewAnchor}
           aria-hidden="true"
@@ -210,7 +204,6 @@ export function ProjectIndex() {
           aria-expanded={showAll}
           aria-controls={listId}
           onClick={() => {
-            // rows shift under a still pointer without firing pointerenter — drop the stale preview
             hidePreview();
             setShowAll((v) => !v);
           }}

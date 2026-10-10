@@ -1,4 +1,3 @@
-/* Overlay: same translucent black + 8px blur recipe as the Dock */
 .overlay {
   position: fixed;
   inset: 0;
@@ -7,10 +6,6 @@
   backdrop-filter: blur(8px);
 }
 
-/*
- * Centered with margin auto, not translateX(-50%) — Motion drives `transform`
- * for the slide-up and would clobber a CSS translate.
- */
 .sheet {
   position: fixed;
   right: 0;

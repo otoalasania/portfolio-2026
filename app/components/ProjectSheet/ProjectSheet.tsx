@@ -9,18 +9,12 @@ export const PROJECT_TITLE_ID = "project-detail-title";
 
 const SheetContext = createContext<{ close: () => void } | null>(null);
 
-// null when ProjectDetail renders as the full /work/[slug] page instead of inside the sheet
 export function useSheet() {
   return useContext(SheetContext);
 }
 
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-/**
- * Bottom-sheet shell for the intercepted /work/[slug] route. Lives in the
- * @modal/(.)work layout, so Prev/Next (which swap the [slug] page beneath it)
- * only re-render the content — the overlay and slide-up don't replay.
- */
 export function ProjectSheet({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { slug } = useParams<{ slug: string }>();
@@ -28,22 +22,18 @@ export function ProjectSheet({ children }: { children: React.ReactNode }) {
   const panelRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const openedSlug = useRef(slug);
-  // Read during render: ProjectDetail's effect (a child, so it runs first) overwrites document.title
   const [titleBeforeOpen] = useState(() => (typeof document === "undefined" ? "" : document.title));
 
   function close() {
     setOpen(false);
   }
 
-  // Mount: remember the hero card that opened us, lock scroll, trap focus, ESC to close.
   useEffect(() => {
-    // Safari doesn't focus links on click, so fall back to the hero card for the opening slug
     const active = document.activeElement;
     const opener =
       active instanceof HTMLElement && active !== document.body
         ? active
-        : // ProjectIndex renders a mouse row and a touch link per project — take the one that's displayed
-          [...document.querySelectorAll<HTMLElement>(`[data-project-card="${openedSlug.current}"]`)].find(
+        : [...document.querySelectorAll<HTMLElement>(`[data-project-card="${openedSlug.current}"]`)].find(
             (el) => el.offsetParent !== null
           );
     panelRef.current?.focus();
@@ -75,14 +65,11 @@ export function ProjectSheet({ children }: { children: React.ReactNode }) {
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = previousOverflow;
-      // generateMetadata doesn't apply on intercepted soft navigations — ProjectDetail sets the title
       if (titleBeforeOpen) document.title = titleBeforeOpen;
-      // runs for both our close button and the browser Back button
       opener?.focus({ preventScroll: true });
     };
-  }, [titleBeforeOpen]); // stable (useState initializer) — effect still runs once
+  }, [titleBeforeOpen]);
 
-  // Prev/Next: the content remounts, so start at the top and keep focus inside the dialog
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0 });
     if (!panelRef.current?.contains(document.activeElement)) panelRef.current?.focus();

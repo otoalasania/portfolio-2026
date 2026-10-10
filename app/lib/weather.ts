@@ -1,6 +1,5 @@
 import "server-only";
 
-// Alicante, Spain — Open-Meteo is free and keyless
 const WEATHER_URL =
   "https://api.open-meteo.com/v1/forecast?latitude=38.3452&longitude=-0.4810&current=temperature_2m,weather_code";
 
@@ -8,7 +7,6 @@ export type WeatherKind = "sun" | "partly-cloudy" | "cloud" | "fog" | "rain" | "
 
 export type Weather = { temperatureC: number; kind: WeatherKind };
 
-// WMO weather interpretation codes, as documented by Open-Meteo
 function kindFromCode(code: number): WeatherKind {
   if (code === 0) return "sun";
   if (code === 1 || code === 2) return "partly-cloudy";
@@ -16,14 +14,9 @@ function kindFromCode(code: number): WeatherKind {
   if (code === 45 || code === 48) return "fog";
   if ((code >= 71 && code <= 77) || code === 85 || code === 86) return "snow";
   if (code >= 95) return "storm";
-  return "rain"; // 51–67 drizzle/rain, 80–82 showers
+  return "rain";
 }
 
-/**
- * Current Alicante weather, cached for 30 minutes (this also makes the page that
- * renders it revalidate every 30 minutes). Returns null on any failure or timeout —
- * the footer then simply leaves the temperature out.
- */
 export async function getWeather(): Promise<Weather | null> {
   try {
     const res = await fetch(WEATHER_URL, {
