@@ -63,7 +63,7 @@ export function ProjectIndex() {
         variants={staggerContainer}
         onPointerLeave={hidePreview}
       >
-        {visibleProjects.map((project) => {
+        {visibleProjects.map((project, index) => {
           const text = t.work.items[project.slug];
           const open = openSlug === project.slug;
           const triggerId = `${id}-${project.slug}-trigger`;
@@ -95,7 +95,14 @@ export function ProjectIndex() {
           } as const;
 
           return (
-            <motion.li key={project.slug} className={styles.item} variants={staggerItem}>
+            <motion.li
+              key={project.slug}
+              className={styles.item}
+              variants={staggerItem}
+              // Rows mounted by "Show all" arrive after the list's once-only whileInView
+              // has fired, so they never inherit "visible" — animate them in themselves.
+              {...(index >= INITIAL_COUNT && { initial: "hidden", animate: "visible" })}
+            >
               {/* Hover-capable devices: single-line row + shared floating preview */}
               {project.href ? (
                 <motion.a {...rowProps} href={project.href} target="_blank" rel="noopener noreferrer">
@@ -203,7 +210,11 @@ export function ProjectIndex() {
           className={styles.toggle}
           aria-expanded={showAll}
           aria-controls={listId}
-          onClick={() => setShowAll((v) => !v)}
+          onClick={() => {
+            // rows shift under a still pointer without firing pointerenter — drop the stale preview
+            hidePreview();
+            setShowAll((v) => !v);
+          }}
         >
           {showAll ? `− ${t.work.showLess}` : `+ ${t.work.showAll} ${moreProjects.length}`}
         </button>

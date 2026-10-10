@@ -141,6 +141,14 @@ const projects: Project[] = [
     href: "#",
     images: projectImages("tidal-booking", 1),
   },
+  {
+    slug: "orbit-notes",
+    year: 2022,
+    stack: ["TypeScript", "Figma"],
+    featured: false,
+    href: "#",
+    images: projectImages("orbit-notes", 2),
+  },
 ];
 
 const newestFirst = (a: Project, b: Project) => b.year - a.year;

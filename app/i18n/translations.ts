@@ -137,6 +137,16 @@ export const translations = {
             "Kept the embeddable widget lightweight enough for existing marketing sites",
           ],
         },
+        "orbit-notes": {
+          title: "Orbit Notes",
+          summary: "Offline-first note-taking app with quick capture",
+          description:
+            "A note-taking app built around fast capture and offline-first sync, so ideas can be jotted down instantly and organized later. Focused on keyboard shortcuts and a minimal, distraction-free editor.",
+          highlights: [
+            "Built offline-first sync so notes work without a connection",
+            "Designed a keyboard-driven quick capture flow",
+          ],
+        },
       },
     },
     experience: {
@@ -366,6 +376,16 @@ export const translations = {
           highlights: [
             "Construí un widget de reservas consciente del aforo para sustituir las reservas manuales por teléfono",
             "Mantuve el widget lo bastante ligero para sitios de marketing existentes",
+          ],
+        },
+        "orbit-notes": {
+          title: "Orbit Notes",
+          summary: "App de notas offline-first con captura rápida",
+          description:
+            "Una app de notas construida en torno a la captura rápida y la sincronización offline-first, para apuntar ideas al instante y organizarlas después. Centrada en atajos de teclado y un editor minimalista sin distracciones.",
+          highlights: [
+            "Implementé sincronización offline-first para que las notas funcionen sin conexión",
+            "Diseñé un flujo de captura rápida guiado por teclado",
           ],
         },
       },
