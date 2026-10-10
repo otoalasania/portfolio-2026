@@ -153,10 +153,16 @@ const newestFirst = (a: Project, b: Project) => b.year - a.year;
 export const featuredProjects = projects.filter((p) => p.featured).sort(newestFirst);
 export const moreProjects = projects.filter((p) => !p.featured).sort(newestFirst);
 
-// Only featured projects get a /work/[slug] page — anything else 404s
-export function findFeaturedProject(slug: string) {
-  const index = featuredProjects.findIndex((p) => p.slug === slug);
-  return index === -1 ? null : { project: featuredProjects[index]!, index };
+export const allProjects = [...featuredProjects, ...moreProjects];
+
+// Every project has a /work/[slug] page. `group` is the list it belongs to (hero deck or
+// index), which is what the detail sheet's counter and Prev/Next cycle through.
+export function findProject(slug: string) {
+  for (const group of [featuredProjects, moreProjects]) {
+    const index = group.findIndex((p) => p.slug === slug);
+    if (index !== -1) return { project: group[index]!, index, group };
+  }
+  return null;
 }
 
 // desc/title text lives in i18n/translations.ts, matched by index

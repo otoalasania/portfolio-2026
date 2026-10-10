@@ -2,6 +2,7 @@
 
 import { useId, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, type Variants } from "motion/react";
 import { Section } from "../ui";
 import { ArrowUpRight, ChevronIcon } from "../icons";
@@ -11,6 +12,8 @@ import { staggerContainer, staggerItem } from "../../lib/motion";
 import styles from "./ProjectIndex.module.css";
 
 const INITIAL_COUNT = 5;
+
+const MotionLink = motion.create(Link);
 
 const spring = { type: "spring", stiffness: 300, damping: 20 } as const;
 
@@ -78,7 +81,7 @@ export function ProjectIndex() {
               </span>
               <span className={styles.stackName}>{project.stack[0]}</span>
               <motion.span className={styles.arrow} variants={arrowVariants}>
-                {project.href && <ArrowUpRight size={16} strokeWidth={1.75} />}
+                <ArrowUpRight size={16} strokeWidth={1.75} />
               </motion.span>
             </>
           );
@@ -103,17 +106,15 @@ export function ProjectIndex() {
               // has fired, so they never inherit "visible" — animate them in themselves.
               {...(index >= INITIAL_COUNT && { initial: "hidden", animate: "visible" })}
             >
-              {/* Hover-capable devices: single-line row + shared floating preview */}
-              {project.href ? (
-                <motion.a {...rowProps} href={project.href} target="_blank" rel="noopener noreferrer">
-                  {rowContent}
-                </motion.a>
-              ) : (
-                // NDA/client work: not a link, but still focusable so keyboard users get the preview
-                <motion.div {...rowProps} tabIndex={0}>
-                  {rowContent}
-                </motion.div>
-              )}
+              {/* Hover-capable devices: single-line row + shared floating preview; opens the detail sheet */}
+              <MotionLink
+                {...rowProps}
+                href={`/work/${project.slug}`}
+                scroll={false}
+                data-project-card={project.slug}
+              >
+                {rowContent}
+              </MotionLink>
 
               {/* Touch devices: accordion row */}
               <div className={styles.touch}>
@@ -152,17 +153,15 @@ export function ProjectIndex() {
                         </div>
                       )}
                       <p className={styles.stackLine}>{project.stack.join(" · ")}</p>
-                      {project.href && (
-                        <a
-                          href={project.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.viewLink}
-                        >
-                          {t.work.viewProject}
-                          <ArrowUpRight size={16} strokeWidth={1.75} />
-                        </a>
-                      )}
+                      <Link
+                        href={`/work/${project.slug}`}
+                        scroll={false}
+                        className={styles.viewLink}
+                        data-project-card={project.slug}
+                      >
+                        {t.work.viewProject}
+                        <ArrowUpRight size={16} strokeWidth={1.75} />
+                      </Link>
                     </div>
                   </div>
                 </div>

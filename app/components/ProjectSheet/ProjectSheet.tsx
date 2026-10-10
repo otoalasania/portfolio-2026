@@ -42,7 +42,10 @@ export function ProjectSheet({ children }: { children: React.ReactNode }) {
     const opener =
       active instanceof HTMLElement && active !== document.body
         ? active
-        : document.querySelector<HTMLElement>(`[data-project-card="${openedSlug.current}"]`);
+        : // ProjectIndex renders a mouse row and a touch link per project — take the one that's displayed
+          [...document.querySelectorAll<HTMLElement>(`[data-project-card="${openedSlug.current}"]`)].find(
+            (el) => el.offsetParent !== null
+          );
     panelRef.current?.focus();
 
     function onKeyDown(e: KeyboardEvent) {

@@ -188,11 +188,6 @@
     align-items: baseline;
     gap: 16px;
     padding: 12px 0;
-    cursor: default;
-  }
-
-  a.row {
-    cursor: pointer;
   }
 
   .row:focus-visible {

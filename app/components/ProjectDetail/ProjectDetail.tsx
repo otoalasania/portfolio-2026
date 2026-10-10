@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { SectionLabel } from "../ui";
 import { ArrowUpRight, CloseIcon } from "../icons";
 import { PROJECT_TITLE_ID, useSheet } from "../ProjectSheet/ProjectSheet";
-import { featuredProjects, findFeaturedProject } from "../../data";
+import { findProject } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import { fadeItem } from "../../lib/motion";
 import styles from "./ProjectDetail.module.css";
@@ -16,7 +16,7 @@ import styles from "./ProjectDetail.module.css";
 const pad = (n: number) => String(n).padStart(2, "0");
 
 /**
- * Featured project detail. Rendered inside ProjectSheet for the intercepted
+ * Project detail (hero deck or ProjectIndex). Rendered inside ProjectSheet for the intercepted
  * route, or on its own as the full /work/[slug] page — useSheet() tells which.
  */
 export function ProjectDetail({ slug }: { slug: string }) {
@@ -25,7 +25,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
   const sheet = useSheet();
   const [activeScreen, setActiveScreen] = useState(0);
 
-  const found = findFeaturedProject(slug);
+  const found = findProject(slug);
   const title = found ? t.work.items[found.project.slug].title : null;
 
   // Same "%s — Otar Alasania" shape as the root layout's title template
@@ -34,11 +34,11 @@ export function ProjectDetail({ slug }: { slug: string }) {
   }, [sheet, title]);
 
   if (!found) return null;
-  const { project, index } = found;
+  const { project, index, group } = found;
   const text = t.work.items[project.slug];
-  const total = featuredProjects.length;
-  const prev = featuredProjects[(index - 1 + total) % total]!;
-  const next = featuredProjects[(index + 1) % total]!;
+  const total = group.length;
+  const prev = group[(index - 1 + total) % total]!;
+  const next = group[(index + 1) % total]!;
   const mainImage = project.images[activeScreen];
 
   const closeContent = (
