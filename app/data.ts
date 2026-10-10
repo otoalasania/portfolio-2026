@@ -47,22 +47,18 @@ export const stack = [
   { Icon: SpotifyLogo, alt: "Spotify" },
 ];
 
-// title/summary/description/highlights text lives in i18n/translations.ts under
+// title/summary/about/built text lives in i18n/translations.ts under
 // work.items, keyed by slug — the slug type below makes a missing entry a type error
 export type ProjectSlug = keyof (typeof translations)["en"]["work"]["items"];
 
 export type Project = {
   slug: ProjectSlug;
   year: number;
-  stack: string[]; // names matching `stack[].alt` above, so the modal can resolve logos
+  stack: string[]; // display names, rendered as mono pills
   featured: boolean; // true → Work's hero deck, false → ProjectIndex
   href?: string; // omit for NDA/client work — rendered as a plain row, not a link
-  images: string[]; // first is the cover/preview, the rest feed WorkModal's slider
+  images: string[]; // screenshots — first is the cover/main image, all show as thumbnails in the detail sheet
 };
-
-export function stackLogo(name: string) {
-  return stack.find((s) => s.alt === name);
-}
 
 // TODO: swap for real screenshots — picsum.photos placeholders, stable per project via seed
 function projectImages(seed: string, count: number): string[] {
@@ -156,6 +152,12 @@ const newestFirst = (a: Project, b: Project) => b.year - a.year;
 // Work's fan is hand-tuned for exactly 4 cards — see DESIGN_SYSTEM.md before changing how many are featured
 export const featuredProjects = projects.filter((p) => p.featured).sort(newestFirst);
 export const moreProjects = projects.filter((p) => !p.featured).sort(newestFirst);
+
+// Only featured projects get a /work/[slug] page — anything else 404s
+export function findFeaturedProject(slug: string) {
+  const index = featuredProjects.findIndex((p) => p.slug === slug);
+  return index === -1 ? null : { project: featuredProjects[index]!, index };
+}
 
 // desc/title text lives in i18n/translations.ts, matched by index
 export const ventures = [

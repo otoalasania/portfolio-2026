@@ -1,0 +1,302 @@
+/* ---------- top bar ---------- */
+
+.topBar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  background: var(--background);
+}
+
+.close {
+  composes: sectionLabel from "../ui.module.css";
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 24px;
+  cursor: pointer;
+}
+
+/* "ESC" only means something with a keyboard — mouse/trackpad devices only */
+.escHint {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .escHint {
+    display: inline;
+  }
+}
+
+/* ---------- shared text ---------- */
+
+.label {
+  composes: sectionLabel from "../ui.module.css";
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground);
+}
+
+.summary,
+.paragraph,
+.walkthrough {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
+}
+
+.mono {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- heading + meta ---------- */
+
+.body {
+  padding-top: 8px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 40px;
+  margin-top: 24px;
+  padding: 16px 0;
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+}
+
+.metaCell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.metaValue {
+  composes: mono;
+  line-height: 24px;
+  color: var(--foreground);
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Existing pill shape (Contact submit): 80px radius on --button-bg, scaled down for mono chips */
+.pill {
+  composes: mono;
+  padding: 4px 8px;
+  border-radius: 80px;
+  background: var(--button-bg);
+  line-height: 16px;
+  color: var(--foreground);
+}
+
+/* ---------- polaroids (hero card frame: 5px white, 8px/4px radius, card shadow, 4:3) ---------- */
+
+.mainPolaroid,
+.thumb {
+  padding: 5px;
+  border-radius: 8px;
+  background: var(--color-white);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 6px 12px rgba(0, 0, 0, 0.04);
+}
+
+.mainPolaroid {
+  width: 92%;
+  margin: 40px auto 0;
+  transform: rotate(-2deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mainPolaroid:hover {
+    transform: rotate(0deg);
+  }
+}
+
+.polaroidImage {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.polaroidLayer {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.polaroidImageEl {
+  object-fit: cover;
+}
+
+/* ---------- content blocks ---------- */
+
+.block {
+  margin-top: 40px;
+}
+
+.paragraph {
+  margin-top: 16px;
+}
+
+.builtList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  list-style: none;
+}
+
+.builtItem {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground);
+}
+
+.builtNumber {
+  composes: mono;
+  line-height: 24px;
+  color: var(--foreground-subdued);
+}
+
+/* ---------- screens ---------- */
+
+.thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 4px;
+}
+
+/* Same 0.35 dimming as ProjectIndex's non-hovered rows */
+.thumb {
+  width: 96px;
+  opacity: 0.35;
+  transform: rotate(-4deg);
+  cursor: pointer;
+}
+
+.thumb:nth-child(even) {
+  transform: rotate(4deg);
+}
+
+.thumb[aria-pressed="true"] {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .thumb:hover {
+    opacity: 1;
+  }
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 40px;
+  padding: 16px 0;
+  border-top: 1px solid var(--divider);
+}
+
+/* Existing pill link (Contact submit / former WorkModal "View live site") */
+.visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 80px;
+  background: var(--button-bg);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground);
+}
+
+.visit:hover {
+  background: var(--button-bg-hover);
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+.navButton {
+  composes: sectionLabel from "../ui.module.css";
+  cursor: pointer;
+}
+
+/* ---------- interaction ---------- */
+
+.close:hover,
+.navButton:hover {
+  opacity: 1;
+  color: var(--foreground);
+}
+
+.close:focus-visible,
+.navButton:focus-visible,
+.visit:focus-visible,
+.thumb:focus-visible {
+  outline: 2px solid var(--foreground-subdued);
+  outline-offset: 2px;
+}
+
+.close:focus-visible,
+.navButton:focus-visible {
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mainPolaroid,
+  .thumb {
+    transition:
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.3s ease;
+  }
+
+  .close,
+  .navButton {
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .visit {
+    transition: background-color 0.2s ease;
+  }
+}

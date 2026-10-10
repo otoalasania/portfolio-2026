@@ -1,17 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Section } from "../ui";
-import { WorkModal } from "./WorkModal";
-import { featuredProjects, type Project } from "../../data";
+import { featuredProjects } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import styles from "./Work.module.css";
 
 export function Work() {
   const { t } = useLocale();
-  const [selected, setSelected] = useState<Project | null>(null);
-  const selectedText = selected ? t.work.items[selected.slug] : undefined;
 
   return (
     <Section id="work" title={t.work.title} subtitle={t.work.subtitle} style={{ marginTop: 40 }}>
@@ -26,12 +23,12 @@ export function Work() {
         <div className={styles.canvas}>
           {featuredProjects.map((project) => (
             <div key={project.slug} className={styles.cardSlot}>
-              <button
-                type="button"
+              <Link
+                href={`/work/${project.slug}`}
+                scroll={false}
                 className={styles.card}
-                onClick={() => setSelected(project)}
-                aria-haspopup="dialog"
                 aria-label={t.work.items[project.slug].title}
+                data-project-card={project.slug}
               >
                 <span className={styles.cardImage}>
                   <Image
@@ -42,19 +39,11 @@ export function Work() {
                     className={styles.cardImageEl}
                   />
                 </span>
-              </button>
+              </Link>
             </div>
           ))}
         </div>
       </div>
-
-      <WorkModal
-        project={selected}
-        title={selectedText?.title}
-        description={selectedText?.description}
-        highlights={selectedText?.highlights}
-        onClose={() => setSelected(null)}
-      />
     </Section>
   );
 }
