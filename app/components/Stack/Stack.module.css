@@ -4,11 +4,46 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  list-style: none;
   color: var(--foreground);
+}
+
+.item {
+  position: relative;
+  display: flex;
+}
+
+.logo {
+  display: flex;
+  border-radius: 6px;
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--foreground-subdued);
+  outline-offset: 4px;
 }
 
 .icon {
   width: 40px;
   height: 40px;
   flex: none;
+}
+
+/* Same recipe as the Dock's tooltip (shared in ui.module.css) */
+.tooltip {
+  composes: tooltip from "../ui.module.css";
+  z-index: 1;
+}
+
+/* Hover only where hover is real — touch never gets a stuck tooltip; keyboard focus works everywhere */
+@media (hover: hover) and (pointer: fine) {
+  .item:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.logo:focus-visible + .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }

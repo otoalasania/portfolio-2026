@@ -12,25 +12,33 @@ export function Stack() {
 
   return (
     <Section id="stack" title={t.stack.title}>
-      <motion.div
+      <motion.ul
         className={styles.row}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={staggerContainer}
       >
-        {stack.map(({ Icon, alt }) => (
-          <motion.span
-            key={alt}
-            variants={fadeItem}
-            whileHover={{ scale: 1.15, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300, damping: 15 }}
-          >
-            <Icon className={styles.icon} role="img" aria-label={alt} />
-          </motion.span>
+        {stack.map(({ Icon, name }) => (
+          <motion.li key={name} className={styles.item} variants={fadeItem}>
+            {/* Focusable so keyboard users get the same name tooltip as mouse users */}
+            <motion.span
+              className={styles.logo}
+              tabIndex={0}
+              role="img"
+              aria-label={name}
+              whileHover={{ scale: 1.15, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            >
+              <Icon className={styles.icon} aria-hidden="true" />
+            </motion.span>
+            <span className={styles.tooltip} aria-hidden="true">
+              {name}
+            </span>
+          </motion.li>
         ))}
-      </motion.div>
+      </motion.ul>
     </Section>
   );
 }

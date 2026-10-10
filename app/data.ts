@@ -18,11 +18,12 @@ import {
 import type { translations } from "./i18n/translations";
 import VsCodeLogo from "@assets/svgs/logos/vscode.svg";
 import ClaudeCodeLogo from "@assets/svgs/logos/claudecode.svg";
+import ReactLogo from "@assets/svgs/logos/react.svg";
 import NextJsLogo from "@assets/svgs/logos/nextdotjs.svg";
 import TypeScriptLogo from "@assets/svgs/logos/typescript.svg";
 import FigmaLogo from "@assets/svgs/logos/figma.svg";
+import GitHubLogo from "@assets/svgs/logos/github.svg";
 import BitbucketLogo from "@assets/svgs/logos/bitbucket.svg";
-import SpotifyLogo from "@assets/svgs/logos/spotify.svg";
 
 export const EMAIL = "otoalasania@gmail.com";
 
@@ -37,14 +38,16 @@ export const experience = [
   { range: "2022", company: profile.company },
 ];
 
+// `name` is the logo's accessible name and its tooltip text
 export const stack = [
-  { Icon: VsCodeLogo, alt: "VS Code" },
-  { Icon: ClaudeCodeLogo, alt: "Claude Code" },
-  { Icon: NextJsLogo, alt: "Next.js" },
-  { Icon: TypeScriptLogo, alt: "TypeScript" },
-  { Icon: FigmaLogo, alt: "Figma" },
-  { Icon: BitbucketLogo, alt: "Bitbucket" },
-  { Icon: SpotifyLogo, alt: "Spotify" },
+  { Icon: VsCodeLogo, name: "VS Code" },
+  { Icon: ClaudeCodeLogo, name: "Claude Code" },
+  { Icon: ReactLogo, name: "React" },
+  { Icon: NextJsLogo, name: "Next.js" },
+  { Icon: TypeScriptLogo, name: "TypeScript" },
+  { Icon: FigmaLogo, name: "Figma" },
+  { Icon: GitHubLogo, name: "GitHub" },
+  { Icon: BitbucketLogo, name: "Bitbucket" },
 ];
 
 // title/summary/about/built text lives in i18n/translations.ts under
@@ -200,6 +203,10 @@ export const socials = [
   { label: "GitHub", value: "@jv", href: "#", icon: GitHubIcon },
   { label: "LinkedIn", value: "/in/jacobvos", href: "#", icon: LinkedInIcon },
 ];
+
+// Sections kept in the codebase but not rendered for now. PortfolioHome skips them and the
+// Dock drops their items — remove an id here to bring that section back.
+export const HIDDEN_SECTIONS: ReadonlySet<string> = new Set(["skills", "ventures", "writing"]);
 
 export const dock = [
   { id: "top", icon: PersonIcon },

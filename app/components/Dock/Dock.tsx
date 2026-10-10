@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { dock } from "../../data";
+import { dock, HIDDEN_SECTIONS } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import { ChevronIcon } from "../icons";
 import styles from "./Dock.module.css";
 
 type DockItem = (typeof dock)[number];
+
+// Hidden sections aren't rendered, so their items would scroll nowhere
+const items = dock.filter((item) => !HIDDEN_SECTIONS.has(item.id));
 
 export function Dock() {
   const { t } = useLocale();
@@ -44,12 +47,12 @@ export function Dock() {
     );
   }
 
-  const primary = dock.slice(0, 4);
-  const rest = dock.slice(4);
+  const primary = items.slice(0, 4);
+  const rest = items.slice(4);
 
   return (
     <nav className={styles.nav} data-hidden={hidden}>
-      <div className={styles.fullRow}>{dock.map(renderButton)}</div>
+      <div className={styles.fullRow}>{items.map(renderButton)}</div>
 
       <div className={styles.phoneStack}>
         <div className={styles.secondRow} data-expanded={expanded}>

@@ -11,7 +11,10 @@ import { Personal } from "../Personal/Personal";
 import { Contact } from "../Contact/Contact";
 import { Footer } from "../Footer/Footer";
 import { Dock } from "../Dock/Dock";
+import { HIDDEN_SECTIONS } from "../../data";
 import styles from "./PortfolioHome.module.css";
+
+const shown = (id: string) => !HIDDEN_SECTIONS.has(id);
 
 export default function PortfolioHome() {
   return (
@@ -22,10 +25,10 @@ export default function PortfolioHome() {
         <Work />
         <ProjectIndex />
         <Experience />
-        <Skills />
+        {shown("skills") && <Skills />}
         <Stack />
-        <Ventures />
-        <Writing />
+        {shown("ventures") && <Ventures />}
+        {shown("writing") && <Writing />}
         <Personal />
         <Contact />
         <Footer />
