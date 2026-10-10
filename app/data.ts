@@ -201,11 +201,6 @@ export const socials = [
   { label: "LinkedIn", value: "/in/jacobvos", href: "#", icon: LinkedInIcon },
 ];
 
-export const footerMeta = {
-  location: "Lagos, Portugal",
-  weatherC: 25,
-};
-
 export const dock = [
   { id: "top", icon: PersonIcon },
   { id: "work", icon: WindowIcon },

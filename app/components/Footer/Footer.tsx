@@ -1,27 +1,18 @@
-import { PinIcon, CloudIcon } from "../icons";
-import { profile, footerMeta } from "../../data";
+import { getWeather } from "../../lib/weather";
+import { Signature } from "./Signature";
+import { FooterMeta } from "./FooterMeta";
 import styles from "./Footer.module.css";
 
-export function Footer() {
+// Server component: the weather is fetched (and cached for 30 min) at render time,
+// so there's no client fetch, loading state or layout shift.
+export async function Footer() {
+  const weather = await getWeather();
+
   return (
     <footer className={styles.footer}>
-      <p className={styles.signature} style={{ fontFamily: "cursive" }}>
-        {profile.name}
-      </p>
-      <p className={styles.copyright}>
-        © {new Date().getFullYear()} {profile.name}
-      </p>
-
-      <div className={styles.meta}>
-        <span className={styles.metaItem}>
-          <PinIcon />
-          {footerMeta.location}
-        </span>
-        <span className={styles.metaItem}>
-          <CloudIcon />
-          {footerMeta.weatherC}°C
-        </span>
-      </div>
+      <Signature />
+      <p className={styles.copyright}>© {new Date().getFullYear()}</p>
+      <FooterMeta weather={weather} />
     </footer>
   );
 }

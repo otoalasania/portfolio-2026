@@ -156,6 +156,9 @@ export const translations = {
         },
       },
     },
+    footer: {
+      location: "Alicante, Spain",
+    },
     experience: {
       title: "Experience",
       subtitle:
@@ -403,6 +406,9 @@ export const translations = {
           ],
         },
       },
+    },
+    footer: {
+      location: "Alicante, España",
     },
     experience: {
       title: "Experiencia",

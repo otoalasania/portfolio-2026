@@ -20,6 +20,9 @@ importers:
       react-dom:
         specifier: 19.2.4
         version: 19.2.4(react@19.2.4)
+      tegaki:
+        specifier: ^1.0.3
+        version: 1.0.3(react@19.2.4)
     devDependencies:
       '@svgr/webpack':
         specifier: 8.1.0
@@ -1656,6 +1659,7 @@ packages:
   eslint@9.39.5:
     resolution: {integrity: sha512-DgZS62aPLXKlnxILS/AYCoRvHaZeXceIzlXPkkGGzJWSow1aEk0lbTlxUSlyjC8jcaKxAdOnTDz+o1JFSBsyjw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -2453,6 +2457,33 @@ packages:
     resolution: {integrity: sha512-GsNRis4e8jxn2Y9ENz/8lbJ93CstG8svtMnuRaHbiF2LTJ5tK0/q3t/URPq9Zc7zVWBJnNnJMIp6bevK7bSmNg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
+
+  tegaki@1.0.3:
+    resolution: {integrity: sha512-3BqsfETfF5mVOIWkcye2agwntNdYVs8txHB/4ITWjO5OHsmM00QaCiFOKgRcZqNp8vvtDVfwAg5teom13vSODg==}
+    hasBin: true
+    peerDependencies:
+      '@nuxt/kit': ^3.0.0 || ^4.0.0
+      astro: '>=4.0.0'
+      harfbuzzjs: ^1.1.0
+      react: '>=18'
+      solid-js: '>=1'
+      svelte: '>=5'
+      vue: '>=3'
+    peerDependenciesMeta:
+      '@nuxt/kit':
+        optional: true
+      astro:
+        optional: true
+      harfbuzzjs:
+        optional: true
+      react:
+        optional: true
+      solid-js:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
 
   tinyglobby@0.2.17:
     resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
@@ -5388,6 +5419,10 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.1.1
       sax: 1.6.1
+
+  tegaki@1.0.3(react@19.2.4):
+    optionalDependencies:
+      react: 19.2.4
 
   tinyglobby@0.2.17:
     dependencies:
