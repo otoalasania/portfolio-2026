@@ -159,16 +159,16 @@ export const translations = {
     experience: {
       title: "Experience",
       subtitle:
-        "Throughout my career, I've worked on various projects, from building scalable systems to designing user-friendly interfaces. Here's a brief overview.",
+        "Where I've been working so far.",
       at: "at",
       items: [
         {
           role: "Frontend Developer",
-          desc: "Building and maintaining frontend features and interfaces at Noxtton.",
+          desc: "Turning designs into working websites, and keeping them running after launch.",
         },
         {
           role: "Intern",
-          desc: "Supported the frontend team, learning the codebase and contributing to UI work.",
+          desc: "Got to know the codebase and worked on small UI tasks.",
         },
       ],
     },
@@ -407,16 +407,16 @@ export const translations = {
     experience: {
       title: "Experiencia",
       subtitle:
-        "A lo largo de mi carrera, he trabajado en diversos proyectos, desde la construcción de sistemas escalables hasta el diseño de interfaces fáciles de usar. Aquí tienes un breve resumen.",
+        "Dónde he trabajado hasta ahora.",
       at: "en",
       items: [
         {
           role: "Desarrollador Frontend",
-          desc: "Construyendo y manteniendo funcionalidades e interfaces frontend en Noxtton.",
+          desc: "Convierto diseños en sitios web funcionales y los mantengo después del lanzamiento.",
         },
         {
           role: "Becario",
-          desc: "Apoyé al equipo de frontend, aprendiendo la base de código y contribuyendo al trabajo de UI.",
+          desc: "Conocí el código del proyecto y trabajé en pequeñas tareas de interfaz.",
         },
       ],
     },
