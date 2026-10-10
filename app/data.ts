@@ -38,7 +38,6 @@ export const experience = [
   { range: "2022", company: profile.company },
 ];
 
-// `name` is the logo's accessible name and its tooltip text
 export const stack = [
   { Icon: VsCodeLogo, name: "VS Code" },
   { Icon: ClaudeCodeLogo, name: "Claude Code" },
@@ -50,17 +49,15 @@ export const stack = [
   { Icon: BitbucketLogo, name: "Bitbucket" },
 ];
 
-// title/summary/about/built text lives in i18n/translations.ts under
-// work.items, keyed by slug — the slug type below makes a missing entry a type error
 export type ProjectSlug = keyof (typeof translations)["en"]["work"]["items"];
 
 export type Project = {
   slug: ProjectSlug;
   year: number;
-  stack: string[]; // display names, rendered as mono pills
-  featured: boolean; // true → Work's hero deck, false → ProjectIndex
-  href?: string; // omit for NDA/client work — rendered as a plain row, not a link
-  images: string[]; // screenshots — first is the cover/main image, all show as thumbnails in the detail sheet
+  stack: string[];
+  featured: boolean;
+  href?: string;
+  images: string[];
 };
 
 // TODO: swap for real screenshots — picsum.photos placeholders, stable per project via seed
@@ -152,14 +149,11 @@ const projects: Project[] = [
 
 const newestFirst = (a: Project, b: Project) => b.year - a.year;
 
-// Work's fan is hand-tuned for exactly 4 cards — see DESIGN_SYSTEM.md before changing how many are featured
 export const featuredProjects = projects.filter((p) => p.featured).sort(newestFirst);
 export const moreProjects = projects.filter((p) => !p.featured).sort(newestFirst);
 
 export const allProjects = [...featuredProjects, ...moreProjects];
 
-// Every project has a /work/[slug] page. `group` is the list it belongs to (hero deck or
-// index), which is what the detail sheet's counter and Prev/Next cycle through.
 export function findProject(slug: string) {
   for (const group of [featuredProjects, moreProjects]) {
     const index = group.findIndex((p) => p.slug === slug);
@@ -184,16 +178,12 @@ export const writing = [
 ];
 
 export const personal = {
-  music: {
-    title: "Luna",
-    artist: "Pascal Schumacher, Echo Collective",
-    color: "#1f5f63",
-  },
+  spotifyTrackUrl: "https://open.spotify.com/track/7B1HEa7ROgR3lIcG8MpG8H",
   photos: [
-    { color: "#8fae7a", rotate: -2 },
-    { color: "#3d6b7a", rotate: 2 },
-    { color: "#a68a6b", rotate: -2 },
-    { color: "#7a6a8f", rotate: 2 },
+    { src: "https://picsum.photos/seed/personal-1/552/744", rotate: -2 },
+    { src: "https://picsum.photos/seed/personal-2/552/744", rotate: 2 },
+    { src: "https://picsum.photos/seed/personal-3/552/744", rotate: -2 },
+    { src: "https://picsum.photos/seed/personal-4/552/744", rotate: 2 },
   ],
 };
 
@@ -204,8 +194,6 @@ export const socials = [
   { label: "LinkedIn", value: "/in/jacobvos", href: "#", icon: LinkedInIcon },
 ];
 
-// Sections kept in the codebase but not rendered for now. PortfolioHome skips them and the
-// Dock drops their items — remove an id here to bring that section back.
 export const HIDDEN_SECTIONS: ReadonlySet<string> = new Set(["skills", "ventures", "writing"]);
 
 export const dock = [

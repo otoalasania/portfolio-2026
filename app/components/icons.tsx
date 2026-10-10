@@ -110,8 +110,6 @@ export const CloudIcon = () => (
   </Icon>
 );
 
-// Weather icons (Footer) — same stroke recipe as CloudIcon; the precipitation ones raise
-// CloudIcon's outline by 3px to make room underneath.
 const raisedCloud = "M7.5 14.5h9a3.5 3.5 0 0 0 .5-6.96A5 5 0 0 0 7.6 6.55 4 4 0 0 0 7.5 14.5Z";
 
 export const SunIcon = () => (
@@ -199,23 +197,6 @@ export const LinkedInIcon = ({ size = 16 }: { size?: number }) => (
   </Icon>
 );
 
-export const SpotifyIcon = () => (
-  <Icon size={16}>
-    <circle cx="12" cy="12" r="9" fill="#1DB954" />
-    <path d="M7 10.2c3-.8 6.6-.5 9 1" stroke="#0a0a0a" strokeWidth="1.3" strokeLinecap="round" />
-    <path d="M7.3 13c2.5-.65 5.5-.4 7.5.85" stroke="#0a0a0a" strokeWidth="1.2" strokeLinecap="round" />
-    <path d="M7.6 15.7c2-.5 4.4-.3 6 .7" stroke="#0a0a0a" strokeWidth="1.1" strokeLinecap="round" />
-  </Icon>
-);
-
-export const InstagramIcon = () => (
-  <Icon>
-    <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.6" />
-    <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" />
-    <circle cx="16.7" cy="7.3" r="1" fill="currentColor" />
-  </Icon>
-);
-
 export const CommandIcon = () => (
   <Icon>
     <path
@@ -251,24 +232,6 @@ export const ChevronIcon = () => (
   <Icon>
     <path d="M6 15l6-6 6 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
   </Icon>
-);
-
-export const LeicaWordmark = () => (
-  <span
-    style={{
-      display: "inline-flex",
-      alignItems: "center",
-      width: 32,
-      height: 14,
-      fontFamily: "cursive",
-      fontStyle: "italic",
-      fontSize: 12,
-      lineHeight: "14px",
-      opacity: 0.5,
-    }}
-  >
-    Leica
-  </span>
 );
 
 export const ArrowUpRight = ({ size = 14, strokeWidth = 1.8 }: { size?: number; strokeWidth?: number }) => (

@@ -2,7 +2,6 @@ export type Locale = "en" | "es";
 
 // Item arrays below are matched by index to the corresponding arrays in
 // ../data.ts (experience, ventures, writing) — keep the order in sync.
-// work.items is keyed by project slug instead (see `projects` in ../data.ts).
 export const translations = {
   en: {
     nav: {
@@ -228,11 +227,10 @@ export const translations = {
     },
     personal: {
       title: "Personal",
-      blurb: "In my spare time, I enjoy listening to music and taking photos with my Leica M6",
-      mostReplayed: "Most replayed this month",
-      listenOnSpotify: "Listen on Spotify",
-      shotWith: "Shot with Leica M6",
-      seeMoreIG: "See more on IG",
+      blurb:
+        "Outside of work I train jiu-jitsu. It's basically problem solving with your body: stay calm when you're stuck, find the small mistake, use it. Turns out that works for bugs too.",
+      playerTitle: "Spotify player",
+      photoAlts: ["Placeholder photo 1", "Placeholder photo 2", "Placeholder photo 3", "Placeholder photo 4"],
     },
     contact: {
       title: "Contact",
@@ -479,11 +477,10 @@ export const translations = {
     },
     personal: {
       title: "Personal",
-      blurb: "En mi tiempo libre, disfruto escuchar música y tomar fotos con mi Leica M6",
-      mostReplayed: "Lo más reproducido este mes",
-      listenOnSpotify: "Escuchar en Spotify",
-      shotWith: "Tomada con Leica M6",
-      seeMoreIG: "Ver más en IG",
+      blurb:
+        "Fuera del trabajo entreno jiu-jitsu. Es básicamente resolver problemas con el cuerpo: mantener la calma cuando estás atascado, encontrar el pequeño error y aprovecharlo. Resulta que también funciona con los bugs.",
+      playerTitle: "Reproductor de Spotify",
+      photoAlts: ["Foto de ejemplo 1", "Foto de ejemplo 2", "Foto de ejemplo 3", "Foto de ejemplo 4"],
     },
     contact: {
       title: "Contacto",
