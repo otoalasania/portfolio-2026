@@ -8,23 +8,141 @@
   color: var(--foreground-subdued);
 }
 
-.playerSlot {
-  margin-top: 16px;
-  height: 80px;
+.player {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
   border-radius: 12px;
+  background: var(--hover-surface);
+}
+
+.playerRow {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+  padding: 8px;
+  border-radius: 8px;
   background: var(--player-panel);
 }
 
-.player {
-  display: block;
-  width: 100%;
-  height: 80px;
+.cover {
+  flex: none;
+  border-radius: 6px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.27),
+    0 4px 8px rgba(0, 0, 0, 0.14);
+}
+
+.trackText {
+  min-width: 0;
+  flex: 1;
+}
+
+.trackTitle,
+.trackArtist {
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trackTitle {
+  color: var(--foreground);
+}
+
+.trackArtist {
+  color: var(--foreground-subdued);
+}
+
+.playButton {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
   border: 0;
-  border-radius: 12px;
+  border-radius: 9999px;
+  background: var(--foreground);
+  color: var(--background);
+  cursor: pointer;
+}
+
+.playButton:focus-visible,
+.spotifyLink:focus-visible {
+  outline: 2px solid var(--foreground-subdued);
+  outline-offset: 2px;
+}
+
+.progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--player-track);
+}
+
+.progressFill {
+  display: block;
+  height: 100%;
+  background: var(--foreground);
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .progressFill {
+    transition: transform 0.25s linear;
+  }
+}
+
+.playerMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 18px;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
+}
+
+.time {
+  font-variant-numeric: tabular-nums;
+}
+
+.spotifyLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .spotifyLink {
+    transition: opacity 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+.spotifyLink:hover,
+.spotifyLink:focus-visible {
+  opacity: 1;
 }
 
 .photoStrip {
-  margin-top: 48px;
+  margin-top: 16px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;

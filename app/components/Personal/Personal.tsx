@@ -1,54 +1,114 @@
 "use client";
 
-import { useRef, useSyncExternalStore } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useInView } from "motion/react";
+import { motion } from "motion/react";
 import { Section } from "../ui";
+import SpotifyLogo from "@assets/svgs/logos/spotify.svg";
+import { PauseIcon, PlayIcon } from "../icons";
 import { personal } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import { staggerContainer, fadeItem } from "../../lib/motion";
 import styles from "./Personal.module.css";
 
-const DARK_QUERY = "(prefers-color-scheme: dark)";
+const { track } = personal;
+const clipLength = track.end - track.start;
 
-function subscribeToScheme(onChange: () => void) {
-  const query = window.matchMedia(DARK_QUERY);
-  query.addEventListener("change", onChange);
-  return () => query.removeEventListener("change", onChange);
+function formatTime(seconds: number) {
+  const s = Math.max(0, Math.floor(seconds));
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 }
 
-function spotifyEmbedUrl(trackUrl: string, dark: boolean) {
-  const id = trackUrl.match(/\/track\/([A-Za-z0-9]+)/)?.[1];
-  return id ? `https://open.spotify.com/embed/track/${id}?utm_source=generator${dark ? "&theme=0" : ""}` : null;
+function MusicPlayer() {
+  const { t } = useLocale();
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+
+  const reset = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.pause();
+    audio.currentTime = track.start;
+    setElapsed(0);
+  };
+
+  const toggle = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (!audio.paused) {
+      audio.pause();
+      return;
+    }
+    if (audio.currentTime < track.start || audio.currentTime >= track.end) {
+      audio.currentTime = track.start;
+    }
+    audio.play().catch(() => setPlaying(false));
+  };
+
+  const onTimeUpdate = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.currentTime >= track.end) {
+      reset();
+      return;
+    }
+    setElapsed(audio.currentTime - track.start);
+  };
+
+  return (
+    <div className={styles.player}>
+      <audio
+        ref={audioRef}
+        src={`${track.audio}#t=${track.start},${track.end}`}
+        preload="none"
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+        onEnded={reset}
+        onTimeUpdate={onTimeUpdate}
+      />
+
+      <div className={styles.playerRow}>
+        <Image src={track.cover} alt="" width={48} height={48} className={styles.cover} />
+        <div className={styles.trackText}>
+          <p className={styles.trackTitle}>{track.title}</p>
+          <p className={styles.trackArtist}>{track.artist}</p>
+        </div>
+        <motion.button
+          type="button"
+          className={styles.playButton}
+          onClick={toggle}
+          aria-label={playing ? t.personal.pause : t.personal.play}
+          aria-pressed={playing}
+          whileTap={{ scale: 0.92 }}
+          transition={{ type: "spring", stiffness: 400, damping: 20 }}
+        >
+          {playing ? <PauseIcon /> : <PlayIcon />}
+        </motion.button>
+        <span className={styles.progress} aria-hidden="true">
+          <span className={styles.progressFill} style={{ transform: `scaleX(${elapsed / clipLength})` }} />
+        </span>
+      </div>
+
+      <div className={styles.playerMeta}>
+        <span className={styles.time}>
+          {formatTime(elapsed)} / {formatTime(clipLength)}
+        </span>
+        <a className={styles.spotifyLink} href={track.spotifyUrl} target="_blank" rel="noopener noreferrer">
+          {t.personal.listenOn}
+          <SpotifyLogo width={16} height={16} aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  );
 }
 
 export function Personal() {
   const { t } = useLocale();
-  const dark = useSyncExternalStore(
-    subscribeToScheme,
-    () => window.matchMedia(DARK_QUERY).matches,
-    () => null
-  );
-  const slotRef = useRef<HTMLDivElement>(null);
-  const near = useInView(slotRef, { once: true, margin: "0px 0px 600px 0px" });
-  const embedUrl = dark === null || !near ? null : spotifyEmbedUrl(personal.spotifyTrackUrl, dark);
 
   return (
     <Section id="personal" title={t.personal.title}>
       <p className={styles.blurb}>{t.personal.blurb}</p>
-
-      <div ref={slotRef} className={styles.playerSlot}>
-        {embedUrl && (
-          <iframe
-            className={styles.player}
-            src={embedUrl}
-            title={t.personal.playerTitle}
-            height={80}
-            loading="lazy"
-            allow="encrypted-media"
-          />
-        )}
-      </div>
 
       <motion.div
         className={styles.photoStrip}
@@ -74,6 +134,8 @@ export function Personal() {
           </motion.div>
         ))}
       </motion.div>
+
+      <MusicPlayer />
     </Section>
   );
 }

@@ -229,8 +229,15 @@ export const translations = {
       title: "Personal",
       blurb:
         "Outside of work I train jiu-jitsu. It's basically problem solving with your body: stay calm when you're stuck, find the small mistake, use it. Turns out that works for bugs too.",
-      playerTitle: "Spotify player",
-      photoAlts: ["Placeholder photo 1", "Placeholder photo 2", "Placeholder photo 3", "Placeholder photo 4"],
+      play: "Play preview",
+      pause: "Pause preview",
+      listenOn: "Listen on Spotify",
+      photoAlts: [
+        "Standing alone on the mats of an empty jiu-jitsu gym",
+        "White belt with four stripes resting on the mat",
+        "Close-up of a jiu-jitsu gi sleeve",
+        "Black gi tied with a four-stripe white belt",
+      ],
     },
     contact: {
       title: "Contact",
@@ -489,8 +496,15 @@ export const translations = {
       title: "Personal",
       blurb:
         "Fuera del trabajo entreno jiu-jitsu. Es básicamente resolver problemas con el cuerpo: mantener la calma cuando estás atascado, encontrar el pequeño error y aprovecharlo. Resulta que también funciona con los bugs.",
-      playerTitle: "Reproductor de Spotify",
-      photoAlts: ["Foto de ejemplo 1", "Foto de ejemplo 2", "Foto de ejemplo 3", "Foto de ejemplo 4"],
+      play: "Reproducir avance",
+      pause: "Pausar avance",
+      listenOn: "Escuchar en Spotify",
+      photoAlts: [
+        "De pie, solo, sobre el tatami de un gimnasio de jiu-jitsu vacío",
+        "Cinturón blanco con cuatro grados sobre el tatami",
+        "Primer plano de la manga de un kimono de jiu-jitsu",
+        "Kimono negro atado con un cinturón blanco de cuatro grados",
+      ],
     },
     contact: {
       title: "Contacto",

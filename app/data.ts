@@ -177,12 +177,20 @@ export const writing = [
 ];
 
 export const personal = {
-  spotifyTrackUrl: "https://open.spotify.com/track/7B1HEa7ROgR3lIcG8MpG8H",
+  track: {
+    title: "NEUROSIS",
+    artist: "KoruSe, CHMCL SØUP",
+    cover: "/personal/neurosis-cover.jpg",
+    audio: "/personal/neurosis.mp3",
+    start: 0,
+    end: 20.8,
+    spotifyUrl: "https://open.spotify.com/track/7B1HEa7ROgR3lIcG8MpG8H",
+  },
   photos: [
-    { src: "https://picsum.photos/seed/personal-1/552/744", rotate: -2 },
-    { src: "https://picsum.photos/seed/personal-2/552/744", rotate: 2 },
-    { src: "https://picsum.photos/seed/personal-3/552/744", rotate: -2 },
-    { src: "https://picsum.photos/seed/personal-4/552/744", rotate: 2 },
+    { src: "/personal/image-bjj-1.jpeg", rotate: -2 },
+    { src: "/personal/image-bjj-2.jpeg", rotate: 2 },
+    { src: "/personal/image-bjj-3.jpeg", rotate: -2 },
+    { src: "/personal/image-bjj-4.jpeg", rotate: 2 },
   ],
 };
 
