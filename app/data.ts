@@ -192,7 +192,7 @@ export const socials = [
   {
     label: "LinkedIn",
     value: "/in/oto-alasania",
-    href: "https://www.linkedin.com/in/oto-alasania-437551217",
+    href: "https://www.linkedin.com/in/otar-alasania-437551217/",
     icon: LinkedInIcon,
   },
 ];
