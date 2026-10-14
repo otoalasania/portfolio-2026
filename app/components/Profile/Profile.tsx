@@ -74,7 +74,7 @@ export function Profile() {
         <span className={styles.company}>
           {profile.company.name}
           <span className={styles.companyLogo}>
-            <Image src={profile.company.logo} alt="" width={17} height={17} style={{ objectFit: "contain" }} />
+            <Image src={profile.company.logo} alt="" width={14} height={14} style={{ objectFit: "contain" }} />
           </span>
         </span>{" "}
         {t.profile.bioLocationPrefix}{" "}

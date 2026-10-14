@@ -37,7 +37,7 @@ export function Experience() {
                   </h3>
                   <span className={styles.companyGroup}>
                     <span className={styles.companyLogo}>
-                      <Image src={e.company.logo} alt="" width={20} height={20} style={{ objectFit: "contain" }} />
+                      <Image src={e.company.logo} alt="" width={14} height={14} style={{ objectFit: "contain" }} />
                     </span>
                     {e.company.name}
                   </span>
