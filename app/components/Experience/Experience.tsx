@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "motion/react";
 import { Section } from "../ui";
+import { CompanyTag } from "../CompanyTag/CompanyTag";
 import { experience } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import { staggerContainer, staggerItem } from "../../lib/motion";
@@ -35,12 +35,7 @@ export function Experience() {
                   <h3 className={styles.role}>
                     {text.role} {t.experience.at}
                   </h3>
-                  <span className={styles.companyGroup}>
-                    <span className={styles.companyLogo}>
-                      <Image src={e.company.logo} alt="" width={14} height={14} style={{ objectFit: "contain" }} />
-                    </span>
-                    {e.company.name}
-                  </span>
+                  <CompanyTag className={styles.companyGroup} />
                 </div>
                 {text.desc && <p className={styles.desc}>{text.desc}</p>}
               </div>

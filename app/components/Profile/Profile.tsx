@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import FlagSpain from "@assets/svgs/flags/flag-spain.svg";
 import { profile } from "../../data";
+import { CompanyTag } from "../CompanyTag/CompanyTag";
 import { useLocale } from "../../i18n/LocaleContext";
 import { staggerContainer, staggerItem } from "../../lib/motion";
 import styles from "./Profile.module.css";
@@ -71,12 +72,7 @@ export function Profile() {
 
       <motion.p className={styles.bio} variants={staggerItem}>
         {t.profile.bioBefore}{" "}
-        <span className={styles.company}>
-          {profile.company.name}
-          <span className={styles.companyLogo}>
-            <Image src={profile.company.logo} alt="" width={14} height={14} style={{ objectFit: "contain" }} />
-          </span>
-        </span>{" "}
+        <CompanyTag />
         {t.profile.bioLocationPrefix}{" "}
         <span className={styles.location}>
           {t.profile.bioLocation}

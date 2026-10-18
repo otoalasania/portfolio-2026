@@ -28,7 +28,7 @@ export const EMAIL = "otar.alasania@gmail.com";
 
 export const profile = {
   name: "Otar Alasania",
-  company: { name: "Noxtton", logo: "/noxtton-logo.png" },
+  company: { name: "Noxtton", logo: "/noxtton-logo.png", url: "https://noxtton.com/" },
 };
 
 // role/desc text lives in i18n/translations.ts, matched by index
@@ -186,6 +186,7 @@ export const personal = {
     end: 20.8,
     spotifyUrl: "https://open.spotify.com/track/7B1HEa7ROgR3lIcG8MpG8H",
   },
+  showPhotos: false,
   photos: [
     { src: "/personal/image-bjj-1.jpeg", rotate: -2 },
     { src: "/personal/image-bjj-2.jpeg", rotate: 2 },

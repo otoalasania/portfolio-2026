@@ -110,32 +110,34 @@ export function Personal() {
     <Section id="personal" title={t.personal.title}>
       <p className={styles.blurb}>{t.personal.blurb}</p>
 
-      <motion.div
-        className={styles.photoStrip}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={staggerContainer}
-      >
-        {personal.photos.map((photo, i) => (
-          <motion.div
-            key={photo.src}
-            style={{ "--rotate": `${photo.rotate}deg` } as React.CSSProperties}
-            className={`${styles.photo} ${i > 0 ? styles.photoOverlap : ""}`}
-            variants={fadeItem}
-          >
-            <Image
-              src={photo.src}
-              alt={t.personal.photoAlts[i] ?? ""}
-              fill
-              sizes="(min-width: 640px) 184px, 50vw"
-              className={styles.photoImage}
-            />
-          </motion.div>
-        ))}
-      </motion.div>
-
       <MusicPlayer />
+
+      {personal.showPhotos && (
+        <motion.div
+          className={styles.photoStrip}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+        >
+          {personal.photos.map((photo, i) => (
+            <motion.div
+              key={photo.src}
+              style={{ "--rotate": `${photo.rotate}deg` } as React.CSSProperties}
+              className={`${styles.photo} ${i > 0 ? styles.photoOverlap : ""}`}
+              variants={fadeItem}
+            >
+              <Image
+                src={photo.src}
+                alt={t.personal.photoAlts[i] ?? ""}
+                fill
+                sizes="(min-width: 640px) 184px, 50vw"
+                className={styles.photoImage}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
     </Section>
   );
 }

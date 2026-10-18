@@ -18,12 +18,12 @@ export const translations = {
       less: "Less",
     },
     profile: {
-      role: "Mid Frontend Developer",
-      bioBefore: "Hey, I'm Otar a frontend developer at",
-      bioLocationPrefix: "based in",
-      bioLocation: "Alicante, Spain",
+      role: "Frontend Developer",
+      bioBefore: "I'm Otar, a frontend developer at",
+      bioLocationPrefix: ", based in",
+      bioLocation: "Alicante",
       bioAfter:
-        "(originally from Tbilisi, Georgia), where I specialize in building fast, accessible interfaces with a strong focus on performance and clean UI engineering.",
+        "and originally from Tbilisi. I've spent the last 5 years building production web apps with React, Next.js and TypeScript.",
       bioShort:
         "Frontend developer at Noxtton, based in Alicante. I build fast, accessible interfaces with clean UI engineering.",
       verified: "Verified",
@@ -228,7 +228,7 @@ export const translations = {
     personal: {
       title: "Personal",
       blurb:
-        "Outside of work I train jiu-jitsu. It's basically problem solving with your body: stay calm when you're stuck, find the small mistake, use it. Turns out that works for bugs too.",
+        "Outside of work I train jiu-jitsu. It's basically problem solving with your body: stay calm when you're stuck, find the small mistake, use it. Turns out it works for bugs too.",
       play: "Play preview",
       pause: "Pause preview",
       listenOn: "Listen on Spotify",
@@ -285,12 +285,12 @@ export const translations = {
       less: "Menos",
     },
     profile: {
-      role: "Desarrollador Frontend Mid",
-      bioBefore: "Hola, soy Otar, desarrollador frontend en",
-      bioLocationPrefix: "con base en",
-      bioLocation: "Alicante, España",
+      role: "Desarrollador Frontend",
+      bioBefore: "Soy Otar, desarrollador frontend en",
+      bioLocationPrefix: ", con base en",
+      bioLocation: "Alicante",
       bioAfter:
-        "(originario de Tiflis, Georgia), donde me especializo en construir interfaces rápidas y accesibles con un fuerte enfoque en el rendimiento y una ingeniería de UI limpia.",
+        "y originario de Tiflis. Llevo 5 años creando aplicaciones web en producción con React, Next.js y TypeScript.",
       bioShort:
         "Desarrollador frontend en Noxtton, con base en Alicante. Construyo interfaces rápidas y accesibles con una ingeniería de UI limpia.",
       verified: "Verificado",
