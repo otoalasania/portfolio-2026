@@ -23,6 +23,8 @@ import TypeScriptLogo from "@assets/svgs/logos/typescript.svg";
 import FigmaLogo from "@assets/svgs/logos/figma.svg";
 import GitHubLogo from "@assets/svgs/logos/github.svg";
 import BitbucketLogo from "@assets/svgs/logos/bitbucket.svg";
+import CssModulesLogo from "@assets/svgs/logos/cssmodules.svg";
+import JiraLogo from "@assets/svgs/logos/jira.svg";
 
 export const EMAIL = "otar.alasania@gmail.com";
 
@@ -43,9 +45,11 @@ export const stack = [
   { Icon: ReactLogo, name: "React" },
   { Icon: NextJsLogo, name: "Next.js" },
   { Icon: TypeScriptLogo, name: "TypeScript" },
+  { Icon: CssModulesLogo, name: "CSS Modules" },
   { Icon: FigmaLogo, name: "Figma" },
   { Icon: GitHubLogo, name: "GitHub" },
   { Icon: BitbucketLogo, name: "Bitbucket" },
+  { Icon: JiraLogo, name: "Jira" },
 ];
 
 export type ProjectSlug = keyof (typeof translations)["en"]["work"]["items"];
