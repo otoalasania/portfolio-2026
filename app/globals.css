@@ -12,7 +12,7 @@
   --mock-card-light: #f3f3f0;
   --hover-surface: #fafafa;
   --divider: #ededed;
-  --player-panel: #f2f2f2;
+  --player-panel: #f8f8f8;
   --player-track: rgba(18, 18, 18, 0.1);
   --input-bg: #f8f8f8;
   --input-border: #f8f8f8;
@@ -46,7 +46,7 @@
     --foreground-subdued: #8f8f8f;
     --hover-surface: #141414;
     --divider: #1f1f1f;
-    --player-panel: #1f1f1f;
+    --player-panel: #141414;
     --player-track: rgba(255, 255, 255, 0.12);
     --input-bg: #141414;
     --input-border: #1c1c1c;
