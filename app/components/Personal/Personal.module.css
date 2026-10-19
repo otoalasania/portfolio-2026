@@ -8,6 +8,60 @@
   color: var(--foreground-subdued);
 }
 
+.beltTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--foreground);
+  cursor: pointer;
+}
+
+.beltTag:focus-visible {
+  outline: 2px solid var(--foreground-subdued);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.beltPop {
+  display: flex;
+}
+
+.belt {
+  display: flex;
+  justify-content: flex-end;
+  width: 56px;
+  height: 16px;
+  padding-right: 6px;
+  border-radius: 4px;
+  background-color: var(--belt-fabric);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 3px,
+    var(--belt-stitch) 3px 4px
+  );
+  box-shadow:
+    0 0 0 1px var(--belt-outline),
+    0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.rankBar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 3px;
+  width: 28px;
+  height: 100%;
+  padding-right: 4px;
+  background: var(--color-black);
+}
+
+.stripe {
+  display: block;
+  width: 2px;
+  height: 100%;
+  background: var(--color-white);
+  transform-origin: top;
+}
+
 .player {
   margin-top: 24px;
   display: flex;

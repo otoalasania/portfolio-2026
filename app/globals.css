@@ -14,6 +14,9 @@
   --divider: #ededed;
   --player-panel: #f8f8f8;
   --player-track: rgba(18, 18, 18, 0.1);
+  --belt-fabric: #ffffff;
+  --belt-stitch: rgba(0, 0, 0, 0.06);
+  --belt-outline: rgba(0, 0, 0, 0.12);
   --input-bg: #f8f8f8;
   --input-border: #f8f8f8;
   --button-bg: #f8f8f8;
@@ -48,6 +51,7 @@
     --divider: #1f1f1f;
     --player-panel: #141414;
     --player-track: rgba(255, 255, 255, 0.12);
+    --belt-outline: rgba(255, 255, 255, 0.24);
     --input-bg: #141414;
     --input-border: #1c1c1c;
     --button-bg: #1c1c1c;

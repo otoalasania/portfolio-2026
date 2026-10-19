@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, useInView, type Variants } from "motion/react";
 import { Section } from "../ui";
 import SpotifyLogo from "@assets/svgs/logos/spotify.svg";
 import { PauseIcon, PlayIcon } from "../icons";
@@ -11,12 +11,75 @@ import { useLocale } from "../../i18n/LocaleContext";
 import { staggerContainer, fadeItem } from "../../lib/motion";
 import styles from "./Personal.module.css";
 
-const { track } = personal;
+const { track, belt } = personal;
 const clipLength = track.end - track.start;
 
 function formatTime(seconds: number) {
   const s = Math.max(0, Math.floor(seconds));
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+}
+
+const beltUnroll: Variants = {
+  hidden: { clipPath: "inset(-4px 100% -8px 0)" },
+  visible: { clipPath: "inset(-4px -4px -8px 0)", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const beltPop: Variants = {
+  rest: { scale: 1, rotate: 0 },
+  hover: { scale: 1.15, rotate: -8, transition: { type: "spring", stiffness: 400, damping: 12 } },
+};
+
+const stripeContainer: Variants = {
+  hidden: {},
+  visible: { transition: { delayChildren: 0.45, staggerChildren: 0.16 } },
+};
+
+const stripeVariants: Variants = {
+  hidden: { scaleY: 0 },
+  visible: { scaleY: 1, transition: { type: "spring", stiffness: 500, damping: 22 } },
+};
+
+function BeltTag() {
+  const { t } = useLocale();
+  const ref = useRef<HTMLButtonElement>(null);
+  const inView = useInView(ref, { once: true, amount: 1 });
+  const [run, setRun] = useState(0);
+
+  return (
+    <motion.button
+      ref={ref}
+      type="button"
+      className={styles.beltTag}
+      onClick={() => setRun((r) => r + 1)}
+      aria-label={`${t.personal.blurbTag}, ${t.personal.beltAlt}`}
+      initial="rest"
+      animate="rest"
+      whileHover="hover"
+      whileFocus="hover"
+    >
+      {t.personal.blurbTag}
+      <motion.span className={styles.beltPop} variants={beltPop}>
+        <motion.span
+          className={styles.belt}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={beltUnroll}
+        >
+          <motion.span
+            key={run}
+            className={styles.rankBar}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={stripeContainer}
+          >
+            {Array.from({ length: belt.stripes }, (_, i) => (
+              <motion.span key={i} className={styles.stripe} variants={stripeVariants} />
+            ))}
+          </motion.span>
+        </motion.span>
+      </motion.span>
+    </motion.button>
+  );
 }
 
 function MusicPlayer() {
@@ -108,7 +171,10 @@ export function Personal() {
 
   return (
     <Section id="personal" title={t.personal.title}>
-      <p className={styles.blurb}>{t.personal.blurb}</p>
+      <p className={styles.blurb}>
+        {t.personal.blurbBefore} <BeltTag />
+        {t.personal.blurbAfter}
+      </p>
 
       <MusicPlayer />
 

@@ -181,6 +181,7 @@ export const writing = [
 ];
 
 export const personal = {
+  belt: { stripes: 4 },
   track: {
     title: "NEUROSIS",
     artist: "KoruSe, CHMCL SØUP",

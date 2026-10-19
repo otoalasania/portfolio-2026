@@ -227,8 +227,11 @@ export const translations = {
     },
     personal: {
       title: "Personal",
-      blurb:
-        "Outside of work I train jiu-jitsu. It's basically problem solving with your body: stay calm when you're stuck, find the small mistake, use it. Turns out it works for bugs too.",
+      blurbBefore: "Outside of work I train and compete in",
+      blurbTag: "Brazilian jiu-jitsu",
+      blurbAfter:
+        ". It's problem solving with your whole body: stay calm when you're stuck, find the small opening, and use it. The same mindset helps me a lot with bugs.",
+      beltAlt: "White jiu-jitsu belt with four stripes",
       play: "Play preview",
       pause: "Pause preview",
       listenOn: "Listen on Spotify",
@@ -494,8 +497,11 @@ export const translations = {
     },
     personal: {
       title: "Personal",
-      blurb:
-        "Fuera del trabajo entreno jiu-jitsu. Es básicamente resolver problemas con el cuerpo: mantener la calma cuando estás atascado, encontrar el pequeño error y aprovecharlo. Resulta que también funciona con los bugs.",
+      blurbBefore: "Fuera del trabajo entreno y compito en",
+      blurbTag: "jiu-jitsu brasileño",
+      blurbAfter:
+        ". Es resolver problemas con todo el cuerpo: mantener la calma cuando estás atascado, encontrar la pequeña apertura y aprovecharla. Esa misma forma de pensar me ayuda mucho con los bugs.",
+      beltAlt: "Cinturón blanco de jiu-jitsu con cuatro grados",
       play: "Reproducir avance",
       pause: "Pausar avance",
       listenOn: "Escuchar en Spotify",
