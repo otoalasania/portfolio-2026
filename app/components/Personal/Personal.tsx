@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import Image from "next/image";
 import { motion, useInView, type Variants } from "motion/react";
 import { Section } from "../ui";
@@ -9,6 +9,7 @@ import { PauseIcon, PlayIcon } from "../icons";
 import { personal } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import { staggerContainer, fadeItem } from "../../lib/motion";
+import { markNeurosisEnded, setNeurosisBeat, setNeurosisPhase, type NeurosisPhase } from "../../lib/neurosis";
 import styles from "./Personal.module.css";
 
 const { track, belt } = personal;
@@ -82,11 +83,122 @@ function BeltTag() {
   );
 }
 
+function phaseAt(t: number): NeurosisPhase {
+  const { drop, peak, outro } = track.moments;
+  if (t < drop) return "build";
+  if (t < peak) return "drop";
+  if (t < outro) return "peak";
+  return "outro";
+}
+
+type Band = { prev: number; max: number };
+
+function freshLevels() {
+  return { low: { prev: 0, max: 0.01 }, high: { prev: 0, max: 0.01 }, beat: 0 };
+}
+
+function bandLevel(bins: Uint8Array, from: number, to: number) {
+  let sum = 0;
+  for (const v of bins.subarray(from, to)) sum += v;
+  return sum / ((to - from) * 255);
+}
+
+function onset(band: Band, value: number) {
+  const flux = Math.max(0, value - band.prev);
+  band.prev = value;
+  band.max = Math.max(flux, band.max * 0.985, 0.02);
+  return Math.max(0, (flux / band.max - 0.3) / 0.7);
+}
+
+type AudioGraph = { ctx: AudioContext; analyser: AnalyserNode; bins: Uint8Array<ArrayBuffer> };
+
+function useNeurosis(audioRef: RefObject<HTMLAudioElement | null>) {
+  const graph = useRef<AudioGraph | null>(null);
+  const frame = useRef(0);
+  const ending = useRef(false);
+  const glitchTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const levels = useRef(freshLevels());
+
+  const connect = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (!graph.current) {
+      const ctx = new AudioContext();
+      const analyser = ctx.createAnalyser();
+      analyser.fftSize = 1024;
+      analyser.smoothingTimeConstant = 0.3;
+      ctx.createMediaElementSource(audio).connect(analyser);
+      analyser.connect(ctx.destination);
+      graph.current = { ctx, analyser, bins: new Uint8Array(analyser.frequencyBinCount) };
+    }
+    graph.current.ctx.resume().catch(() => {});
+  };
+
+  const tick = () => {
+    const audio = audioRef.current;
+    const g = graph.current;
+    if (!audio || !g) return;
+    g.analyser.getByteFrequencyData(g.bins);
+    const l = levels.current;
+    const low = bandLevel(g.bins, 2, 5);
+    const high = bandLevel(g.bins, 46, 140);
+    const kick = onset(l.low, low);
+    const snap = onset(l.high, high);
+    l.beat = Math.max(kick, snap * 0.7, l.beat * 0.85);
+    setNeurosisBeat(l.beat);
+    setNeurosisPhase(phaseAt(audio.currentTime - track.start));
+    frame.current = requestAnimationFrame(tick);
+  };
+
+  const halt = () => {
+    cancelAnimationFrame(frame.current);
+    levels.current = freshLevels();
+    setNeurosisBeat(0);
+  };
+
+  const start = () => {
+    clearTimeout(glitchTimer.current);
+    ending.current = false;
+    cancelAnimationFrame(frame.current);
+    frame.current = requestAnimationFrame(tick);
+  };
+
+  const stop = () => {
+    halt();
+    if (!ending.current) setNeurosisPhase("off");
+  };
+
+  const finish = () => {
+    if (ending.current) return;
+    ending.current = true;
+    halt();
+    setNeurosisPhase("glitch");
+    markNeurosisEnded();
+    glitchTimer.current = setTimeout(() => {
+      ending.current = false;
+      setNeurosisPhase("off");
+    }, 700);
+  };
+
+  useEffect(
+    () => () => {
+      cancelAnimationFrame(frame.current);
+      clearTimeout(glitchTimer.current);
+      setNeurosisBeat(0);
+      setNeurosisPhase("off");
+    },
+    [],
+  );
+
+  return { connect, start, stop, finish };
+}
+
 function MusicPlayer() {
   const { t } = useLocale();
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  const neurosis = useNeurosis(audioRef);
 
   const reset = () => {
     const audio = audioRef.current;
@@ -106,14 +218,20 @@ function MusicPlayer() {
     if (audio.currentTime < track.start || audio.currentTime >= track.end) {
       audio.currentTime = track.start;
     }
+    neurosis.connect();
     audio.play().catch(() => setPlaying(false));
+  };
+
+  const end = () => {
+    neurosis.finish();
+    reset();
   };
 
   const onTimeUpdate = () => {
     const audio = audioRef.current;
     if (!audio) return;
     if (audio.currentTime >= track.end) {
-      reset();
+      end();
       return;
     }
     setElapsed(audio.currentTime - track.start);
@@ -125,9 +243,15 @@ function MusicPlayer() {
         ref={audioRef}
         src={`${track.audio}#t=${track.start},${track.end}`}
         preload="none"
-        onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
-        onEnded={reset}
+        onPlay={() => {
+          setPlaying(true);
+          neurosis.start();
+        }}
+        onPause={() => {
+          setPlaying(false);
+          neurosis.stop();
+        }}
+        onEnded={end}
         onTimeUpdate={onTimeUpdate}
       />
 

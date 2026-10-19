@@ -1,3 +1,75 @@
+@property --beat {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+@property --foreground {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #121212;
+}
+
+@property --foreground-subdued {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #7e7e7e;
+}
+
+@property --hover-surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fafafa;
+}
+
+@property --divider {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ededed;
+}
+
+@property --player-panel {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f8f8f8;
+}
+
+@property --player-track {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(18, 18, 18, 0.1);
+}
+
+@property --input-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f8f8f8;
+}
+
+@property --input-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f8f8f8;
+}
+
+@property --button-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f8f8f8;
+}
+
+@property --button-bg-hover {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f2f2f2;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #121212;
@@ -22,6 +94,8 @@
   --button-bg: #f8f8f8;
   --button-bg-hover: #f2f2f2;
   --focus-ring: rgba(18, 18, 18, 0.1);
+
+  --neurosis-red: #ff1f3d;
 
   --white-03: rgba(255, 255, 255, 0.03);
   --white-04: rgba(255, 255, 255, 0.04);
@@ -57,6 +131,113 @@
     --button-bg: #1c1c1c;
     --button-bg-hover: #212121;
     --focus-ring: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    transition:
+      --background 1.2s ease,
+      --foreground 1.2s ease,
+      --foreground-subdued 1.2s ease,
+      --hover-surface 1.2s ease,
+      --divider 1.2s ease,
+      --player-panel 1.2s ease,
+      --player-track 1.2s ease,
+      --input-bg 1.2s ease,
+      --input-border 1.2s ease,
+      --button-bg 1.2s ease,
+      --button-bg-hover 1.2s ease;
+  }
+}
+
+:root[data-neurosis] {
+  --background: #ebe7ff;
+  --foreground: #07090f;
+  --foreground-subdued: #3d3a66;
+  --hover-surface: #e0dbfb;
+  --divider: #cbc4f0;
+  --player-panel: #dcd5fa;
+  --player-track: rgba(7, 9, 15, 0.14);
+  --input-bg: #e0dbfb;
+  --input-border: #cbc4f0;
+  --button-bg: #dcd5fa;
+  --button-bg-hover: #cfc6f6;
+  --focus-ring: rgba(7, 9, 15, 0.12);
+}
+
+:root[data-neurosis="drop"] {
+  --background: #ffe3d9;
+  --foreground-subdued: #a3162f;
+  --hover-surface: #fbd5c8;
+  --divider: #f2b9a8;
+  --player-panel: #f9cfc1;
+  --input-bg: #fbd5c8;
+  --input-border: #f2b9a8;
+  --button-bg: #f9cfc1;
+  --button-bg-hover: #f4c0b0;
+}
+
+:root[data-neurosis="peak"] {
+  --background: #dfe9ff;
+  --foreground: #07090f;
+  --foreground-subdued: #2f3d66;
+  --hover-surface: #d2defb;
+  --divider: #b9c8ec;
+  --player-panel: #cbd8f7;
+  --player-track: rgba(7, 9, 15, 0.14);
+  --input-bg: #d2defb;
+  --input-border: #b9c8ec;
+  --button-bg: #cbd8f7;
+  --button-bg-hover: #bccbf2;
+  --focus-ring: rgba(7, 9, 15, 0.12);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-neurosis="drop"] {
+    animation: neurosis-drift-warm 8s ease-in-out 1.2s infinite alternate;
+  }
+
+  :root[data-neurosis="peak"] {
+    animation: neurosis-drift 9s ease-in-out 1.2s infinite alternate;
+  }
+}
+
+@keyframes neurosis-drift-warm {
+  0% {
+    --background: #ffe3d9;
+    --player-panel: #f9cfc1;
+  }
+  35% {
+    --background: #ffd6e8;
+    --player-panel: #f7c1d8;
+  }
+  70% {
+    --background: #fff1c9;
+    --player-panel: #f7e0a8;
+  }
+  100% {
+    --background: #ffdccf;
+    --player-panel: #f8c6b5;
+  }
+}
+
+@keyframes neurosis-drift {
+  0% {
+    --background: #dfe9ff;
+    --player-panel: #cbd8f7;
+  }
+  35% {
+    --background: #ffd9e1;
+    --player-panel: #f7c4cf;
+  }
+  70% {
+    --background: #e6dcff;
+    --player-panel: #d4c6fa;
+  }
+  100% {
+    --background: #d9f3ff;
+    --player-panel: #c2e4f5;
   }
 }
 

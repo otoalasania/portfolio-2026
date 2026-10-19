@@ -189,6 +189,7 @@ export const personal = {
     audio: "/personal/neurosis.mp3",
     start: 0,
     end: 20.8,
+    moments: { drop: 4.85, peak: 13, outro: 19 },
     spotifyUrl: "https://open.spotify.com/track/7B1HEa7ROgR3lIcG8MpG8H",
   },
   showPhotos: false,

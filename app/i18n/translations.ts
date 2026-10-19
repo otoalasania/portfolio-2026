@@ -235,6 +235,7 @@ export const translations = {
       play: "Play preview",
       pause: "Pause preview",
       listenOn: "Listen on Spotify",
+      backToWork: "ok, back to work",
       photoAlts: [
         "Standing alone on the mats of an empty jiu-jitsu gym",
         "White belt with four stripes resting on the mat",
@@ -505,6 +506,7 @@ export const translations = {
       play: "Reproducir avance",
       pause: "Pausar avance",
       listenOn: "Escuchar en Spotify",
+      backToWork: "vale, de vuelta al trabajo",
       photoAlts: [
         "De pie, solo, sobre el tatami de un gimnasio de jiu-jitsu vacío",
         "Cinturón blanco con cuatro grados sobre el tatami",

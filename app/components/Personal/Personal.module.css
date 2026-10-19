@@ -269,3 +269,7 @@
     margin-left: -24px;
   }
 }
+
+:global(:root[data-neurosis]) .progressFill {
+  background: var(--neurosis-red);
+}
