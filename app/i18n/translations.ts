@@ -46,38 +46,44 @@ export const translations = {
       showAll: "Show all",
       showLess: "Show less",
       viewProject: "View project",
+      roleLabel: "Role",
+      statusLabel: "Status",
+      roles: { solo: "Frontend Developer (solo)", team: "Frontend Developer" },
+      statuses: { live: "Live", ongoing: "Ongoing" },
       items: {
-        "aurora-dashboard": {
-          title: "Aurora Dashboard",
-          summary: "Real-time usage and billing analytics for a SaaS team",
+        "white-square": {
+          title: "White Square",
+          summary: "Real estate platform with interactive apartment navigation.",
           about:
-            "An internal analytics dashboard built to help a small SaaS team track usage and billing metrics in real time. Focused on fast data loading, accessible charts, and a component library that scaled across the rest of the product.",
+            "A real estate platform for browsing and searching apartments. I built the whole frontend solo, from scratch to launch, including an interactive SVG view that takes you from the building down to each individual unit.",
           built: [
-            "Designed and built the component library from scratch",
-            "Cut initial dashboard load time by optimizing data fetching",
-            "Built accessible charts usable with keyboard and screen readers",
+            "Built the entire frontend from scratch to launch",
+            "Apartment search",
+            "Interactive SVG navigation from the building down to each unit",
           ],
         },
-        "cedar-commerce": {
-          title: "Cedar Commerce",
-          summary: "Headless storefront rebuild off a legacy CMS",
+        "digital-academy": {
+          title: "Digital Academy / XPUP",
+          summary: "Education platform running in 4 countries.",
           about:
-            "A headless storefront rebuild for a mid-size e-commerce brand, moving off a legacy CMS onto a fast, componentized frontend. Cut page load times noticeably while keeping the checkout flow accessible and easy to maintain.",
+            "An education platform live in four countries. I joined before the full launch and shipped a new design and content for the CZ and KZ markets, using a separate CMS and test environment so the live GE and GB sites were never affected. I also integrated installment payments with TBC and BOG.",
           built: [
-            "Migrated the storefront off a legacy CMS to a headless setup",
-            "Rebuilt the checkout flow with accessibility as a first-class concern",
-            "Set up a componentized frontend the team could maintain long-term",
+            "Rolled out a new design and content for the Czech and Kazakh markets",
+            "Separate CMS and test environment, so the live Georgian and UK sites kept running without issues",
+            "CMS migrations and content work for each country",
+            "Rescued a broken dev branch by reviewing 99+ conflicting files between two diverged branches",
+            "Integrated installment payments with Georgian banks (TBC and BOG)",
           ],
         },
-        "pulse-analytics": {
-          title: "Pulse Analytics",
-          summary: "Product analytics with fast, accessible charts",
+        "maqro-city": {
+          title: "Maqro City Tbilisi",
+          summary: "Multi-language real estate site with interactive building navigation.",
           about:
-            "A lightweight analytics widget embedded across partner sites, designed to drop into any page with minimal setup. Built with strict performance budgets, keeping the bundle small without sacrificing the interface.",
+            "A property site in four languages (EN, KA, TR, RU) for a residential complex in Tbilisi. My first solo real estate build: the full frontend, including interactive building navigation, which became the foundation for later real estate projects.",
           built: [
-            "Built an embeddable widget that drops into any page with one script tag",
-            "Kept the bundle under a strict size budget for partner sites",
-            "Designed the interface to stay legible at small embedded sizes",
+            "Built the entire frontend solo",
+            "Multi-language property site (EN, KA, TR, RU)",
+            "Interactive building navigation, the foundation for later real estate projects",
           ],
         },
         "wayfarer-app": {
@@ -317,38 +323,44 @@ export const translations = {
       showAll: "Ver todos",
       showLess: "Ver menos",
       viewProject: "Ver proyecto",
+      roleLabel: "Rol",
+      statusLabel: "Estado",
+      roles: { solo: "Desarrollador Frontend (en solitario)", team: "Desarrollador Frontend" },
+      statuses: { live: "En vivo", ongoing: "En curso" },
       items: {
-        "aurora-dashboard": {
-          title: "Aurora Dashboard",
-          summary: "Analítica de uso y facturación en tiempo real para un equipo SaaS",
+        "white-square": {
+          title: "White Square",
+          summary: "Plataforma inmobiliaria con navegación interactiva de apartamentos.",
           about:
-            "Un panel de analítica interno creado para ayudar a un pequeño equipo de SaaS a monitorizar el uso y la facturación en tiempo real. Centrado en una carga de datos rápida, gráficos accesibles y una librería de componentes que se extendió al resto del producto.",
+            "Una plataforma inmobiliaria para explorar y buscar apartamentos. Construí todo el frontend yo solo, desde cero hasta el lanzamiento, incluyendo una vista SVG interactiva que lleva desde el edificio hasta cada unidad individual.",
           built: [
-            "Diseñé y construí la librería de componentes desde cero",
-            "Reduje el tiempo de carga inicial optimizando la obtención de datos",
-            "Construí gráficos accesibles usables con teclado y lectores de pantalla",
+            "Construí todo el frontend desde cero hasta el lanzamiento",
+            "Búsqueda de apartamentos",
+            "Navegación SVG interactiva desde el edificio hasta cada unidad",
           ],
         },
-        "cedar-commerce": {
-          title: "Cedar Commerce",
-          summary: "Reconstrucción headless de una tienda sobre un CMS heredado",
+        "digital-academy": {
+          title: "Digital Academy / XPUP",
+          summary: "Plataforma educativa que funciona en 4 países.",
           about:
-            "Una reconstrucción de tienda headless para una marca de comercio electrónico de tamaño medio, migrando de un CMS heredado a un frontend rápido y basado en componentes. Redujo notablemente los tiempos de carga manteniendo el checkout accesible y fácil de mantener.",
+            "Una plataforma educativa activa en cuatro países. Me uní antes del lanzamiento completo y entregué un nuevo diseño y contenido para los mercados de CZ y KZ, con un CMS y un entorno de pruebas separados para no afectar nunca a los sitios activos de GE y GB. También integré pagos a plazos con TBC y BOG.",
           built: [
-            "Migré la tienda de un CMS heredado a una configuración headless",
-            "Reconstruí el flujo de checkout priorizando la accesibilidad",
-            "Configuré un frontend basado en componentes fácil de mantener a largo plazo",
+            "Lancé un nuevo diseño y contenido para los mercados checo y kazajo",
+            "CMS y entorno de pruebas separados, para que los sitios activos de Georgia y Reino Unido siguieran funcionando sin problemas",
+            "Migraciones de CMS y trabajo de contenido para cada país",
+            "Rescaté una rama de desarrollo rota revisando más de 99 archivos en conflicto entre dos ramas divergentes",
+            "Integré pagos a plazos con bancos georgianos (TBC y BOG)",
           ],
         },
-        "pulse-analytics": {
-          title: "Pulse Analytics",
-          summary: "Analítica de producto con gráficos rápidos y accesibles",
+        "maqro-city": {
+          title: "Maqro City Tbilisi",
+          summary: "Sitio inmobiliario multilingüe con navegación interactiva del edificio.",
           about:
-            "Un widget de analítica ligero integrado en varios sitios de partners, diseñado para instalarse en cualquier página con una configuración mínima. Construido con presupuestos de rendimiento estrictos, manteniendo el paquete pequeño sin sacrificar la interfaz.",
+            "Un sitio de propiedades en cuatro idiomas (EN, KA, TR, RU) para un complejo residencial en Tiflis. Mi primer proyecto inmobiliario en solitario: todo el frontend, incluida la navegación interactiva del edificio, que se convirtió en la base de proyectos inmobiliarios posteriores.",
           built: [
-            "Construí un widget integrable que se instala con una sola etiqueta de script",
-            "Mantuve el paquete dentro de un presupuesto de tamaño estricto",
-            "Diseñé la interfaz para que fuera legible incluso en tamaños pequeños",
+            "Construí todo el frontend yo solo",
+            "Sitio de propiedades multilingüe (EN, KA, TR, RU)",
+            "Navegación interactiva del edificio, la base de proyectos inmobiliarios posteriores",
           ],
         },
         "wayfarer-app": {

@@ -91,6 +91,18 @@ export function ProjectDetail({ slug }: { slug: string }) {
             <dt className={styles.label}>{t.work.yearLabel}</dt>
             <dd className={styles.metaValue}>{project.year}</dd>
           </div>
+          {project.role && (
+            <div className={styles.metaCell}>
+              <dt className={styles.label}>{t.work.roleLabel}</dt>
+              <dd className={styles.metaValue}>{t.work.roles[project.role]}</dd>
+            </div>
+          )}
+          {project.status && (
+            <div className={styles.metaCell}>
+              <dt className={styles.label}>{t.work.statusLabel}</dt>
+              <dd className={styles.metaValue}>{t.work.statuses[project.status]}</dd>
+            </div>
+          )}
           <div className={styles.metaCell}>
             <dt className={styles.label}>{t.work.stackLabel}</dt>
             <dd className={styles.pills}>

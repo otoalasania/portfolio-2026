@@ -60,6 +60,8 @@ export type Project = {
   stack: string[];
   featured: boolean;
   href?: string;
+  role?: "solo" | "team";
+  status?: "live" | "ongoing";
   images: string[];
 };
 
@@ -70,28 +72,46 @@ function projectImages(seed: string, count: number): string[] {
 
 const projects: Project[] = [
   {
-    slug: "aurora-dashboard",
-    year: 2025,
-    stack: ["Next.js", "TypeScript", "Figma"],
+    slug: "white-square",
+    year: 2026,
+    stack: ["Next.js", "TypeScript"],
     featured: true,
-    href: "#",
-    images: projectImages("aurora-dashboard", 5),
+    href: "https://w2.ge/",
+    role: "solo",
+    status: "live",
+    images: [
+      "/assets/screenshots/w2/w2ge-1.png",
+      "/assets/screenshots/w2/w2ge-2.png",
+      "/assets/screenshots/w2/w2ge-3.png",
+    ],
   },
   {
-    slug: "cedar-commerce",
+    slug: "digital-academy",
+    year: 2025,
+    stack: ["Next.js", "TypeScript", "Custom CMS", "TBC & BOG installments"],
+    featured: true,
+    href: "https://xpup.com",
+    role: "team",
+    status: "ongoing",
+    images: [
+      "/assets/screenshots/academy/academy-1.png",
+      "/assets/screenshots/academy/academy-2.png",
+      "/assets/screenshots/academy/academy-3.png",
+    ],
+  },
+  {
+    slug: "maqro-city",
     year: 2025,
     stack: ["Next.js", "TypeScript"],
     featured: true,
-    href: "#",
-    images: projectImages("cedar-commerce", 4),
-  },
-  {
-    slug: "pulse-analytics",
-    year: 2024,
-    stack: ["TypeScript", "Figma"],
-    featured: true,
-    href: "#",
-    images: projectImages("pulse-analytics", 3),
+    href: "https://maqrocitytbilisi.com/en/",
+    role: "solo",
+    status: "live",
+    images: [
+      "/assets/screenshots/maqro-city/maqro-city-1.png",
+      "/assets/screenshots/maqro-city/maqro-city-2.png",
+      "/assets/screenshots/maqro-city/maqro-city-3.png",
+    ],
   },
   {
     slug: "wayfarer-app",
