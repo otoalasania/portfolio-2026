@@ -30,7 +30,7 @@ export const translations = {
     },
     work: {
       title: "Work",
-      subtitle: "Below are some select projects, full walkthroughs on request",
+      subtitle: "Some things I've built recently.",
       closeLabel: "Close",
       moreLabel: "More projects",
       yearLabel: "Year",
@@ -307,7 +307,7 @@ export const translations = {
     },
     work: {
       title: "Trabajo",
-      subtitle: "A continuación, algunos proyectos seleccionados; recorridos completos bajo pedido",
+      subtitle: "Algunas cosas que he construido recientemente.",
       closeLabel: "Cerrar",
       moreLabel: "Más proyectos",
       yearLabel: "Año",
