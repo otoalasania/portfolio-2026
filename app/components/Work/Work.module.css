@@ -153,3 +153,20 @@
   object-fit: cover;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .cardImageEl {
+    filter: brightness(0.8) saturate(0.8);
+  }
+
+  .card:hover .cardImageEl,
+  .card:focus-visible .cardImageEl {
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cardImageEl {
+    transition: filter 0.4s ease;
+  }
+}
+
