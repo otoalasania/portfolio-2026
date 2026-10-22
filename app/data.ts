@@ -117,7 +117,7 @@ const projects: Project[] = [
     slug: "wayfarer-app",
     year: 2024,
     stack: ["Next.js", "TypeScript", "Figma"],
-    featured: true,
+    featured: false,
     href: "#",
     images: projectImages("wayfarer-app", 5),
   },
@@ -176,6 +176,19 @@ export const featuredProjects = projects.filter((p) => p.featured).sort(newestFi
 export const moreProjects = projects.filter((p) => !p.featured).sort(newestFirst);
 
 export const allProjects = [...featuredProjects, ...moreProjects];
+
+const heroCardPicks: { slug: ProjectSlug; image: number }[] = [
+  { slug: "white-square", image: 1 },
+  { slug: "digital-academy", image: 0 },
+  { slug: "digital-academy", image: 1 },
+  { slug: "maqro-city", image: 1 },
+];
+
+export const heroCards = heroCardPicks.map(({ slug, image }) => ({
+  slug,
+  image,
+  src: projects.find((p) => p.slug === slug)!.images[image]!,
+}));
 
 export function findProject(slug: string) {
   for (const group of [featuredProjects, moreProjects]) {
