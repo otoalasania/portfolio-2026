@@ -71,10 +71,6 @@ export type Project = {
   images: string[];
 };
 
-function placeholderImages(seed: string, count: number): string[] {
-  return Array.from({ length: count }, (_, i) => `https://picsum.photos/seed/${seed}-${i + 1}/960/720`);
-}
-
 const projects: Project[] = [
   {
     slug: "white-square",
@@ -167,7 +163,7 @@ const projects: Project[] = [
     languages: ["KA", "EN"],
     href: "https://www.namr.gov.ge/",
     stack: ["Next.js", "TypeScript", "Swiper", "AOS", "in-house CMS"],
-    images: placeholderImages("namr-gov", 3),
+    images: ["/assets/screenshots/namr/namr-1.webp"],
   },
   {
     slug: "efes-georgia",
@@ -182,7 +178,7 @@ const projects: Project[] = [
     languages: ["EN", "KA"],
     href: "https://efesgeorgia.com/",
     stack: ["Next.js 12", "TypeScript", "Swiper", "in-house CMS"],
-    images: placeholderImages("efes-georgia", 3),
+    images: ["/assets/screenshots/efes/efes-1.webp"],
   },
   {
     slug: "maqro",
@@ -206,7 +202,7 @@ const projects: Project[] = [
       "Swiper",
       "in-house CMS",
     ],
-    images: placeholderImages("maqro", 3),
+    images: ["/assets/screenshots/maqro/maqro-1.webp"],
   },
   {
     slug: "maqro-promo",
@@ -229,7 +225,7 @@ const projects: Project[] = [
       "Swiper",
       "in-house CMS",
     ],
-    images: placeholderImages("maqro-promo", 2),
+    images: ["/assets/screenshots/maqro-promo/maqro-promo-1.webp"],
   },
   {
     slug: "healthy-water",
@@ -244,7 +240,7 @@ const projects: Project[] = [
     languages: ["KA", "EN"],
     href: "https://healthywater.ge/",
     stack: ["Next.js 12", "TypeScript", "in-house CMS"],
-    images: placeholderImages("healthy-water", 2),
+    images: ["/assets/screenshots/healthy-water/healthy-water-1.webp"],
   },
   {
     slug: "nabeghlavi",
@@ -259,12 +255,12 @@ const projects: Project[] = [
     languages: ["KA", "EN"],
     href: "https://nabeghlavi.ge/history",
     stack: ["Next.js 12", "TypeScript", "AOS", "Swiper", "in-house CMS"],
-    images: placeholderImages("nabeghlavi", 2),
+    images: ["/assets/screenshots/nabegh/nabegh-1.webp"],
   },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);
-export const moreProjects = projects.filter((p) => !p.featured);
+export const moreProjects = projects.filter((p) => !p.featured).sort((a, b) => b.year - a.year);
 
 export const allProjects = [...featuredProjects, ...moreProjects];
 
