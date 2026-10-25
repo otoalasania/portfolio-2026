@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, type Variants } from "motion/react";
 import { Section } from "../ui";
 import { ArrowUpRight, ChevronIcon } from "../icons";
-import { moreProjects, type Project, type ProjectSlug } from "../../data";
+import { FIRST_PORTFOLIO_URL, moreProjects, type Project, type ProjectSlug } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import { staggerContainer, staggerItem } from "../../lib/motion";
 import styles from "./ProjectIndex.module.css";
@@ -213,6 +213,13 @@ export function ProjectIndex() {
       )}
 
       <p className={styles.closingNote}>{t.work.closingNote}</p>
+      <p className={styles.throwback}>
+        {t.work.throwbackBefore}{" "}
+        <a href={FIRST_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer" className={styles.throwbackLink}>
+          {t.work.throwbackLink}
+          <ArrowUpRight size={14} strokeWidth={1.75} />
+        </a>
+      </p>
     </Section>
   );
 }

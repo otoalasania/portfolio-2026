@@ -165,10 +165,6 @@ export function ProjectDetail({ slug }: { slug: string }) {
             <dd className={styles.metaValue}>{project.period}</dd>
           </div>
           <div className={styles.metaCell}>
-            <dt className={styles.label}>{t.work.clientLabel}</dt>
-            <dd className={styles.metaValue}>{project.client}</dd>
-          </div>
-          <div className={styles.metaCell}>
             <dt className={styles.label}>{t.work.roleLabel}</dt>
             <dd className={styles.metaValue}>{t.work.roles[project.role]}</dd>
           </div>

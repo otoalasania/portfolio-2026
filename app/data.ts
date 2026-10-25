@@ -27,6 +27,7 @@ import CssModulesLogo from "@assets/svgs/logos/cssmodules.svg";
 import JiraLogo from "@assets/svgs/logos/jira.svg";
 
 export const EMAIL = "otar.alasania@gmail.com";
+export const FIRST_PORTFOLIO_URL = "https://otoalasania.github.io/portfolio-website/";
 
 export const profile = {
   name: "Otar Alasania",

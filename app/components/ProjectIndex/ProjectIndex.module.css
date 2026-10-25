@@ -265,11 +265,36 @@
   color: var(--foreground);
 }
 
-.closingNote {
+.closingNote,
+.throwback {
   margin-top: 32px;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.01em;
   color: var(--foreground-subdued);
+}
+
+.throwback {
+  margin-top: 8px;
+}
+
+.throwbackLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: var(--foreground-subdued);
+  text-underline-offset: 3px;
+}
+
+.throwbackLink:hover {
+  text-decoration-color: var(--foreground);
+}
+
+.throwbackLink:focus-visible {
+  outline: 2px solid var(--foreground-subdued);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
