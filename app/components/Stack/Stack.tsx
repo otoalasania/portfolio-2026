@@ -101,18 +101,11 @@ function StackItem({ Icon, name, run, active, nudge, onTrigger, onDone }: StackI
 
   return (
     <motion.li className={styles.item} variants={fadeItem} data-active={active || undefined}>
-      <motion.span
+      <motion.button
+        type="button"
         className={styles.logo}
-        tabIndex={0}
-        role={Effect ? "button" : "img"}
         aria-label={name}
         onClick={() => onTrigger(name)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            onTrigger(name);
-          }
-        }}
         whileHover={{ scale: 1.15, y: -2 }}
         whileTap={{ scale: 0.95 }}
         transition={{ type: "spring", stiffness: 300, damping: 15 }}
@@ -127,7 +120,7 @@ function StackItem({ Icon, name, run, active, nudge, onTrigger, onDone }: StackI
             <Icon className={styles.icon} aria-hidden="true" />
           </motion.span>
         </span>
-      </motion.span>
+      </motion.button>
       <span className={styles.tooltip} aria-hidden="true">
         {name}
       </span>

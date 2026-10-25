@@ -27,43 +27,10 @@ export const BriefcaseIcon = () => (
   </Icon>
 );
 
-export const StarIcon = () => (
-  <Icon>
-    <path
-      d="M12 3.5l2.6 5.4 5.9.8-4.3 4.2 1 5.9L12 16.9l-5.2 2.9 1-5.9-4.3-4.2 5.9-.8L12 3.5Z"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinejoin="round"
-    />
-  </Icon>
-);
-
 export const LayersIcon = () => (
   <Icon>
     <path d="M12 4 4 8l8 4 8-4-8-4Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
     <path d="M4 12l8 4 8-4M4 16l8 4 8-4" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-  </Icon>
-);
-
-export const GridIcon = () => (
-  <Icon>
-    {[3.5, 10.5, 17.5].flatMap((x) =>
-      [3.5, 10.5, 17.5].map((y) => (
-        <rect key={`${x}-${y}`} x={x} y={y} width="3" height="3" rx="0.6" stroke="currentColor" strokeWidth="1.4" />
-      ))
-    )}
-  </Icon>
-);
-
-export const PencilIcon = () => (
-  <Icon>
-    <path
-      d="M15 4.5 19.5 9 8 20.5H3.5V16L15 4.5Z"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinejoin="round"
-    />
-    <path d="M12.5 7 17 11.5" stroke="currentColor" strokeWidth="1.6" />
   </Icon>
 );
 
@@ -191,28 +158,10 @@ export const LinkedInIcon = ({ size = 16 }: { size?: number }) => (
   </Icon>
 );
 
-export const CommandIcon = () => (
-  <Icon>
-    <path
-      d="M8 6.5A1.8 1.8 0 1 1 9.8 8.3H8V6.5Zm0 11A1.8 1.8 0 1 0 9.8 15.7H8v1.8Zm8-11A1.8 1.8 0 1 0 14.2 8.3H16V6.5Zm0 11A1.8 1.8 0 1 1 14.2 15.7H16v1.8Z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinejoin="round"
-    />
-    <rect x="8" y="8.3" width="8" height="7.4" stroke="currentColor" strokeWidth="1.5" />
-  </Icon>
-);
-
 export const GlobeIcon = () => (
   <Icon>
     <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.6" />
     <path d="M3.5 12h17M12 3.5c2.4 2.3 3.6 5.3 3.6 8.5s-1.2 6.2-3.6 8.5c-2.4-2.3-3.6-5.3-3.6-8.5S9.6 5.8 12 3.5Z" stroke="currentColor" strokeWidth="1.6" />
-  </Icon>
-);
-
-export const PlusIcon = () => (
-  <Icon>
-    <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
   </Icon>
 );
 
@@ -243,5 +192,19 @@ export const PlayIcon = () => (
 export const PauseIcon = () => (
   <Icon>
     <path d="M8.5 6v12M15.5 6v12" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+  </Icon>
+);
+
+export const ArrowDownIcon = ({ size = 14 }: { size?: number }) => (
+  <svg viewBox="0 0 24 24" fill="none" width={size} height={size} style={{ flexShrink: 0 }}>
+    <path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const DocumentDownIcon = () => (
+  <Icon size={20}>
+    <path d="M7.5 3.5h6L18 8v11a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1.5-1.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+    <path d="M13 3.5V8h5" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+    <path data-arrow d="M12 10.5v6M9.5 14l2.5 2.5 2.5-2.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
   </Icon>
 );

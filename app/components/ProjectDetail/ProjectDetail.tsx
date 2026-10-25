@@ -8,13 +8,17 @@ import { AnimatePresence, motion } from "motion/react";
 import { SectionLabel } from "../ui";
 import { ArrowUpRight, CloseIcon } from "../icons";
 import { PROJECT_TITLE_ID, useSheet } from "../ProjectSheet/ProjectSheet";
-import { findProject } from "../../data";
+import { findProject, pageTitle } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import { fadeItem } from "../../lib/motion";
 import { clearProjectScreen, pendingProjectScreen } from "../../lib/projectScreen";
 import styles from "./ProjectDetail.module.css";
 
 const pad = (n: number) => String(n).padStart(2, "0");
+
+function showTitle(title: string) {
+  document.title = pageTitle(title);
+}
 
 export function ProjectDetail({ slug }: { slug: string }) {
   const { t } = useLocale();
@@ -30,7 +34,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
   }, []);
 
   useEffect(() => {
-    if (sheet && title) document.title = `${title} — Otar Alasania`;
+    if (sheet && title) showTitle(title);
   }, [sheet, title]);
 
   if (!found) return null;

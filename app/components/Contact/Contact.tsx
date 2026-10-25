@@ -1,18 +1,15 @@
 "use client";
 
-import { useActionState, useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
+import { useActionState, useEffect, useId, useRef, useState } from "react";
 import { Section } from "../ui";
 import { ArrowUpRight } from "../icons";
 import { socials } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import { sendMessage, type ContactField, type ContactState } from "../../actions/sendMessage";
+import { useClientValue } from "../../lib/useClientValue";
 import styles from "./Contact.module.css";
 
 const EMPTY_FORM = { name: "", email: "", message: "" };
-
-function subscribeNoop() {
-  return () => {};
-}
 
 function isApplePlatform() {
   return /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent);
@@ -24,7 +21,7 @@ export function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const startedAt = useRef(0);
   const [form, setForm] = useState(EMPTY_FORM);
-  const isApple = useSyncExternalStore(subscribeNoop, isApplePlatform, () => false);
+  const isApple = useClientValue(isApplePlatform, false);
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -127,6 +124,7 @@ export function Contact() {
         <p className={styles.status} aria-live="polite">
           {!pending && state.status === "success" && t.contact.success}
           {!pending && state.status === "error" && t.contact.error}
+          {!pending && state.status === "rateLimited" && t.contact.rateLimited}
         </p>
       </form>
 

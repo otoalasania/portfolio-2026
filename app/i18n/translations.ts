@@ -1,21 +1,19 @@
 export type Locale = "en" | "es";
 
-// Item arrays below are matched by index to the corresponding arrays in
-// ../data.ts (experience, ventures, writing) — keep the order in sync.
 export const translations = {
   en: {
     nav: {
       top: "Profile",
       work: "Work",
       experience: "Experience",
-      skills: "Skills",
       stack: "Stack",
-      ventures: "Ventures",
-      writing: "Writing",
       personal: "Personal",
       contact: "Contact",
-      more: "More",
-      less: "Less",
+      label: "Sections",
+    },
+    header: {
+      switchLanguage: "Switch to Spanish",
+      clockLabel: "Local time in Alicante",
     },
     profile: {
       role: "Frontend Developer",
@@ -23,7 +21,7 @@ export const translations = {
       bioLocationPrefix: ", based in",
       bioLocation: "Alicante",
       bioAfter:
-        "and originally from Tbilisi. I've spent the last 5 years building production web apps with React, Next.js and TypeScript.",
+        "and originally from Georgia. I've spent the last 5 years building production web apps with React, Next.js and TypeScript.",
       bioShort:
         "Frontend developer at Noxtton, based in Alicante. I build fast, accessible interfaces with clean UI engineering.",
       verified: "Verified",
@@ -166,11 +164,16 @@ export const translations = {
     footer: {
       location: "Alicante, Spain",
     },
+    cv: {
+      toast: "CV.pdf, here you go",
+      takeCv: "Download CV",
+    },
     experience: {
       title: "Experience",
       subtitle:
         "Where I've been working so far.",
       at: "at",
+      present: "Now",
       items: [
         {
           role: "Frontend Developer",
@@ -182,57 +185,7 @@ export const translations = {
         },
       ],
     },
-    skills: {
-      title: "Skills",
-      subtitle:
-        "A mix of the soft skills that shape how I work, and the technical tools I use to bring ideas to life.",
-      groups: [
-        {
-          category: "General",
-          items: [
-            "Critical Thinking",
-            "Communication",
-            "Problem Solving",
-            "Collaboration",
-            "Attention to Detail",
-            "Adaptability",
-          ],
-        },
-        {
-          category: "Technical",
-          items: [
-            "React",
-            "TypeScript",
-            "Next.js",
-            "CSS & Animation",
-            "Figma",
-            "Accessibility",
-            "Design Systems",
-            "Git & CI/CD",
-          ],
-        },
-      ],
-    },
     stack: { title: "Stack" },
-    ventures: {
-      title: "Ventures",
-      items: [
-        { desc: "Framer Template Store" },
-        { desc: "Website Directory" },
-        { desc: "Font Directory" },
-      ],
-    },
-    writing: {
-      title: "Writing",
-      minutesSuffix: "m",
-      items: [
-        { title: "How to think like both a designer & engineer" },
-        { title: "UI Performance" },
-        { title: "How AI is changing my workflow" },
-        { title: "Design tokens 101" },
-        { title: "Hello world" },
-      ],
-    },
     personal: {
       title: "Personal",
       blurbBefore: "Outside of work I train and compete in",
@@ -266,6 +219,7 @@ export const translations = {
       orEnterToSend: "to send",
       success: "Thanks, I'll get back to you soon.",
       error: "Something went wrong. You can email me directly at otar.alasania@gmail.com.",
+      rateLimited: "That's a lot of messages in a short time. Please try again in a few minutes.",
       errors: {
         name: { required: "Please enter your name.", tooLong: "Keep your name under 100 characters." },
         email: {
@@ -287,14 +241,14 @@ export const translations = {
       top: "Perfil",
       work: "Trabajo",
       experience: "Experiencia",
-      skills: "Habilidades",
       stack: "Stack",
-      ventures: "Proyectos",
-      writing: "Escritura",
       personal: "Personal",
       contact: "Contacto",
-      more: "Más",
-      less: "Menos",
+      label: "Secciones",
+    },
+    header: {
+      switchLanguage: "Cambiar a inglés",
+      clockLabel: "Hora local en Alicante",
     },
     profile: {
       role: "Desarrollador Frontend",
@@ -302,7 +256,7 @@ export const translations = {
       bioLocationPrefix: ", con base en",
       bioLocation: "Alicante",
       bioAfter:
-        "y originario de Tiflis. Llevo 5 años creando aplicaciones web en producción con React, Next.js y TypeScript.",
+        "y originario de Georgia. Llevo 5 años creando aplicaciones web en producción con React, Next.js y TypeScript.",
       bioShort:
         "Desarrollador frontend en Noxtton, con base en Alicante. Construyo interfaces rápidas y accesibles con una ingeniería de UI limpia.",
       verified: "Verificado",
@@ -445,11 +399,16 @@ export const translations = {
     footer: {
       location: "Alicante, España",
     },
+    cv: {
+      toast: "CV.pdf, aquí lo tienes",
+      takeCv: "Descargar CV",
+    },
     experience: {
       title: "Experiencia",
       subtitle:
         "Dónde he trabajado hasta ahora.",
       at: "en",
+      present: "Ahora",
       items: [
         {
           role: "Desarrollador Frontend",
@@ -461,57 +420,7 @@ export const translations = {
         },
       ],
     },
-    skills: {
-      title: "Habilidades",
-      subtitle:
-        "Una mezcla de las habilidades blandas que definen cómo trabajo, y las herramientas técnicas que uso para dar vida a las ideas.",
-      groups: [
-        {
-          category: "General",
-          items: [
-            "Pensamiento crítico",
-            "Comunicación",
-            "Resolución de problemas",
-            "Colaboración",
-            "Atención al detalle",
-            "Adaptabilidad",
-          ],
-        },
-        {
-          category: "Técnicas",
-          items: [
-            "React",
-            "TypeScript",
-            "Next.js",
-            "CSS y Animación",
-            "Figma",
-            "Accesibilidad",
-            "Sistemas de diseño",
-            "Git y CI/CD",
-          ],
-        },
-      ],
-    },
     stack: { title: "Stack" },
-    ventures: {
-      title: "Proyectos",
-      items: [
-        { desc: "Tienda de plantillas Framer" },
-        { desc: "Directorio de sitios web" },
-        { desc: "Directorio de fuentes" },
-      ],
-    },
-    writing: {
-      title: "Escritura",
-      minutesSuffix: "m",
-      items: [
-        { title: "Cómo pensar como diseñador e ingeniero a la vez" },
-        { title: "Rendimiento de UI" },
-        { title: "Cómo la IA está cambiando mi flujo de trabajo" },
-        { title: "Fundamentos de los tokens de diseño" },
-        { title: "Hola mundo" },
-      ],
-    },
     personal: {
       title: "Personal",
       blurbBefore: "Fuera del trabajo entreno y compito en",
@@ -545,6 +454,7 @@ export const translations = {
       orEnterToSend: "para enviar",
       success: "Gracias, te responderé pronto.",
       error: "Algo salió mal. Puedes escribirme directamente a otar.alasania@gmail.com.",
+      rateLimited: "Son muchos mensajes en poco tiempo. Inténtalo de nuevo en unos minutos.",
       errors: {
         name: { required: "Escribe tu nombre.", tooLong: "El nombre debe tener menos de 100 caracteres." },
         email: {

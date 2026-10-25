@@ -1,5 +1,6 @@
 "use server";
 
+import { headers } from "next/headers";
 import { Resend } from "resend";
 import { EMAIL } from "../data";
 
@@ -10,12 +11,16 @@ export type ContactState =
   | { status: "idle" }
   | { status: "success" }
   | { status: "invalid"; errors: Partial<Record<ContactField, ContactFieldError>> }
+  | { status: "rateLimited" }
   | { status: "error" };
 
-// TODO: switch to a verified domain address (e.g. hello@otoalasania.com) once the domain is set up in Resend.
-const FROM = "Portfolio <onboarding@resend.dev>";
+const FROM = process.env.CONTACT_FROM_EMAIL || "Portfolio <onboarding@resend.dev>";
 const MIN_FILL_MS = 3000;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+
+const recentSends = new Map<string, number[]>();
 
 function text(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -39,8 +44,23 @@ function validate(name: string, email: string, message: string) {
   return errors;
 }
 
+async function clientKey() {
+  const list = await headers();
+  return list.get("x-forwarded-for")?.split(",")[0]?.trim() || list.get("x-real-ip") || "unknown";
+}
+
+function takeSendSlot(key: string) {
+  const now = Date.now();
+  for (const [k, times] of recentSends) {
+    if (times.every((t) => now - t >= RATE_LIMIT_WINDOW_MS)) recentSends.delete(k);
+  }
+  const recent = (recentSends.get(key) ?? []).filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+  if (recent.length >= RATE_LIMIT_MAX) return false;
+  recentSends.set(key, [...recent, now]);
+  return true;
+}
+
 export async function sendMessage(_prev: ContactState, formData: FormData): Promise<ContactState> {
-  // TODO: add Cloudflare Turnstile if spam gets past the honeypot and timing check.
   const honeypot = text(formData, "website");
   const startedAt = Number(text(formData, "startedAt"));
   if (honeypot || !Number.isFinite(startedAt) || Date.now() - startedAt < MIN_FILL_MS) {
@@ -59,6 +79,8 @@ export async function sendMessage(_prev: ContactState, formData: FormData): Prom
     console.error("Contact form: RESEND_API_KEY is not set");
     return { status: "error" };
   }
+
+  if (!takeSendSlot(await clientKey())) return { status: "rateLimited" };
 
   try {
     const { error } = await new Resend(apiKey).emails.send({

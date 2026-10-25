@@ -1,70 +1,38 @@
 "use client";
 
-import { useState } from "react";
-import { createPortal } from "react-dom";
 import Image from "next/image";
 import { motion } from "motion/react";
 import FlagSpain from "@assets/svgs/flags/flag-spain.svg";
+import VerifiedBadge from "@assets/svgs/badges/verified.svg";
 import { profile } from "../../data";
 import { CompanyTag } from "../CompanyTag/CompanyTag";
 import { useLocale } from "../../i18n/LocaleContext";
 import { staggerContainer, staggerItem } from "../../lib/motion";
+import { CvCat } from "../CvCat/CvCat";
 import styles from "./Profile.module.css";
 
 export function Profile() {
   const { t } = useLocale();
-  const [cowRunning, setCatRunning] = useState(false);
 
   return (
     <motion.div className={styles.wrapper} initial="hidden" animate="visible" variants={staggerContainer}>
-      <motion.button
-        type="button"
-        onClick={() => setCatRunning(true)}
-        disabled={cowRunning}
-        className={styles.avatarBox}
-        variants={staggerItem}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.97 }}
-        transition={{ type: "spring", stiffness: 260, damping: 18 }}
-        aria-label={profile.name}
-      >
-        <Image
-          src="/knight-in-chair.webp"
-          alt=""
-          width={60}
-          height={60}
-          className={styles.avatarInner}
-        />
-        <span className={styles.avatarGradient} />
-        <span className={styles.statusDot} />
-      </motion.button>
-
-      {cowRunning &&
-        typeof document !== "undefined" &&
-        createPortal(
-          <motion.div
-            className={styles.cowTrain}
-            initial={{ x: "115vw" }}
-            animate={{ x: "-45vw", y: [0, -16, 0, -16, 0, -16, 0] }}
-            transition={{
-              x: { duration: 1.8, ease: "linear" },
-              y: { duration: 1.8, ease: "easeInOut" },
-            }}
-            onAnimationComplete={() => setCatRunning(false)}
-          >
-            🐈
-          </motion.div>,
-          document.body
-        )}
+      <motion.div variants={staggerItem}>
+        <CvCat label={profile.name}>
+          <Image
+            src="/knight-in-chair.webp"
+            alt=""
+            width={60}
+            height={60}
+            className={styles.avatarInner}
+          />
+          <span className={styles.avatarGradient} />
+          <span className={styles.statusDot} />
+        </CvCat>
+      </motion.div>
 
       <motion.div className={styles.nameRow} variants={staggerItem}>
         <h1 className={styles.name}>{profile.name}</h1>
-        <Image
-          src="/Twitter_Verified_Badge.svg.webp"
-          alt={t.profile.verified}
-          width={20}
-          height={20}
-        />
+        <VerifiedBadge width={20} height={20} role="img" aria-label={t.profile.verified} />
       </motion.div>
       <motion.p className={styles.role} variants={staggerItem}>
         {t.profile.role}
