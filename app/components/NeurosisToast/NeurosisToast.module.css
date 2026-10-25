@@ -1,0 +1,27 @@
+.anchor {
+  position: fixed;
+  top: 24px;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.toast {
+  border-radius: 80px;
+  border: 1px solid var(--white-10);
+  background: var(--black-70);
+  padding: 6px 12px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 6px 12px rgba(0, 0, 0, 0.04);
+}

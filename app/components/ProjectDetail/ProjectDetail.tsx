@@ -11,6 +11,7 @@ import { PROJECT_TITLE_ID, useSheet } from "../ProjectSheet/ProjectSheet";
 import { findProject } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import { fadeItem } from "../../lib/motion";
+import { clearProjectScreen, pendingProjectScreen } from "../../lib/projectScreen";
 import styles from "./ProjectDetail.module.css";
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -19,10 +20,14 @@ export function ProjectDetail({ slug }: { slug: string }) {
   const { t } = useLocale();
   const router = useRouter();
   const sheet = useSheet();
-  const [activeScreen, setActiveScreen] = useState(0);
+  const [activeScreen, setActiveScreen] = useState(pendingProjectScreen);
 
   const found = findProject(slug);
-  const title = found ? t.work.items[found.project.slug].title : null;
+  const title = found?.project.title ?? null;
+
+  useEffect(() => {
+    clearProjectScreen();
+  }, []);
 
   useEffect(() => {
     if (sheet && title) document.title = `${title} — Otar Alasania`;
@@ -34,7 +39,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
   const total = group.length;
   const prev = group[(index - 1 + total) % total]!;
   const next = group[(index + 1) % total]!;
-  const mainImage = project.images[activeScreen];
+  const mainImage = project.images[activeScreen] ?? project.images[0];
 
   const closeContent = (
     <>
@@ -81,27 +86,33 @@ export function ProjectDetail({ slug }: { slug: string }) {
       <motion.div className={styles.body} initial="hidden" animate="visible" variants={fadeItem}>
         <header className={styles.heading}>
           <h2 id={PROJECT_TITLE_ID} className={styles.title}>
-            {text.title}
+            {project.title}
           </h2>
-          <p className={styles.summary}>{text.summary}</p>
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.visit}
+            title={project.href}
+          >
+            {t.work.visitSite}
+            <span className={styles.visitArrow}>
+              <ArrowUpRight size={16} strokeWidth={1.75} />
+            </span>
+          </a>
+          <p className={styles.summary}>{text.tagline}</p>
+          {project.secondaryHref && (
+            <a
+              href={project.secondaryHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.secondaryLink}
+            >
+              {new URL(project.secondaryHref).hostname}
+              <ArrowUpRight size={14} strokeWidth={1.75} />
+            </a>
+          )}
         </header>
-
-        <dl className={styles.meta}>
-          <div className={styles.metaCell}>
-            <dt className={styles.label}>{t.work.yearLabel}</dt>
-            <dd className={styles.metaValue}>{project.year}</dd>
-          </div>
-          <div className={styles.metaCell}>
-            <dt className={styles.label}>{t.work.stackLabel}</dt>
-            <dd className={styles.pills}>
-              {project.stack.map((name) => (
-                <span key={name} className={styles.pill}>
-                  {name}
-                </span>
-              ))}
-            </dd>
-          </div>
-        </dl>
 
         {mainImage && (
           <div className={styles.mainPolaroid}>
@@ -117,7 +128,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
                 >
                   <Image
                     src={mainImage}
-                    alt={`${text.title} — ${t.work.screenLabel} ${activeScreen + 1}`}
+                    alt={`${project.title} — ${t.work.screenLabel} ${activeScreen + 1}`}
                     fill
                     sizes="(min-width: 640px) 560px, 100vw"
                     className={styles.polaroidImageEl}
@@ -129,15 +140,65 @@ export function ProjectDetail({ slug }: { slug: string }) {
           </div>
         )}
 
+        {project.images.length > 1 && (
+          <div className={styles.thumbs} role="group" aria-label={t.work.screensLabel}>
+            {project.images.map((image, i) => (
+              <button
+                key={image}
+                type="button"
+                className={styles.thumb}
+                aria-pressed={i === activeScreen}
+                aria-label={`${t.work.screenLabel} ${i + 1}`}
+                onClick={() => setActiveScreen(i)}
+              >
+                <span className={styles.polaroidImage}>
+                  <Image src={image} alt="" fill sizes="80px" className={styles.polaroidImageEl} />
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
+
+        <dl className={styles.meta}>
+          <div className={styles.metaCell}>
+            <dt className={styles.label}>{t.work.yearLabel}</dt>
+            <dd className={styles.metaValue}>{project.period}</dd>
+          </div>
+          <div className={styles.metaCell}>
+            <dt className={styles.label}>{t.work.roleLabel}</dt>
+            <dd className={styles.metaValue}>{t.work.roles[project.role]}</dd>
+          </div>
+          <div className={styles.metaCell}>
+            <dt className={styles.label}>{t.work.statusLabel}</dt>
+            <dd className={styles.metaValue}>{t.work.statuses[project.status]}</dd>
+          </div>
+          {project.languages && (
+            <div className={styles.metaCell}>
+              <dt className={styles.label}>{t.work.languagesLabel}</dt>
+              <dd className={styles.metaValue}>{project.languages.join(" · ")}</dd>
+            </div>
+          )}
+          <div className={styles.metaCell}>
+            <dt className={styles.label}>{t.work.stackLabel}</dt>
+            <dd className={styles.pills}>
+              {project.stack.map((name) => (
+                <span key={name} className={styles.pill}>
+                  {name}
+                </span>
+              ))}
+            </dd>
+          </div>
+        </dl>
+
         <section className={styles.block}>
           <SectionLabel>{t.work.aboutLabel}</SectionLabel>
-          <p className={styles.paragraph}>{text.about}</p>
+          <p className={styles.paragraph}>{text.description}</p>
         </section>
 
         <section className={styles.block}>
-          <SectionLabel>{t.work.builtLabel}</SectionLabel>
+          <SectionLabel>{t.work.highlightsLabel}</SectionLabel>
           <ol className={styles.builtList}>
-            {text.built.map((item, i) => (
+            {text.highlights.map((item, i) => (
               <li key={item} className={styles.builtItem}>
                 <span className={styles.builtNumber}>{pad(i + 1)}</span>
                 <span>{item}</span>
@@ -145,42 +206,12 @@ export function ProjectDetail({ slug }: { slug: string }) {
             ))}
           </ol>
         </section>
-
-        {project.images.length > 1 && (
-          <section className={styles.block}>
-            <SectionLabel>{t.work.screensLabel}</SectionLabel>
-            <div className={styles.thumbs}>
-              {project.images.map((image, i) => (
-                <button
-                  key={image}
-                  type="button"
-                  className={styles.thumb}
-                  aria-pressed={i === activeScreen}
-                  aria-label={`${t.work.screenLabel} ${i + 1}`}
-                  onClick={() => setActiveScreen(i)}
-                >
-                  <span className={styles.polaroidImage}>
-                    <Image src={image} alt="" fill sizes="96px" className={styles.polaroidImageEl} />
-                  </span>
-                </button>
-              ))}
-            </div>
-          </section>
-        )}
       </motion.div>
 
       <footer className={styles.footer}>
-        {project.href ? (
-          <a href={project.href} target="_blank" rel="noopener noreferrer" className={styles.visit}>
-            {t.work.visitSite}
-            <ArrowUpRight size={16} strokeWidth={1.75} />
-          </a>
-        ) : (
-          <span className={styles.walkthrough}>{t.work.walkthrough}</span>
-        )}
         <nav className={styles.nav}>
-          {navLink(prev, `← ${t.work.prevProject}`, `${t.work.prevProject}: ${t.work.items[prev.slug].title}`)}
-          {navLink(next, `${t.work.nextProject} →`, `${t.work.nextProject}: ${t.work.items[next.slug].title}`)}
+          {navLink(prev, `← ${t.work.prevProject}`, `${t.work.prevProject}: ${prev.title}`)}
+          {navLink(next, `${t.work.nextProject} →`, `${t.work.nextProject}: ${next.title}`)}
         </nav>
       </footer>
     </article>

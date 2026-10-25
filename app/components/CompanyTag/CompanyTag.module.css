@@ -1,0 +1,19 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--color-white);
+}

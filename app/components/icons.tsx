@@ -233,3 +233,15 @@ export const ArrowUpRight = ({ size = 14, strokeWidth = 1.8 }: { size?: number; 
     <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
+
+export const PlayIcon = () => (
+  <Icon>
+    <path d="M8 5.5v13l10.5-6.5L8 5.5Z" fill="currentColor" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+  </Icon>
+);
+
+export const PauseIcon = () => (
+  <Icon>
+    <path d="M8.5 6v12M15.5 6v12" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+  </Icon>
+);

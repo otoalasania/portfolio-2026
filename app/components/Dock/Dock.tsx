@@ -9,6 +9,10 @@ import styles from "./Dock.module.css";
 type DockItem = (typeof dock)[number];
 
 const items = dock.filter((item) => !HIDDEN_SECTIONS.has(item.id));
+const PHONE_ROW_MAX = 6;
+const collapsible = items.length > PHONE_ROW_MAX;
+const primary = collapsible ? items.slice(0, PHONE_ROW_MAX - 1) : items;
+const rest = collapsible ? items.slice(PHONE_ROW_MAX - 1) : [];
 
 export function Dock() {
   const { t } = useLocale();
@@ -46,30 +50,31 @@ export function Dock() {
     );
   }
 
-  const primary = items.slice(0, 4);
-  const rest = items.slice(4);
-
   return (
     <nav className={styles.nav} data-hidden={hidden}>
       <div className={styles.fullRow}>{items.map(renderButton)}</div>
 
       <div className={styles.phoneStack}>
-        <div className={styles.secondRow} data-expanded={expanded}>
-          {rest.map(renderButton)}
-        </div>
+        {collapsible && (
+          <div className={styles.secondRow} data-expanded={expanded}>
+            {rest.map(renderButton)}
+          </div>
+        )}
         <div className={styles.primaryRow}>
           {primary.map(renderButton)}
-          <button
-            type="button"
-            aria-label={expanded ? t.nav.less : t.nav.more}
-            aria-expanded={expanded}
-            onClick={() => setExpanded((e) => !e)}
-            className={`${styles.item} ${styles.expandItem}`}
-          >
-            <span className={expanded ? styles.chevronFlipped : ""}>
-              <ChevronIcon />
-            </span>
-          </button>
+          {collapsible && (
+            <button
+              type="button"
+              aria-label={expanded ? t.nav.less : t.nav.more}
+              aria-expanded={expanded}
+              onClick={() => setExpanded((e) => !e)}
+              className={`${styles.item} ${styles.expandItem}`}
+            >
+              <span className={expanded ? styles.chevronFlipped : ""}>
+                <ChevronIcon />
+              </span>
+            </button>
+          )}
         </div>
       </div>
     </nav>

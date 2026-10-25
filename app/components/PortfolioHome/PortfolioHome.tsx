@@ -11,6 +11,7 @@ import { Personal } from "../Personal/Personal";
 import { Contact } from "../Contact/Contact";
 import { Footer } from "../Footer/Footer";
 import { Dock } from "../Dock/Dock";
+import { NeurosisToast } from "../NeurosisToast/NeurosisToast";
 import { HIDDEN_SECTIONS } from "../../data";
 import styles from "./PortfolioHome.module.css";
 
@@ -18,7 +19,7 @@ const shown = (id: string) => !HIDDEN_SECTIONS.has(id);
 
 export default function PortfolioHome() {
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-neurosis-beat>
       <div className={styles.content}>
         <Header />
         <Profile />
@@ -35,6 +36,7 @@ export default function PortfolioHome() {
       </div>
 
       <Dock />
+      <NeurosisToast />
     </div>
   );
 }

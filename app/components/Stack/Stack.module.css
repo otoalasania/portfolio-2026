@@ -1,9 +1,11 @@
 .row {
   margin-top: 16px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
   align-items: center;
   justify-content: space-between;
+  row-gap: 24px;
+  --icon-size: 32px;
   list-style: none;
   color: var(--foreground);
 }
@@ -11,6 +13,42 @@
 .item {
   position: relative;
   display: flex;
+  --tip-x: -50%;
+  --tip-left: 50%;
+  --tip-caret: 50%;
+}
+
+.item:nth-child(5n + 1) {
+  --tip-x: 0%;
+  --tip-left: 0%;
+  --tip-caret: calc(var(--icon-size) / 2);
+}
+
+.item:nth-child(5n) {
+  --tip-x: -100%;
+  --tip-left: 100%;
+  --tip-caret: calc(100% - var(--icon-size) / 2);
+}
+
+@media (min-width: 640px) {
+  .item:nth-child(5n + 1),
+  .item:nth-child(5n) {
+    --tip-x: -50%;
+    --tip-left: 50%;
+    --tip-caret: 50%;
+  }
+
+  .item:first-child {
+    --tip-x: 0%;
+    --tip-left: 0%;
+    --tip-caret: calc(var(--icon-size) / 2);
+  }
+
+  .item:last-child {
+    --tip-x: -100%;
+    --tip-left: 100%;
+    --tip-caret: calc(100% - var(--icon-size) / 2);
+  }
 }
 
 .logo {
@@ -23,25 +61,263 @@
   outline-offset: 4px;
 }
 
+.logo[role="button"] {
+  cursor: pointer;
+}
+
+.hop {
+  display: flex;
+  transform-origin: 50% 100%;
+}
+
 .icon {
-  width: 40px;
-  height: 40px;
+  width: var(--icon-size);
+  height: var(--icon-size);
   flex: none;
+}
+
+@media (min-width: 640px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 4px;
+  }
 }
 
 .tooltip {
   composes: tooltip from "../ui.module.css";
   z-index: 1;
+  top: calc(100% + 10px);
+  bottom: auto;
+  left: var(--tip-left);
+  transform: translateX(var(--tip-x)) translateY(-4px) scale(0.96);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition:
+    opacity 0.15s ease,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tooltip::after,
+.effectTip::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: var(--tip-caret);
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-bottom-color: var(--black-70);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .item:hover .tooltip {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(var(--tip-x)) translateY(0) scale(1);
   }
 }
 
 .logo:focus-visible + .tooltip {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(var(--tip-x)) translateY(0) scale(1);
+}
+
+.item[data-active] .tooltip {
+  opacity: 0;
+  transition: none;
+}
+
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.speedLine {
+  border-radius: 1px;
+  background: var(--foreground);
+}
+
+.squiggle {
+  position: absolute;
+  top: calc(50% + var(--icon-size) / 2 + 2px);
+  left: 50%;
+  width: var(--icon-size);
+  height: 5px;
+  margin-left: calc(var(--icon-size) / -2);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.effectTipAnchor {
+  position: absolute;
+  z-index: 2;
+  top: calc(100% + 10px);
+  left: 0;
+  pointer-events: none;
+}
+
+.effectTipAnchor[data-above] {
+  top: auto;
+  bottom: calc(100% + 10px);
+}
+
+.effectTipAnchor[data-above] .effectTip::after {
+  top: 100%;
+  bottom: auto;
+  border-top-color: var(--black-70);
+  border-bottom-color: transparent;
+}
+
+.effectTip {
+  composes: tooltip from "../ui.module.css";
+  position: relative;
+  bottom: auto;
+  left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transform: none;
+  opacity: 1;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: none;
+}
+
+.effectTip > * {
+  flex: none;
+}
+
+.spinner {
+  display: inline-block;
+  width: 1em;
+  text-align: center;
+}
+
+.mono {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+}
+
+.tight {
+  gap: 0;
+  white-space: pre;
+}
+
+.stacked {
+  flex-direction: column;
+  gap: 6px;
+}
+
+.caret {
+  display: inline-block;
+  width: 1.5px;
+  height: 12px;
+  margin-left: 1px;
+  background: #aeafad;
+  animation: caretBlink 1s steps(1) infinite;
+}
+
+@keyframes caretBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.contribGrid {
+  display: grid;
+  grid-template-rows: repeat(3, 6px);
+  grid-auto-flow: column;
+  grid-auto-columns: 6px;
+  gap: 2px;
+}
+
+.contribCell {
+  display: block;
+  border-radius: 1.5px;
+}
+
+.lozenge {
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.03em;
+}
+
+.selection {
+  --box: calc(var(--icon-size) + 10px);
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: var(--box);
+  height: var(--box);
+  margin: calc(var(--box) / -2) 0 0 calc(var(--box) / -2);
+  border: 1px solid #0d99ff;
+  pointer-events: none;
+}
+
+.handle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 1px solid #0d99ff;
+  background: var(--color-white);
+}
+
+.tl {
+  top: -3px;
+  left: -3px;
+}
+
+.tr {
+  top: -3px;
+  right: -3px;
+}
+
+.bl {
+  bottom: -3px;
+  left: -3px;
+}
+
+.br {
+  right: -3px;
+  bottom: -3px;
+}
+
+.dimensions {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: #0d99ff;
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.cursor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.cursorTag {
+  margin: 12px 0 0 -2px;
+  padding: 1px 5px;
+  border-radius: 0 4px 4px 4px;
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  white-space: nowrap;
 }

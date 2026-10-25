@@ -15,3 +15,22 @@
   padding-top: 40px;
   padding-bottom: 160px;
 }
+
+:global(:root[data-neurosis="drop"]) .content img {
+  filter: grayscale(1) sepia(1) saturate(5) hue-rotate(-45deg) contrast(1.15) brightness(0.9);
+}
+
+:global(:root[data-neurosis="peak"]) .content img {
+  filter: grayscale(1) sepia(1) saturate(3) hue-rotate(180deg) contrast(1.1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .content img {
+    transition: filter 1.2s ease;
+  }
+
+  :global(:root[data-neurosis="drop"]) .page,
+  :global(:root[data-neurosis="peak"]) .page {
+    background: color-mix(in oklab, var(--background), var(--neurosis-red) calc(var(--beat) * 18%));
+  }
+}

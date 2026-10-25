@@ -18,139 +18,147 @@ export const translations = {
       less: "Less",
     },
     profile: {
-      role: "Mid Frontend Developer",
-      bioBefore: "Hey, I'm Otar a frontend developer at",
-      bioLocationPrefix: "based in",
-      bioLocation: "Alicante, Spain",
+      role: "Frontend Developer",
+      bioBefore: "I'm Otar, a frontend developer at",
+      bioLocationPrefix: ", based in",
+      bioLocation: "Alicante",
       bioAfter:
-        "(originally from Tbilisi, Georgia), where I specialize in building fast, accessible interfaces with a strong focus on performance and clean UI engineering.",
+        "and originally from Tbilisi. I've spent the last 5 years building production web apps with React, Next.js and TypeScript.",
       bioShort:
         "Frontend developer at Noxtton, based in Alicante. I build fast, accessible interfaces with clean UI engineering.",
       verified: "Verified",
     },
     work: {
       title: "Work",
-      subtitle: "Below are some select projects, full walkthroughs on request",
+      subtitle: "Some things I've built recently.",
       closeLabel: "Close",
       moreLabel: "More projects",
+      throwbackBefore: "And here's where it all started:",
+      throwbackLink: "my first portfolio, 2021",
+      closingNote:
+        "Besides these, I've also built landing pages and company websites, and worked on smaller features, improvements and fixes across other projects. The projects above are the ones I'm most proud of.",
       yearLabel: "Year",
       stackLabel: "Stack",
       aboutLabel: "About",
-      builtLabel: "What I built",
+      highlightsLabel: "Highlights",
+      languagesLabel: "Languages",
       screensLabel: "Screens",
       screenLabel: "Screen",
       visitSite: "Visit site",
-      walkthrough: "Walkthrough on request",
       prevProject: "Prev",
       nextProject: "Next",
       showAll: "Show all",
       showLess: "Show less",
       viewProject: "View project",
+      roleLabel: "Role",
+      statusLabel: "Status",
+      roles: { built: "Built by me", "main-contributor": "Main contributor", contributor: "Contributor" },
+      statuses: { live: "Live", maintained: "Live · maintained", ongoing: "Ongoing" },
       items: {
-        "aurora-dashboard": {
-          title: "Aurora Dashboard",
-          summary: "Real-time usage and billing analytics for a SaaS team",
-          about:
-            "An internal analytics dashboard built to help a small SaaS team track usage and billing metrics in real time. Focused on fast data loading, accessible charts, and a component library that scaled across the rest of the product.",
-          built: [
-            "Designed and built the component library from scratch",
-            "Cut initial dashboard load time by optimizing data fetching",
-            "Built accessible charts usable with keyboard and screen readers",
+        "white-square": {
+          tagline: "Real estate platform with interactive apartment navigation.",
+          description:
+            "A multilingual real estate platform where buyers explore projects and choose an apartment by clicking through interactive SVG plans, from the building down to the block, floor and unit. I built the whole frontend solo, from zero to launch, and I still maintain it. All content comes from a headless CMS, and the site is built for SEO from the start.",
+          highlights: [
+            "Interactive SVG plan selector (building → block → floor → unit), generated from CMS map data",
+            "Server-side PDF export of reports with Puppeteer, with caching and merged duplicate renders",
+            "Filterable apartment and commercial listings with URL-synced filters, saved favourites and a MapLibre map",
+            "Lead forms with React Hook Form + Zod, sent through a server route that keeps the API key off the client",
+            "SEO: locale-split sitemaps, JSON-LD and a shared metadata builder; 3 languages with locale-prefixed URLs",
           ],
         },
-        "cedar-commerce": {
-          title: "Cedar Commerce",
-          summary: "Headless storefront rebuild off a legacy CMS",
-          about:
-            "A headless storefront rebuild for a mid-size e-commerce brand, moving off a legacy CMS onto a fast, componentized frontend. Cut page load times noticeably while keeping the checkout flow accessible and easy to maintain.",
-          built: [
-            "Migrated the storefront off a legacy CMS to a headless setup",
-            "Rebuilt the checkout flow with accessibility as a first-class concern",
-            "Set up a componentized frontend the team could maintain long-term",
+        "digital-academy": {
+          tagline: "Education platform running in 4 countries.",
+          description:
+            "An education platform live in four countries, each with its own domain and content. I joined before the full launch and became one of the main developers on the project. I shipped a new design and content for the Czech and Kazakh markets on a separate CMS and test environment, so the live Georgian and UK sites kept running without issues. I also integrated installment payments with Georgian banks.",
+          highlights: [
+            "New design and content rollout for the Czech and Kazakh markets",
+            "Separate CMS and test environment, so the live Georgian and UK sites were never affected",
+            "CMS migrations and content work for each country",
+            "Brought a broken development branch back to life: reviewed 99+ conflicting files between two diverged branches so the team could test and release again",
+            "Installment payments with Georgian banks (TBC and BOG)",
           ],
         },
-        "pulse-analytics": {
-          title: "Pulse Analytics",
-          summary: "Product analytics with fast, accessible charts",
-          about:
-            "A lightweight analytics widget embedded across partner sites, designed to drop into any page with minimal setup. Built with strict performance budgets, keeping the bundle small without sacrificing the interface.",
-          built: [
-            "Built an embeddable widget that drops into any page with one script tag",
-            "Kept the bundle under a strict size budget for partner sites",
-            "Designed the interface to stay legible at small embedded sizes",
+        "maqro-city": {
+          tagline: "Multilingual real estate site with an interactive apartment finder.",
+          description:
+            "A property site in four languages for a residential complex in Tbilisi, with separate \"live\" and \"investment\" content modes for different buyers. It was my first real estate build: I built the full frontend, including the interactive apartment finder that became the foundation for my later real estate projects. I still maintain the site.",
+          highlights: [
+            "Interactive SVG apartment finder with drill-down (building → block → floor → apartment) and filters",
+            "4 languages (EN, KA, TR, RU) and two content modes: \"live\" and \"investment\"",
+            "SEO: JSON-LD, 5 XML sitemaps, middleware that normalizes URLs with 301 redirects, ISR",
+            "Content refreshes automatically when a visitor returns to a stale tab",
+            "Zod-validated lead forms with UTM tracking, and an in-site PDF magazine viewer",
           ],
         },
-        "wayfarer-app": {
-          title: "Wayfarer",
-          summary: "Trip planning app for independent travelers",
-          about:
-            "A trip-planning web app for sketching out itineraries and sharing them with friends. Explored a playful, card-based interface with smooth transitions and a strong focus on mobile usability.",
-          built: [
-            "Designed a card-based itinerary builder with drag-to-reorder",
-            "Added shareable trip links for planning with friends",
-            "Tuned the whole flow for mobile-first usability",
+        "namr-gov": {
+          tagline: "Government website for Georgia's mining and licensing agency.",
+          description:
+            "The official website of Georgia's national agency for mineral resources: licenses, auctions, geology, public information and media, in Georgian and English. I built it from scratch to launch, with about 13 pages fed from a headless CMS and a responsive layout that scales precisely from the desktop and mobile designs.",
+          highlights: [
+            "Built from scratch to launch: about 13 pages (licenses, auctions, geology, mining sector, public information, media)",
+            "CMS content refreshed every 15 minutes, with TypeScript types generated from the CMS schema",
+            "Viewport-scaled responsive layout based on the 1440px desktop and 390px mobile designs",
+            "Bilingual UI and CMS content with fallback to the default language",
+            "Header that hides on scroll, timeline and gallery sliders, scroll animations",
           ],
         },
-        "meridian-crm": {
-          title: "Meridian CRM",
-          summary: "Lightweight CRM for a small sales team",
-          about:
-            "A lightweight CRM built for a small B2B sales team to track leads and deals without the overhead of an enterprise tool. Focused on quick data entry and a pipeline view the whole team actually used.",
-          built: [
-            "Built a drag-and-drop pipeline board for tracking deal stages",
-            "Simplified lead entry down to a handful of required fields",
-            "Added email reminders for deals that had gone quiet",
+        "efes-georgia": {
+          tagline: "Corporate website for a beverage company.",
+          description:
+            "A bilingual corporate site for one of Georgia's biggest beverage companies. I was the main frontend contributor, building the careers and job application flow, contact forms, the age-verification gate and a reusable SEO component, and running much of the pre-launch design QA.",
+          highlights: [
+            "Careers and vacancy pages (dynamic routes), job application form with CV upload, contact form",
+            "Site-wide age-verification gate and a reusable SEO component (Open Graph and Twitter tags) on every page",
+            "English and Georgian routing, including English slugs for Georgian content",
+            "Coverage page with alphabet navigation (EN and KA) and CMS content modelling",
+            "Pixel-level design QA plus iOS and Safari fixes before launch",
           ],
         },
-        "foundry-blog": {
-          title: "Foundry Blog",
-          summary: "Statically generated blog with a calm writing flow",
-          about:
-            "A fast, minimal blogging platform for indie writers, with a focus on clean typography and near-instant page loads. Kept the writing experience distraction-free while still supporting drafts and scheduling.",
-          built: [
-            "Set up static generation for near-instant page loads",
-            "Designed a distraction-free writing and scheduling flow",
+        "maqro": {
+          tagline: "Multilingual corporate site for a development group.",
+          description:
+            "The corporate website of Maqro Group, in four languages, covering its development, construction, tourism and business sectors. I started the project and owned the frontend, and I rebuilt pages so they match the design exactly.",
+          highlights: [
+            "Started the project and owned the frontend; rebuilt pages to match the design pixel for pixel",
+            "Script that generates TypeScript types from the CMS schema",
+            "SEO and analytics: Open Graph, hreflang, JSON-LD, gtag",
+            "4 languages, with static pages refreshed from the CMS every 15 minutes",
+            "Sector pages with a custom project carousel and video gallery",
           ],
         },
-        "northwind-inventory": {
-          title: "Northwind Inventory",
-          summary: "Real-time stock tracking for a warehouse floor",
-          about:
-            "An inventory tracking tool for a small warehouse operation, replacing a shared spreadsheet with real-time stock counts and low-stock alerts. Built to work reliably on tablets on the warehouse floor.",
-          built: [
-            "Replaced a shared spreadsheet with real-time stock tracking",
-            "Added low-stock alerts to prevent fulfillment delays",
-            "Optimized the interface for tablet use on the warehouse floor",
+        "maqro-promo": {
+          tagline: "Promo landing page with a payment-plan calculator.",
+          description:
+            "A bilingual promotional landing page for the Maqro City development. Its centerpiece is a payment-plan calculator that switches between USD and GEL using the National Bank of Georgia exchange rate, next to a validated contact form and a media slider.",
+          highlights: [
+            "Payment-plan calculator with live USD/GEL conversion from the National Bank of Georgia rate, plus discount and installment math",
+            "Contact form with Zod validation, a phone input with country codes and an email API route",
+            "Swiper slider with separate mobile behavior and an embedded map",
+            "10 CMS sections loaded in parallel, refreshed every 15 minutes",
           ],
         },
-        "lumen-builder": {
-          title: "Lumen",
-          summary: "Drag-and-drop site builder for freelancers",
-          about:
-            "A drag-and-drop site builder aimed at freelancers who wanted a portfolio site without touching code. Focused on a small set of well-designed templates over endless configuration.",
-          built: [
-            "Built a drag-and-drop editor backed by a small set of curated templates",
-            "Kept the publishing flow to a single click from draft to live",
+        "healthy-water": {
+          tagline: "Corporate site for a drinks producer.",
+          description:
+            "A bilingual corporate site for a Georgian drinks producer. I contributed front-end polish and bug fixes across the main pages, added CMS-driven product fields, and made content updates show up faster.",
+          highlights: [
+            "Front-end polish and bug fixes across the header, product, export, about and factory pages",
+            "Brand-specific product fields and optional page videos driven by the CMS",
+            "Made Georgian the default language and reworked the language switcher",
+            "CSS hover animations for the site's arrow buttons",
+            "Tuned ISR so CMS changes appear in 2 minutes instead of 15",
           ],
         },
-        "tidal-booking": {
-          title: "Tidal Booking",
-          summary: "Class booking widget for surf and dive schools",
-          about:
-            "A booking widget for small surf and dive schools to manage class reservations and capacity, replacing manual phone bookings. Kept the embed lightweight enough to drop into an existing site.",
-          built: [
-            "Built a capacity-aware booking widget to replace manual phone bookings",
-            "Kept the embeddable widget lightweight enough for existing marketing sites",
-          ],
-        },
-        "orbit-notes": {
-          title: "Orbit Notes",
-          summary: "Offline-first note-taking app with quick capture",
-          about:
-            "A note-taking app built around fast capture and offline-first sync, so ideas can be jotted down instantly and organized later. Focused on keyboard shortcuts and a minimal, distraction-free editor.",
-          built: [
-            "Built offline-first sync so notes work without a connection",
-            "Designed a keyboard-driven quick capture flow",
+        "nabeghlavi": {
+          tagline: "History page for a mineral water brand.",
+          description:
+            "One of my first projects: the History page of a well-known Georgian mineral water brand. I built a scroll-animated banner and a year-by-year timeline, fed from content models I defined in the CMS, plus the history slider on the home page.",
+          highlights: [
+            "Built the History page: scroll-animated banner and year-by-year chronology timeline",
+            "Custom scroll hook driving the page's scroll-based animations",
+            "Responsive history slider on the home page",
+            "CMS content models for all of it, Georgian localization fixes and a reusable language switcher",
           ],
         },
       },
@@ -227,10 +235,21 @@ export const translations = {
     },
     personal: {
       title: "Personal",
-      blurb:
-        "Outside of work I train jiu-jitsu. It's basically problem solving with your body: stay calm when you're stuck, find the small mistake, use it. Turns out that works for bugs too.",
-      playerTitle: "Spotify player",
-      photoAlts: ["Placeholder photo 1", "Placeholder photo 2", "Placeholder photo 3", "Placeholder photo 4"],
+      blurbBefore: "Outside of work I train and compete in",
+      blurbTag: "Brazilian jiu-jitsu",
+      blurbAfter:
+        ". It's problem solving with your whole body: stay calm when you're stuck, find the small opening, and use it. The same mindset helps me a lot with bugs.",
+      beltAlt: "White jiu-jitsu belt with four stripes",
+      play: "Play preview",
+      pause: "Pause preview",
+      listenOn: "Listen on Spotify",
+      backToWork: "ok, back to work",
+      photoAlts: [
+        "Standing alone on the mats of an empty jiu-jitsu gym",
+        "White belt with four stripes resting on the mat",
+        "Close-up of a jiu-jitsu gi sleeve",
+        "Black gi tied with a four-stripe white belt",
+      ],
     },
     contact: {
       title: "Contact",
@@ -278,139 +297,147 @@ export const translations = {
       less: "Menos",
     },
     profile: {
-      role: "Desarrollador Frontend Mid",
-      bioBefore: "Hola, soy Otar, desarrollador frontend en",
-      bioLocationPrefix: "con base en",
-      bioLocation: "Alicante, España",
+      role: "Desarrollador Frontend",
+      bioBefore: "Soy Otar, desarrollador frontend en",
+      bioLocationPrefix: ", con base en",
+      bioLocation: "Alicante",
       bioAfter:
-        "(originario de Tiflis, Georgia), donde me especializo en construir interfaces rápidas y accesibles con un fuerte enfoque en el rendimiento y una ingeniería de UI limpia.",
+        "y originario de Tiflis. Llevo 5 años creando aplicaciones web en producción con React, Next.js y TypeScript.",
       bioShort:
         "Desarrollador frontend en Noxtton, con base en Alicante. Construyo interfaces rápidas y accesibles con una ingeniería de UI limpia.",
       verified: "Verificado",
     },
     work: {
       title: "Trabajo",
-      subtitle: "A continuación, algunos proyectos seleccionados; recorridos completos bajo pedido",
+      subtitle: "Algunas cosas que he construido recientemente.",
       closeLabel: "Cerrar",
       moreLabel: "Más proyectos",
+      throwbackBefore: "Y aquí es donde empezó todo:",
+      throwbackLink: "mi primer portfolio, 2021",
+      closingNote:
+        "Además de estos, también he creado landing pages y webs de empresa, y he trabajado en funcionalidades, mejoras y arreglos más pequeños en otros proyectos. Los proyectos de arriba son de los que estoy más orgulloso.",
       yearLabel: "Año",
-      stackLabel: "Stack",
+      stackLabel: "Tecnologías",
       aboutLabel: "Sobre el proyecto",
-      builtLabel: "Qué construí",
+      highlightsLabel: "Puntos clave",
+      languagesLabel: "Idiomas",
       screensLabel: "Pantallas",
       screenLabel: "Pantalla",
-      visitSite: "Visitar sitio",
-      walkthrough: "Recorrido bajo pedido",
+      visitSite: "Ver sitio",
       prevProject: "Anterior",
       nextProject: "Siguiente",
       showAll: "Ver todos",
       showLess: "Ver menos",
       viewProject: "Ver proyecto",
+      roleLabel: "Rol",
+      statusLabel: "Estado",
+      roles: { built: "Creado por mí", "main-contributor": "Colaborador principal", contributor: "Colaborador" },
+      statuses: { live: "En producción", maintained: "En producción · mantenimiento", ongoing: "En curso" },
       items: {
-        "aurora-dashboard": {
-          title: "Aurora Dashboard",
-          summary: "Analítica de uso y facturación en tiempo real para un equipo SaaS",
-          about:
-            "Un panel de analítica interno creado para ayudar a un pequeño equipo de SaaS a monitorizar el uso y la facturación en tiempo real. Centrado en una carga de datos rápida, gráficos accesibles y una librería de componentes que se extendió al resto del producto.",
-          built: [
-            "Diseñé y construí la librería de componentes desde cero",
-            "Reduje el tiempo de carga inicial optimizando la obtención de datos",
-            "Construí gráficos accesibles usables con teclado y lectores de pantalla",
+        "white-square": {
+          tagline: "Plataforma inmobiliaria con navegación interactiva de apartamentos.",
+          description:
+            "Una plataforma inmobiliaria multilingüe donde el comprador explora proyectos y elige un apartamento navegando por planos SVG interactivos: del edificio al bloque, la planta y la unidad. Construí todo el frontend yo solo, desde cero hasta el lanzamiento, y sigo manteniéndolo. Todo el contenido viene de un CMS headless y el sitio está pensado para SEO desde el principio.",
+          highlights: [
+            "Selector de planos SVG interactivo (edificio → bloque → planta → unidad), generado con datos del CMS",
+            "Exportación de informes a PDF en el servidor con Puppeteer, con caché y renderizados duplicados unificados",
+            "Listados de apartamentos y locales con filtros sincronizados con la URL, favoritos guardados y mapa MapLibre",
+            "Formularios de contacto con React Hook Form + Zod, enviados por una ruta de servidor que protege la clave de la API",
+            "SEO: sitemaps por idioma, JSON-LD y un generador de metadatos compartido; 3 idiomas con prefijo en la URL",
           ],
         },
-        "cedar-commerce": {
-          title: "Cedar Commerce",
-          summary: "Reconstrucción headless de una tienda sobre un CMS heredado",
-          about:
-            "Una reconstrucción de tienda headless para una marca de comercio electrónico de tamaño medio, migrando de un CMS heredado a un frontend rápido y basado en componentes. Redujo notablemente los tiempos de carga manteniendo el checkout accesible y fácil de mantener.",
-          built: [
-            "Migré la tienda de un CMS heredado a una configuración headless",
-            "Reconstruí el flujo de checkout priorizando la accesibilidad",
-            "Configuré un frontend basado en componentes fácil de mantener a largo plazo",
+        "digital-academy": {
+          tagline: "Plataforma educativa que funciona en 4 países.",
+          description:
+            "Una plataforma educativa activa en cuatro países, cada uno con su propio dominio y contenido. Me uní antes del lanzamiento completo y me convertí en uno de los desarrolladores principales del proyecto. Entregué un nuevo diseño y contenido para los mercados checo y kazajo en un CMS y un entorno de pruebas separados, para que los sitios activos de Georgia y Reino Unido siguieran funcionando sin problemas. También integré pagos a plazos con bancos georgianos.",
+          highlights: [
+            "Nuevo diseño y contenido para los mercados checo y kazajo",
+            "CMS y entorno de pruebas separados, sin afectar nunca a los sitios activos de Georgia y Reino Unido",
+            "Migraciones del CMS y trabajo de contenido para cada país",
+            "Recuperé una rama de desarrollo rota: revisé más de 99 archivos en conflicto entre dos ramas divergentes para que el equipo pudiera volver a probar y publicar",
+            "Pagos a plazos con bancos georgianos (TBC y BOG)",
           ],
         },
-        "pulse-analytics": {
-          title: "Pulse Analytics",
-          summary: "Analítica de producto con gráficos rápidos y accesibles",
-          about:
-            "Un widget de analítica ligero integrado en varios sitios de partners, diseñado para instalarse en cualquier página con una configuración mínima. Construido con presupuestos de rendimiento estrictos, manteniendo el paquete pequeño sin sacrificar la interfaz.",
-          built: [
-            "Construí un widget integrable que se instala con una sola etiqueta de script",
-            "Mantuve el paquete dentro de un presupuesto de tamaño estricto",
-            "Diseñé la interfaz para que fuera legible incluso en tamaños pequeños",
+        "maqro-city": {
+          tagline: "Sitio inmobiliario multilingüe con buscador interactivo de apartamentos.",
+          description:
+            "Un sitio inmobiliario en cuatro idiomas para un complejo residencial en Tiflis, con dos modos de contenido, \"vivir\" e \"invertir\", para distintos compradores. Fue mi primer proyecto inmobiliario: construí todo el frontend, incluido el buscador interactivo de apartamentos, que se convirtió en la base de mis siguientes proyectos inmobiliarios. Sigo manteniendo el sitio.",
+          highlights: [
+            "Buscador de apartamentos SVG interactivo (edificio → bloque → planta → apartamento) con filtros",
+            "4 idiomas (EN, KA, TR, RU) y dos modos de contenido: \"vivir\" e \"invertir\"",
+            "SEO: JSON-LD, 5 sitemaps XML, middleware que normaliza URLs con redirecciones 301, ISR",
+            "El contenido se actualiza solo cuando el visitante vuelve a una pestaña antigua",
+            "Formularios validados con Zod con seguimiento UTM y un visor de revista PDF integrado",
           ],
         },
-        "wayfarer-app": {
-          title: "Wayfarer",
-          summary: "App de planificación de viajes para viajeros independientes",
-          about:
-            "Una aplicación web de planificación de viajes para esbozar itinerarios y compartirlos con amigos. Se exploró una interfaz lúdica basada en tarjetas, con transiciones suaves y un fuerte enfoque en la usabilidad móvil.",
-          built: [
-            "Diseñé un creador de itinerarios basado en tarjetas con reordenamiento",
-            "Añadí enlaces de viaje compartibles para planificar con amigos",
-            "Ajusté todo el flujo priorizando la usabilidad móvil",
+        "namr-gov": {
+          tagline: "Web gubernamental de la agencia de minería y licencias de Georgia.",
+          description:
+            "La web oficial de la agencia nacional de recursos minerales de Georgia: licencias, subastas, geología, información pública y medios, en georgiano e inglés. La construí desde cero hasta el lanzamiento, con unas 13 páginas alimentadas por un CMS headless y un diseño responsive que escala con precisión a partir de los diseños de escritorio y móvil.",
+          highlights: [
+            "Construida desde cero hasta el lanzamiento: unas 13 páginas (licencias, subastas, geología, sector minero, información pública, medios)",
+            "Contenido del CMS actualizado cada 15 minutos, con tipos TypeScript generados desde el esquema del CMS",
+            "Diseño responsive escalado al viewport según los diseños de 1440px (escritorio) y 390px (móvil)",
+            "Interfaz y contenido del CMS bilingües, con idioma por defecto como respaldo",
+            "Cabecera que se oculta al hacer scroll, sliders de línea de tiempo y galería, animaciones al hacer scroll",
           ],
         },
-        "meridian-crm": {
-          title: "Meridian CRM",
-          summary: "CRM ligero para un pequeño equipo de ventas",
-          about:
-            "Un CRM ligero creado para un pequeño equipo de ventas B2B, para hacer seguimiento de leads y negocios sin la complejidad de una herramienta empresarial. Centrado en una entrada de datos rápida y una vista de pipeline que todo el equipo usaba de verdad.",
-          built: [
-            "Construí un tablero de pipeline con arrastrar y soltar para las etapas de cada negocio",
-            "Simplifiqué la entrada de leads a unos pocos campos obligatorios",
-            "Añadí recordatorios por email para negocios que llevaban tiempo sin movimiento",
+        "efes-georgia": {
+          tagline: "Sitio web corporativo de una empresa de bebidas.",
+          description:
+            "Un sitio corporativo bilingüe para una de las mayores empresas de bebidas de Georgia. Fui el colaborador principal del frontend: construí el flujo de empleo y solicitudes, los formularios de contacto, la verificación de edad y un componente SEO reutilizable, y me encargué de gran parte del control de calidad del diseño antes del lanzamiento.",
+          highlights: [
+            "Páginas de empleo y vacantes (rutas dinámicas), formulario de solicitud con subida de CV, formulario de contacto",
+            "Verificación de edad en todo el sitio y un componente SEO reutilizable (Open Graph y Twitter) en todas las páginas",
+            "Rutas en inglés y georgiano, con slugs en inglés para el contenido georgiano",
+            "Página de cobertura con navegación alfabética (EN y KA) y modelado de contenido en el CMS",
+            "Control de calidad del diseño al píxel y correcciones para iOS y Safari antes del lanzamiento",
           ],
         },
-        "foundry-blog": {
-          title: "Foundry Blog",
-          summary: "Blog estático con un flujo de escritura tranquilo",
-          about:
-            "Una plataforma de blogging rápida y minimalista para escritores independientes, centrada en una tipografía cuidada y cargas de página casi instantáneas. Mantuve la experiencia de escritura libre de distracciones sin dejar de soportar borradores y programación de publicaciones.",
-          built: [
-            "Configuré generación estática para cargas de página casi instantáneas",
-            "Diseñé un flujo de escritura y programación libre de distracciones",
+        "maqro": {
+          tagline: "Sitio corporativo multilingüe de un grupo de desarrollo.",
+          description:
+            "La web corporativa de Maqro Group, en cuatro idiomas, con sus sectores de desarrollo, construcción, turismo y negocios. Inicié el proyecto y fui responsable del frontend, y reconstruí páginas para que coincidieran exactamente con el diseño.",
+          highlights: [
+            "Inicié el proyecto y fui responsable del frontend; reconstruí páginas para que coincidieran al píxel con el diseño",
+            "Script que genera tipos TypeScript desde el esquema del CMS",
+            "SEO y analítica: Open Graph, hreflang, JSON-LD, gtag",
+            "4 idiomas, con páginas estáticas actualizadas desde el CMS cada 15 minutos",
+            "Páginas de sector con carrusel de proyectos y galería de vídeos propios",
           ],
         },
-        "northwind-inventory": {
-          title: "Northwind Inventory",
-          summary: "Control de stock en tiempo real para un almacén",
-          about:
-            "Una herramienta de control de inventario para una pequeña operación de almacén, que sustituyó una hoja de cálculo compartida por conteos de stock en tiempo real y alertas de stock bajo. Construida para funcionar de forma fiable en tablets en el almacén.",
-          built: [
-            "Sustituí una hoja de cálculo compartida por seguimiento de stock en tiempo real",
-            "Añadí alertas de stock bajo para evitar retrasos en los pedidos",
-            "Optimicé la interfaz para su uso en tablets dentro del almacén",
+        "maqro-promo": {
+          tagline: "Landing promocional con calculadora de planes de pago.",
+          description:
+            "Una landing promocional bilingüe para el desarrollo Maqro City. Su pieza central es una calculadora de planes de pago que cambia entre USD y GEL con el tipo de cambio del Banco Nacional de Georgia, junto a un formulario de contacto validado y un slider multimedia.",
+          highlights: [
+            "Calculadora de planes de pago con conversión USD/GEL en tiempo real según el Banco Nacional de Georgia, con descuentos y cuotas",
+            "Formulario de contacto con validación Zod, campo de teléfono con prefijos de país y una ruta API que envía el email",
+            "Slider con Swiper con comportamiento propio en móvil y un mapa integrado",
+            "10 secciones del CMS cargadas en paralelo, actualizadas cada 15 minutos",
           ],
         },
-        "lumen-builder": {
-          title: "Lumen",
-          summary: "Constructor de webs drag-and-drop para freelancers",
-          about:
-            "Un creador de sitios de arrastrar y soltar pensado para freelancers que querían un portfolio sin tocar código. Centrado en un pequeño conjunto de plantillas bien diseñadas en lugar de una configuración interminable.",
-          built: [
-            "Construí un editor de arrastrar y soltar respaldado por un pequeño conjunto de plantillas cuidadas",
-            "Reduje la publicación a un solo clic entre borrador y sitio en vivo",
+        "healthy-water": {
+          tagline: "Sitio corporativo de un productor de bebidas.",
+          description:
+            "Un sitio corporativo bilingüe para un productor de bebidas georgiano. Contribuí con mejoras de interfaz y corrección de errores en las páginas principales, añadí campos de producto gestionados desde el CMS e hice que las actualizaciones de contenido aparecieran más rápido.",
+          highlights: [
+            "Mejoras de interfaz y corrección de errores en la cabecera y las páginas de producto, exportación, empresa y fábrica",
+            "Campos de producto por marca y vídeos opcionales gestionados desde el CMS",
+            "El georgiano pasó a ser el idioma por defecto y rehíce el selector de idioma",
+            "Animaciones CSS al pasar el ratón en los botones de flecha",
+            "Ajuste de ISR para que los cambios del CMS aparezcan en 2 minutos en vez de 15",
           ],
         },
-        "tidal-booking": {
-          title: "Tidal Booking",
-          summary: "Widget de reservas para escuelas de surf y buceo",
-          about:
-            "Un widget de reservas para pequeñas escuelas de surf y buceo, para gestionar reservas de clases y aforo, sustituyendo las reservas manuales por teléfono. Mantuve el widget lo bastante ligero para integrarlo en un sitio ya existente.",
-          built: [
-            "Construí un widget de reservas consciente del aforo para sustituir las reservas manuales por teléfono",
-            "Mantuve el widget lo bastante ligero para sitios de marketing existentes",
-          ],
-        },
-        "orbit-notes": {
-          title: "Orbit Notes",
-          summary: "App de notas offline-first con captura rápida",
-          about:
-            "Una app de notas construida en torno a la captura rápida y la sincronización offline-first, para apuntar ideas al instante y organizarlas después. Centrada en atajos de teclado y un editor minimalista sin distracciones.",
-          built: [
-            "Implementé sincronización offline-first para que las notas funcionen sin conexión",
-            "Diseñé un flujo de captura rápida guiado por teclado",
+        "nabeghlavi": {
+          tagline: "Página de historia de una marca de agua mineral.",
+          description:
+            "Uno de mis primeros proyectos: la página de Historia de una conocida marca georgiana de agua mineral. Construí un banner animado con el scroll y una línea de tiempo año a año, alimentados por modelos de contenido que definí en el CMS, además del slider de historia en la página principal.",
+          highlights: [
+            "Construí la página de Historia: banner animado con el scroll y línea de tiempo año a año",
+            "Hook de scroll propio que controla las animaciones de la página",
+            "Slider de historia responsive en la página principal",
+            "Modelos de contenido en el CMS, correcciones de localización al georgiano y un selector de idioma reutilizable",
           ],
         },
       },
@@ -487,10 +514,21 @@ export const translations = {
     },
     personal: {
       title: "Personal",
-      blurb:
-        "Fuera del trabajo entreno jiu-jitsu. Es básicamente resolver problemas con el cuerpo: mantener la calma cuando estás atascado, encontrar el pequeño error y aprovecharlo. Resulta que también funciona con los bugs.",
-      playerTitle: "Reproductor de Spotify",
-      photoAlts: ["Foto de ejemplo 1", "Foto de ejemplo 2", "Foto de ejemplo 3", "Foto de ejemplo 4"],
+      blurbBefore: "Fuera del trabajo entreno y compito en",
+      blurbTag: "jiu-jitsu brasileño",
+      blurbAfter:
+        ". Es resolver problemas con todo el cuerpo: mantener la calma cuando estás atascado, encontrar la pequeña apertura y aprovecharla. Esa misma forma de pensar me ayuda mucho con los bugs.",
+      beltAlt: "Cinturón blanco de jiu-jitsu con cuatro grados",
+      play: "Reproducir avance",
+      pause: "Pausar avance",
+      listenOn: "Escuchar en Spotify",
+      backToWork: "vale, de vuelta al trabajo",
+      photoAlts: [
+        "De pie, solo, sobre el tatami de un gimnasio de jiu-jitsu vacío",
+        "Cinturón blanco con cuatro grados sobre el tatami",
+        "Primer plano de la manga de un kimono de jiu-jitsu",
+        "Kimono negro atado con un cinturón blanco de cuatro grados",
+      ],
     },
     contact: {
       title: "Contacto",

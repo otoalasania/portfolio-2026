@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Section } from "../ui";
-import { featuredProjects } from "../../data";
+import { heroCards } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
+import { openProjectAt } from "../../lib/projectScreen";
 import styles from "./Work.module.css";
 
 export function Work() {
@@ -12,34 +13,32 @@ export function Work() {
 
   return (
     <Section id="work" title={t.work.title} subtitle={t.work.subtitle} style={{ marginTop: 40 }}>
-      <div
-        className={styles.stage}
-        style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px)",
-          backgroundSize: "18px 18px",
-        }}
-      >
+      <div className={styles.stage}>
         <div className={styles.canvas}>
-          {featuredProjects.map((project) => (
-            <div key={project.slug} className={styles.cardSlot}>
+          {heroCards.map((card) => (
+            <div key={card.src} className={styles.cardSlot}>
               <Link
-                href={`/work/${project.slug}`}
+                href={`/work/${card.slug}`}
                 scroll={false}
                 className={styles.card}
-                aria-label={t.work.items[project.slug].title}
-                data-project-card={project.slug}
+                aria-label={card.title}
+                data-project-card={card.slug}
+                onClick={() => openProjectAt(card.image)}
               >
                 <span className={styles.cardImage}>
                   <Image
-                    src={project.images[0]!}
+                    src={card.src}
                     alt=""
                     fill
-                    sizes="(min-width: 640px) 340px, 340px"
+                    sizes="(min-width: 640px) 340px, 80vw"
                     className={styles.cardImageEl}
                   />
                 </span>
               </Link>
+              <p className={styles.caption} aria-hidden="true">
+                <span className={styles.captionTitle}>{card.title}</span>
+                {t.work.items[card.slug].tagline}
+              </p>
             </div>
           ))}
         </div>

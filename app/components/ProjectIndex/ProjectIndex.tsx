@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, type Variants } from "motion/react";
 import { Section } from "../ui";
 import { ArrowUpRight, ChevronIcon } from "../icons";
-import { moreProjects, type Project, type ProjectSlug } from "../../data";
+import { FIRST_PORTFOLIO_URL, moreProjects, type Project, type ProjectSlug } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
 import { staggerContainer, staggerItem } from "../../lib/motion";
 import styles from "./ProjectIndex.module.css";
@@ -54,7 +54,7 @@ export function ProjectIndex() {
   const previewShown = Boolean(preview?.visible && previewProject?.images[0]);
 
   return (
-    <Section id="work-more" title={t.work.moreLabel} meta={moreProjects.length}>
+    <Section id="work-more" title={t.work.moreLabel} className={styles.section}>
       <motion.ul
         ref={listRef}
         id={listId}
@@ -75,8 +75,8 @@ export function ProjectIndex() {
             <>
               <span className={styles.year}>{project.year}</span>
               <span className={styles.text}>
-                <span className={styles.title}>{text.title}</span>
-                <span className={styles.summary}>{text.summary}</span>
+                <span className={styles.title}>{project.title}</span>
+                <span className={styles.summary}>{text.tagline}</span>
               </span>
               <span className={styles.stackName}>{project.stack[0]}</span>
               <motion.span className={styles.arrow} variants={arrowVariants}>
@@ -122,10 +122,10 @@ export function ProjectIndex() {
                   onClick={() => setOpenSlug(open ? null : project.slug)}
                 >
                   <span className={styles.triggerTop}>
-                    <span className={styles.title}>{text.title}</span>
+                    <span className={styles.title}>{project.title}</span>
                     <span className={styles.year}>{project.year}</span>
                   </span>
-                  <span className={styles.touchSummary}>{text.summary}</span>
+                  <span className={styles.touchSummary}>{text.tagline}</span>
                   <span className={styles.chevron} data-open={open}>
                     <ChevronIcon />
                   </span>
@@ -211,6 +211,15 @@ export function ProjectIndex() {
           {showAll ? `− ${t.work.showLess}` : `+ ${t.work.showAll} ${moreProjects.length}`}
         </button>
       )}
+
+      <p className={styles.closingNote}>{t.work.closingNote}</p>
+      <p className={styles.throwback}>
+        {t.work.throwbackBefore}{" "}
+        <a href={FIRST_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer" className={styles.throwbackLink}>
+          {t.work.throwbackLink}
+          <ArrowUpRight size={14} strokeWidth={1.75} />
+        </a>
+      </p>
     </Section>
   );
 }
