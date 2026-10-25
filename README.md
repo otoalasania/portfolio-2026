@@ -1,6 +1,6 @@
 # Otar Alasania — Portfolio
 
-Personal portfolio site: [otoalasania.com](https://otoalasania.com).
+Personal portfolio site: [otoalasania.com](https://www.otoalasania.com).
 
 Built with Next.js 16 (App Router), React 19, TypeScript, CSS Modules and
 [Motion](https://motion.dev). English and Spanish.
