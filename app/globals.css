@@ -1,6 +1,6 @@
 @property --beat {
   syntax: "<number>";
-  inherits: true;
+  inherits: false;
   initial-value: 0;
 }
 

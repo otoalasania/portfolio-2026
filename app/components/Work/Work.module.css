@@ -9,16 +9,26 @@
     width: 100vw;
     margin-left: -50vw;
     overflow: hidden;
+    background-image: radial-gradient(color-mix(in srgb, var(--foreground) 12%, transparent) 1px, transparent 1px);
+    background-size: 18px 18px;
   }
 }
 
 .canvas {
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  padding: 16px;
+  gap: 12px;
+  margin: 0 -16px;
+  padding: 8px 16px 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 16px;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.canvas::-webkit-scrollbar {
+  display: none;
 }
 
 .cardSlot {
@@ -26,8 +36,8 @@
   --ty: 0px;
   --rot: 0deg;
   --scale: 1;
-  width: 100%;
-  max-width: 320px;
+  flex: 0 0 80%;
+  scroll-snap-align: start;
   transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(var(--scale));
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -36,44 +46,64 @@
   --scale: 0.98;
 }
 
+.caption {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
+}
+
+.captionTitle {
+  margin-right: 8px;
+  color: var(--foreground);
+}
+
 @media (min-width: 640px) {
   .canvas {
+    --card-w: clamp(260px, 40vw, 340px);
+    --reach: min(230px, 50vw - var(--card-w) / 2 - 24px);
     display: block;
     height: 460px;
+    margin: 0;
     padding: 0;
+    overflow: visible;
   }
 
   .cardSlot {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: auto;
-    max-width: none;
     transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(var(--scale));
   }
 
+  .caption {
+    display: none;
+  }
+
   .cardSlot:nth-child(1) {
-    --tx: -230px;
+    --tx: calc(var(--reach) * -1);
     --ty: -85px;
     --rot: 4deg;
   }
 
   .cardSlot:nth-child(2) {
-    --tx: -75px;
+    --tx: calc(var(--reach) * -0.33);
     --ty: -20px;
     --rot: -4deg;
     z-index: 2;
   }
 
   .cardSlot:nth-child(3) {
-    --tx: 75px;
+    --tx: calc(var(--reach) * 0.33);
     --ty: 20px;
     --rot: 4deg;
     z-index: 3;
   }
 
   .cardSlot:nth-child(4) {
-    --tx: 230px;
+    --tx: var(--reach);
     --ty: 85px;
     --rot: -4deg;
   }
@@ -81,6 +111,7 @@
 
 @media (min-width: 1024px) {
   .canvas {
+    --reach: min(390px, 50vw - var(--card-w) / 2 - 24px);
     height: 340px;
   }
 
@@ -94,22 +125,18 @@
   }
 
   .cardSlot:nth-child(1) {
-    --tx: -390px;
     --ty: -20px;
   }
 
   .cardSlot:nth-child(2) {
-    --tx: -130px;
     --ty: 15px;
   }
 
   .cardSlot:nth-child(3) {
-    --tx: 130px;
     --ty: -20px;
   }
 
   .cardSlot:nth-child(4) {
-    --tx: 390px;
     --ty: 15px;
   }
 }
@@ -117,7 +144,6 @@
 .card {
   display: flex;
   width: 100%;
-  max-width: 340px;
   aspect-ratio: 4 / 3;
   border: none;
   border-radius: 8px;
@@ -136,8 +162,7 @@
 
 @media (min-width: 640px) {
   .card {
-    width: 340px;
-    max-width: none;
+    width: var(--card-w);
   }
 }
 
@@ -169,4 +194,3 @@
     transition: filter 0.4s ease;
   }
 }
-

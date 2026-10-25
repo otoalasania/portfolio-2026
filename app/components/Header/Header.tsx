@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ClockIcon, GlobeIcon } from "../icons";
 import { useLocale } from "../../i18n/LocaleContext";
 import styles from "./Header.module.css";
@@ -8,6 +8,7 @@ import styles from "./Header.module.css";
 export function Header() {
   const [now, setNow] = useState("");
   const { locale, setLocale } = useLocale();
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function tick() {
@@ -17,13 +18,22 @@ export function Header() {
       const gmt = `GMT${offset >= 0 ? "+" : ""}${offset}`;
       setNow(`${time} ${gmt}`);
     }
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
+    let id: ReturnType<typeof setInterval> | undefined;
+    const observer = new IntersectionObserver(([entry]) => {
+      clearInterval(id);
+      if (!entry?.isIntersecting) return;
+      tick();
+      id = setInterval(tick, 1000);
+    });
+    observer.observe(barRef.current!);
+    return () => {
+      observer.disconnect();
+      clearInterval(id);
+    };
   }, []);
 
   return (
-    <div id="top" className={styles.bar}>
+    <div id="top" ref={barRef} className={styles.bar}>
       <button
         type="button"
         onClick={() => setLocale(locale === "en" ? "es" : "en")}

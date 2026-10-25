@@ -19,7 +19,7 @@ const shown = (id: string) => !HIDDEN_SECTIONS.has(id);
 
 export default function PortfolioHome() {
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-neurosis-beat>
       <div className={styles.content}>
         <Header />
         <Profile />

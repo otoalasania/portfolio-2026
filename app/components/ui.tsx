@@ -57,6 +57,7 @@ export function Section({
   subtitle,
   meta,
   style,
+  className = "",
   children,
 }: {
   id: string;
@@ -64,12 +65,13 @@ export function Section({
   subtitle?: React.ReactNode;
   meta?: React.ReactNode;
   style?: React.CSSProperties;
+  className?: string;
   children?: React.ReactNode;
 }) {
   return (
     <motion.section
       id={id}
-      className={styles.section}
+      className={`${styles.section} ${className}`}
       style={style}
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}

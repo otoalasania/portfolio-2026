@@ -54,7 +54,7 @@ export function ProjectIndex() {
   const previewShown = Boolean(preview?.visible && previewProject?.images[0]);
 
   return (
-    <Section id="work-more" title={t.work.moreLabel}>
+    <Section id="work-more" title={t.work.moreLabel} className={styles.section}>
       <motion.ul
         ref={listRef}
         id={listId}

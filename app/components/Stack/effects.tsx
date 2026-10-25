@@ -1,6 +1,15 @@
 "use client";
 
-import { useEffect, useState, type ComponentType, type ReactNode, type RefObject } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ComponentType,
+  type CSSProperties,
+  type ReactNode,
+  type RefObject,
+} from "react";
 import {
   animate,
   motion,
@@ -65,13 +74,60 @@ function centered(width: number, height = width) {
   return { width, height, marginLeft: -width / 2, marginTop: -height / 2 };
 }
 
+type PillPlacement = { left: number; caret: number; above: boolean };
+
+function usePillPlacement(anchor: RefObject<HTMLSpanElement | null>, pill: RefObject<HTMLSpanElement | null>) {
+  const [placement, setPlacement] = useState<PillPlacement | null>(null);
+
+  useLayoutEffect(() => {
+    const item = anchor.current?.parentElement;
+    const row = item?.parentElement;
+    const tip = pill.current;
+    if (!item || !row || !tip) return;
+
+    const place = () => {
+      const itemBox = item.getBoundingClientRect();
+      const rowBox = row.getBoundingClientRect();
+      const center = itemBox.left + itemBox.width / 2 - rowBox.left;
+      const width = tip.offsetWidth;
+      const start = Math.min(Math.max(center - width / 2, 0), Math.max(rowBox.width - width, 0));
+      const above = Array.from(row.children).some((el) => el.getBoundingClientRect().top >= itemBox.bottom);
+      setPlacement({ left: start - (itemBox.left - rowBox.left), caret: center - start, above });
+    };
+
+    place();
+    const observer = new ResizeObserver(place);
+    observer.observe(tip);
+    observer.observe(row);
+    return () => observer.disconnect();
+  }, [anchor, pill]);
+
+  return placement;
+}
+
 function Pill({ duration, className, children }: { duration: number; className?: string; children: ReactNode }) {
+  const anchorRef = useRef<HTMLSpanElement>(null);
+  const pillRef = useRef<HTMLSpanElement>(null);
+  const placement = usePillPlacement(anchorRef, pillRef);
+  const lift = placement?.above ? 4 : -4;
+
   return (
-    <span className={styles.effectTipAnchor} aria-hidden="true">
+    <span
+      ref={anchorRef}
+      className={styles.effectTipAnchor}
+      data-above={placement?.above || undefined}
+      style={
+        placement
+          ? ({ left: placement.left, "--tip-caret": `${placement.caret}px` } as CSSProperties)
+          : { visibility: "hidden" }
+      }
+      aria-hidden="true"
+    >
       <motion.span
+        ref={pillRef}
         className={`${styles.effectTip} ${className ?? ""}`}
-        initial={{ opacity: 0, y: -4, scale: 0.96 }}
-        animate={{ opacity: [0, 1, 1, 0], y: [-4, 0, 0, 2], scale: [0.96, 1, 1, 1] }}
+        initial={{ opacity: 0, y: lift, scale: 0.96 }}
+        animate={{ opacity: [0, 1, 1, 0], y: [lift, 0, 0, -lift / 2], scale: [0.96, 1, 1, 1] }}
         transition={{ duration, times: [0, 0.1, 0.85, 1] }}
       >
         {children}

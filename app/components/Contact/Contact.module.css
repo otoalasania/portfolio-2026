@@ -128,6 +128,12 @@
   color: var(--foreground-subdued);
 }
 
+@media (hover: none) {
+  .hint {
+    display: none;
+  }
+}
+
 .hintKbd {
   border-radius: 4px;
   border: 1px solid var(--divider);
@@ -135,7 +141,7 @@
 }
 
 .socials {
-  margin-top: 32px;
+  margin: 32px -16px 0;
   display: flex;
   flex-direction: column;
 }

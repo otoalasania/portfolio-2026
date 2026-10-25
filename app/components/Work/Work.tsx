@@ -13,14 +13,7 @@ export function Work() {
 
   return (
     <Section id="work" title={t.work.title} subtitle={t.work.subtitle} style={{ marginTop: 40 }}>
-      <div
-        className={styles.stage}
-        style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px)",
-          backgroundSize: "18px 18px",
-        }}
-      >
+      <div className={styles.stage}>
         <div className={styles.canvas}>
           {heroCards.map((card) => (
             <div key={card.src} className={styles.cardSlot}>
@@ -37,11 +30,15 @@ export function Work() {
                     src={card.src}
                     alt=""
                     fill
-                    sizes="(min-width: 640px) 340px, 340px"
+                    sizes="(min-width: 640px) 340px, 80vw"
                     className={styles.cardImageEl}
                   />
                 </span>
               </Link>
+              <p className={styles.caption} aria-hidden="true">
+                <span className={styles.captionTitle}>{card.title}</span>
+                {t.work.items[card.slug].tagline}
+              </p>
             </div>
           ))}
         </div>

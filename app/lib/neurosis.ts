@@ -24,8 +24,11 @@ export function setNeurosisPhase(next: NeurosisPhase) {
   emit();
 }
 
+let beatTarget: HTMLElement | null = null;
+
 export function setNeurosisBeat(beat: number) {
-  document.documentElement.style.setProperty("--beat", beat.toFixed(3));
+  if (!beatTarget?.isConnected) beatTarget = document.querySelector<HTMLElement>("[data-neurosis-beat]");
+  beatTarget?.style.setProperty("--beat", beat.toFixed(3));
 }
 
 export function markNeurosisEnded() {
