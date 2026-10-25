@@ -33,6 +33,8 @@ export const translations = {
       subtitle: "Some things I've built recently.",
       closeLabel: "Close",
       moreLabel: "More projects",
+      closingNote:
+        "Besides these, I've also built landing pages and company websites, and worked on smaller features, improvements and fixes across other projects. The projects above are the ones I'm most proud of.",
       yearLabel: "Year",
       stackLabel: "Stack",
       aboutLabel: "About",
@@ -309,6 +311,8 @@ export const translations = {
       subtitle: "Algunas cosas que he construido recientemente.",
       closeLabel: "Cerrar",
       moreLabel: "Más proyectos",
+      closingNote:
+        "Además de estos, también he creado landing pages y webs de empresa, y he trabajado en funcionalidades, mejoras y arreglos más pequeños en otros proyectos. Los proyectos de arriba son de los que estoy más orgulloso.",
       yearLabel: "Año",
       stackLabel: "Tecnologías",
       aboutLabel: "Sobre el proyecto",

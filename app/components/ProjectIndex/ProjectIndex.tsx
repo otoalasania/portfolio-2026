@@ -211,6 +211,8 @@ export function ProjectIndex() {
           {showAll ? `− ${t.work.showLess}` : `+ ${t.work.showAll} ${moreProjects.length}`}
         </button>
       )}
+
+      <p className={styles.closingNote}>{t.work.closingNote}</p>
     </Section>
   );
 }
