@@ -2,17 +2,11 @@ import {
   PersonIcon,
   BriefcaseIcon,
   WindowIcon,
-  StarIcon,
   LayersIcon,
-  GridIcon,
-  PencilIcon,
   BoltIcon,
   MailIcon,
   GitHubIcon,
   LinkedInIcon,
-  CommandIcon,
-  GlobeIcon,
-  PlusIcon,
 } from "./components/icons";
 import type { translations } from "./i18n/translations";
 import VsCodeLogo from "@assets/svgs/logos/vscode.svg";
@@ -26,18 +20,23 @@ import BitbucketLogo from "@assets/svgs/logos/bitbucket.svg";
 import CssModulesLogo from "@assets/svgs/logos/cssmodules.svg";
 import JiraLogo from "@assets/svgs/logos/jira.svg";
 
+export const SITE_URL = "https://otoalasania.com";
 export const EMAIL = "otar.alasania@gmail.com";
 export const FIRST_PORTFOLIO_URL = "https://otoalasania.github.io/portfolio-website/";
 
 export const profile = {
   name: "Otar Alasania",
+  timeZone: "Europe/Madrid",
   company: { name: "Noxtton", logo: "/noxtton-logo.png", url: "https://noxtton.com/" },
 };
 
-// role/desc text lives in i18n/translations.ts, matched by index
-export const experience = [
-  { range: "2022 — NOW", company: profile.company },
-  { range: "2022", company: profile.company },
+export function pageTitle(title: string) {
+  return `${title} — ${profile.name}`;
+}
+
+export const experience: { start: number; end: number | null }[] = [
+  { start: 2022, end: null },
+  { start: 2022, end: 2022 },
 ];
 
 export const stack = [
@@ -58,8 +57,6 @@ export type ProjectSlug = keyof (typeof translations)["en"]["work"]["items"];
 export type Project = {
   slug: ProjectSlug;
   title: string;
-  company: string;
-  client: string;
   year: number;
   period: string;
   featured: boolean;
@@ -76,8 +73,6 @@ const projects: Project[] = [
   {
     slug: "white-square",
     title: "White Square",
-    company: "Noxtton",
-    client: "Tetri Kvadrati (White Square)",
     year: 2026,
     period: "2026",
     featured: true,
@@ -106,8 +101,6 @@ const projects: Project[] = [
   {
     slug: "digital-academy",
     title: "Digital Academy / XPUP",
-    company: "Noxtton",
-    client: "Digital Academy (XPUP)",
     year: 2025,
     period: "2025–present",
     featured: true,
@@ -119,14 +112,12 @@ const projects: Project[] = [
     images: [
       "/assets/screenshots/academy/academy-1.webp",
       "/assets/screenshots/academy/academy-2.webp",
-      "/assets/screenshots/academy/academy-3.png",
+      "/assets/screenshots/academy/academy-3.webp",
     ],
   },
   {
     slug: "maqro-city",
     title: "Maqro City Tbilisi",
-    company: "Noxtton",
-    client: "Maqro City",
     year: 2025,
     period: "2025–2026",
     featured: true,
@@ -154,8 +145,6 @@ const projects: Project[] = [
   {
     slug: "namr-gov",
     title: "National Agency of Mineral Resources",
-    company: "Noxtton",
-    client: "National Agency of Mineral Resources of Georgia (NAMR)",
     year: 2022,
     period: "2022–2023",
     featured: true,
@@ -169,8 +158,6 @@ const projects: Project[] = [
   {
     slug: "efes-georgia",
     title: "Efes Georgia",
-    company: "Noxtton",
-    client: "Efes Georgia (Natakhtari)",
     year: 2022,
     period: "2022–2024",
     featured: false,
@@ -184,8 +171,6 @@ const projects: Project[] = [
   {
     slug: "maqro",
     title: "Maqro",
-    company: "Noxtton",
-    client: "Maqro Group",
     year: 2025,
     period: "2025–2026",
     featured: false,
@@ -208,8 +193,6 @@ const projects: Project[] = [
   {
     slug: "maqro-promo",
     title: "Maqro City Promo",
-    company: "Noxtton",
-    client: "Maqro City",
     year: 2025,
     period: "2025",
     featured: false,
@@ -231,8 +214,6 @@ const projects: Project[] = [
   {
     slug: "healthy-water",
     title: "Healthy Water",
-    company: "Noxtton",
-    client: "Healthy Water",
     year: 2022,
     period: "2022–2026",
     featured: false,
@@ -246,8 +227,6 @@ const projects: Project[] = [
   {
     slug: "nabeghlavi",
     title: "Nabeghlavi",
-    company: "Noxtton",
-    client: "Nabeghlavi",
     year: 2022,
     period: "2022–2024",
     featured: false,
@@ -285,21 +264,6 @@ export function findProject(slug: string) {
   return null;
 }
 
-// desc/title text lives in i18n/translations.ts, matched by index
-export const ventures = [
-  { name: "CMD Supply", color: "#f4f4f0", icon: CommandIcon, href: "#" },
-  { name: "Best Websites", color: "#f4d13a", icon: GlobeIcon, href: "#" },
-  { name: "Great Fonts", color: "#6ee7b7", icon: PlusIcon, href: "#" },
-];
-
-export const writing = [
-  { date: "2025-02-21", minutes: 2 },
-  { date: "2025-02-16", minutes: 4 },
-  { date: "2025-02-12", minutes: 2 },
-  { date: "2025-01-11", minutes: 2 },
-  { date: "2025-01-01", minutes: 1 },
-];
-
 export const personal = {
   belt: { stripes: 4 },
   track: {
@@ -332,16 +296,11 @@ export const socials = [
   },
 ];
 
-export const HIDDEN_SECTIONS: ReadonlySet<string> = new Set(["skills", "ventures", "writing"]);
-
 export const dock = [
   { id: "top", icon: PersonIcon },
   { id: "work", icon: WindowIcon },
   { id: "experience", icon: BriefcaseIcon },
-  { id: "skills", icon: StarIcon },
   { id: "stack", icon: LayersIcon },
-  { id: "ventures", icon: GridIcon },
-  { id: "writing", icon: PencilIcon },
   { id: "personal", icon: BoltIcon },
   { id: "contact", icon: MailIcon },
 ] as const;

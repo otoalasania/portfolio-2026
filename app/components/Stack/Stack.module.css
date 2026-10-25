@@ -54,15 +54,12 @@
 .logo {
   display: flex;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .logo:focus-visible {
   outline: 2px solid var(--foreground-subdued);
   outline-offset: 4px;
-}
-
-.logo[role="button"] {
-  cursor: pointer;
 }
 
 .hop {

@@ -16,8 +16,6 @@ export const staggerItem: Variants = {
   },
 };
 
-// Opacity-only — use when the element already has its own CSS transform
-// (e.g. a rotated card) that Motion's x/y/scale animation would clobber.
 export const fadeItem: Variants = {
   hidden: { opacity: 0 },
   visible: {

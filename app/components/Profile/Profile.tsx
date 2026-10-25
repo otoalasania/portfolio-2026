@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import FlagSpain from "@assets/svgs/flags/flag-spain.svg";
+import VerifiedBadge from "@assets/svgs/badges/verified.svg";
 import { profile } from "../../data";
 import { CompanyTag } from "../CompanyTag/CompanyTag";
 import { useLocale } from "../../i18n/LocaleContext";
@@ -31,12 +32,7 @@ export function Profile() {
 
       <motion.div className={styles.nameRow} variants={staggerItem}>
         <h1 className={styles.name}>{profile.name}</h1>
-        <Image
-          src="/Twitter_Verified_Badge.svg.webp"
-          alt={t.profile.verified}
-          width={20}
-          height={20}
-        />
+        <VerifiedBadge width={20} height={20} role="img" aria-label={t.profile.verified} />
       </motion.div>
       <motion.p className={styles.role} variants={staggerItem}>
         {t.profile.role}

@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { animate, motion, useReducedMotion } from "motion/react";
 import { useLocale } from "../../i18n/LocaleContext";
 import { downloadCv } from "../../lib/cv";
+import { useClientValue } from "../../lib/useClientValue";
 import { DocumentDownIcon } from "../icons";
 import styles from "./CvCat.module.css";
 
@@ -13,13 +14,12 @@ const ARM_SRC = "/cv-cat/arm.webp";
 const HAND_SRC = "/cv-cat/hand.webp";
 const HAND_RATIO = 341 / 292;
 const FROM_RIGHT_QUERY = "(max-width: 639px)";
-const subscribeNothing = () => () => {};
 
 type Phase = "idle" | "busy" | "grabbed";
 
 export function CvCat({ label, children }: { label: string; children: React.ReactNode }) {
   const { t } = useLocale();
-  const mounted = useSyncExternalStore(subscribeNothing, () => true, () => false);
+  const mounted = useClientValue(() => true, false);
   const reduce = useReducedMotion();
   const [phase, setPhase] = useState<Phase>("idle");
   const slotRef = useRef<HTMLDivElement>(null);

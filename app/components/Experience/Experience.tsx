@@ -27,9 +27,10 @@ export function Experience() {
       >
         {experience.map((e, i) => {
           const text = t.experience.items[i]!;
+          const range = e.end === e.start ? `${e.start}` : `${e.start} — ${e.end ?? t.experience.present}`;
           return (
-            <motion.div key={`${e.company.name}-${e.range}`} className={styles.row} variants={staggerItem}>
-              <span className={styles.range}>{e.range}</span>
+            <motion.div key={`${e.start}-${e.end ?? "now"}`} className={styles.row} variants={staggerItem}>
+              <span className={styles.range}>{range}</span>
               <div>
                 <div className={styles.roleRow}>
                   <h3 className={styles.role}>

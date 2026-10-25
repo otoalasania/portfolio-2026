@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { useCvDownloads } from "../../lib/cv";
 import { useLocale } from "../../i18n/LocaleContext";
 import { ArrowDownIcon } from "../icons";
-import styles from "../NeurosisToast/NeurosisToast.module.css";
+import { Toast } from "../Toast/Toast";
 
 export function CvToast() {
   const { t } = useLocale();
@@ -20,22 +19,8 @@ export function CvToast() {
   }, [downloads]);
 
   return (
-    <div className={styles.anchor} role="status" aria-live="polite">
-      <AnimatePresence>
-        {shown > 0 && (
-          <motion.p
-            key={shown}
-            className={`${styles.toast} ${styles.withIcon}`}
-            initial={{ opacity: 0, y: -8, filter: "blur(4px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
-            transition={{ type: "spring", stiffness: 300, damping: 24 }}
-          >
-            <ArrowDownIcon size={12} />
-            {t.cv.toast}
-          </motion.p>
-        )}
-      </AnimatePresence>
-    </div>
+    <Toast id={shown} icon={<ArrowDownIcon size={12} />}>
+      {t.cv.toast}
+    </Toast>
   );
 }
