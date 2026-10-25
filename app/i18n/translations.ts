@@ -36,11 +36,12 @@ export const translations = {
       yearLabel: "Year",
       stackLabel: "Stack",
       aboutLabel: "About",
-      builtLabel: "What I built",
+      highlightsLabel: "Highlights",
+      clientLabel: "Client",
+      languagesLabel: "Languages",
       screensLabel: "Screens",
       screenLabel: "Screen",
       visitSite: "Visit site",
-      walkthrough: "Walkthrough on request",
       prevProject: "Prev",
       nextProject: "Next",
       showAll: "Show all",
@@ -48,115 +49,113 @@ export const translations = {
       viewProject: "View project",
       roleLabel: "Role",
       statusLabel: "Status",
-      roles: { solo: "Frontend Developer (solo)", team: "Frontend Developer" },
-      statuses: { live: "Live", ongoing: "Ongoing" },
+      roles: { built: "Built by me", "main-contributor": "Main contributor", contributor: "Contributor" },
+      statuses: { live: "Live", maintained: "Live · maintained", ongoing: "Ongoing" },
       items: {
         "white-square": {
-          title: "White Square",
-          summary: "Real estate platform with interactive apartment navigation.",
-          about:
-            "A real estate platform for browsing and searching apartments. I built the whole frontend solo, from scratch to launch, including an interactive SVG view that takes you from the building down to each individual unit.",
-          built: [
-            "Built the entire frontend from scratch to launch",
-            "Apartment search",
-            "Interactive SVG navigation from the building down to each unit",
+          tagline: "Real estate platform with interactive apartment navigation.",
+          description:
+            "A multilingual real estate platform where buyers explore projects and choose an apartment by clicking through interactive SVG plans, from the building down to the block, floor and unit. I built the whole frontend solo, from zero to launch, and I still maintain it. All content comes from a headless CMS, and the site is built for SEO from the start.",
+          highlights: [
+            "Interactive SVG plan selector (building → block → floor → unit), generated from CMS map data",
+            "Server-side PDF export of reports with Puppeteer, with caching and merged duplicate renders",
+            "Filterable apartment and commercial listings with URL-synced filters, saved favourites and a MapLibre map",
+            "Lead forms with React Hook Form + Zod, sent through a server route that keeps the API key off the client",
+            "SEO: locale-split sitemaps, JSON-LD and a shared metadata builder; 3 languages with locale-prefixed URLs",
           ],
         },
         "digital-academy": {
-          title: "Digital Academy / XPUP",
-          summary: "Education platform running in 4 countries.",
-          about:
-            "An education platform live in four countries. I joined before the full launch and shipped a new design and content for the CZ and KZ markets, using a separate CMS and test environment so the live GE and GB sites were never affected. I also integrated installment payments with TBC and BOG.",
-          built: [
-            "Rolled out a new design and content for the Czech and Kazakh markets",
-            "Separate CMS and test environment, so the live Georgian and UK sites kept running without issues",
+          tagline: "Education platform running in 4 countries.",
+          description:
+            "An education platform live in four countries, each with its own domain and content. I joined before the full launch and became one of the main developers on the project. I shipped a new design and content for the Czech and Kazakh markets on a separate CMS and test environment, so the live Georgian and UK sites kept running without issues. I also integrated installment payments with Georgian banks.",
+          highlights: [
+            "New design and content rollout for the Czech and Kazakh markets",
+            "Separate CMS and test environment, so the live Georgian and UK sites were never affected",
             "CMS migrations and content work for each country",
-            "Rescued a broken dev branch by reviewing 99+ conflicting files between two diverged branches",
-            "Integrated installment payments with Georgian banks (TBC and BOG)",
+            "Brought a broken development branch back to life: reviewed 99+ conflicting files between two diverged branches so the team could test and release again",
+            "Installment payments with Georgian banks (TBC and BOG)",
           ],
         },
         "maqro-city": {
-          title: "Maqro City Tbilisi",
-          summary: "Multi-language real estate site with interactive building navigation.",
-          about:
-            "A property site in four languages (EN, KA, TR, RU) for a residential complex in Tbilisi. My first solo real estate build: the full frontend, including interactive building navigation, which became the foundation for later real estate projects.",
-          built: [
-            "Built the entire frontend solo",
-            "Multi-language property site (EN, KA, TR, RU)",
-            "Interactive building navigation, the foundation for later real estate projects",
+          tagline: "Multilingual real estate site with an interactive apartment finder.",
+          description:
+            "A property site in four languages for a residential complex in Tbilisi, with separate \"live\" and \"investment\" content modes for different buyers. It was my first real estate build: I built the full frontend, including the interactive apartment finder that became the foundation for my later real estate projects. I still maintain the site.",
+          highlights: [
+            "Interactive SVG apartment finder with drill-down (building → block → floor → apartment) and filters",
+            "4 languages (EN, KA, TR, RU) and two content modes: \"live\" and \"investment\"",
+            "SEO: JSON-LD, 5 XML sitemaps, middleware that normalizes URLs with 301 redirects, ISR",
+            "Content refreshes automatically when a visitor returns to a stale tab",
+            "Zod-validated lead forms with UTM tracking, and an in-site PDF magazine viewer",
           ],
         },
-        "wayfarer-app": {
-          title: "Wayfarer",
-          summary: "Trip planning app for independent travelers",
-          about:
-            "A trip-planning web app for sketching out itineraries and sharing them with friends. Explored a playful, card-based interface with smooth transitions and a strong focus on mobile usability.",
-          built: [
-            "Designed a card-based itinerary builder with drag-to-reorder",
-            "Added shareable trip links for planning with friends",
-            "Tuned the whole flow for mobile-first usability",
+        "namr-gov": {
+          tagline: "Government website for Georgia's mining and licensing agency.",
+          description:
+            "The official website of Georgia's national agency for mineral resources: licenses, auctions, geology, public information and media, in Georgian and English. I built it from scratch to launch, with about 13 pages fed from a headless CMS and a responsive layout that scales precisely from the desktop and mobile designs.",
+          highlights: [
+            "Built from scratch to launch: about 13 pages (licenses, auctions, geology, mining sector, public information, media)",
+            "CMS content refreshed every 15 minutes, with TypeScript types generated from the CMS schema",
+            "Viewport-scaled responsive layout based on the 1440px desktop and 390px mobile designs",
+            "Bilingual UI and CMS content with fallback to the default language",
+            "Header that hides on scroll, timeline and gallery sliders, scroll animations",
           ],
         },
-        "meridian-crm": {
-          title: "Meridian CRM",
-          summary: "Lightweight CRM for a small sales team",
-          about:
-            "A lightweight CRM built for a small B2B sales team to track leads and deals without the overhead of an enterprise tool. Focused on quick data entry and a pipeline view the whole team actually used.",
-          built: [
-            "Built a drag-and-drop pipeline board for tracking deal stages",
-            "Simplified lead entry down to a handful of required fields",
-            "Added email reminders for deals that had gone quiet",
+        "efes-georgia": {
+          tagline: "Corporate website for a beverage company.",
+          description:
+            "A bilingual corporate site for one of Georgia's biggest beverage companies. I was the main frontend contributor, building the careers and job application flow, contact forms, the age-verification gate and a reusable SEO component, and running much of the pre-launch design QA.",
+          highlights: [
+            "Careers and vacancy pages (dynamic routes), job application form with CV upload, contact form",
+            "Site-wide age-verification gate and a reusable SEO component (Open Graph and Twitter tags) on every page",
+            "English and Georgian routing, including English slugs for Georgian content",
+            "Coverage page with alphabet navigation (EN and KA) and CMS content modelling",
+            "Pixel-level design QA plus iOS and Safari fixes before launch",
           ],
         },
-        "foundry-blog": {
-          title: "Foundry Blog",
-          summary: "Statically generated blog with a calm writing flow",
-          about:
-            "A fast, minimal blogging platform for indie writers, with a focus on clean typography and near-instant page loads. Kept the writing experience distraction-free while still supporting drafts and scheduling.",
-          built: [
-            "Set up static generation for near-instant page loads",
-            "Designed a distraction-free writing and scheduling flow",
+        "maqro": {
+          tagline: "Multilingual corporate site for a development group.",
+          description:
+            "The corporate website of Maqro Group, in four languages, covering its development, construction, tourism and business sectors. I started the project and owned the frontend, and I rebuilt pages so they match the design exactly.",
+          highlights: [
+            "Started the project and owned the frontend; rebuilt pages to match the design pixel for pixel",
+            "Script that generates TypeScript types from the CMS schema",
+            "SEO and analytics: Open Graph, hreflang, JSON-LD, gtag",
+            "4 languages, with static pages refreshed from the CMS every 15 minutes",
+            "Sector pages with a custom project carousel and video gallery",
           ],
         },
-        "northwind-inventory": {
-          title: "Northwind Inventory",
-          summary: "Real-time stock tracking for a warehouse floor",
-          about:
-            "An inventory tracking tool for a small warehouse operation, replacing a shared spreadsheet with real-time stock counts and low-stock alerts. Built to work reliably on tablets on the warehouse floor.",
-          built: [
-            "Replaced a shared spreadsheet with real-time stock tracking",
-            "Added low-stock alerts to prevent fulfillment delays",
-            "Optimized the interface for tablet use on the warehouse floor",
+        "maqro-promo": {
+          tagline: "Promo landing page with a payment-plan calculator.",
+          description:
+            "A bilingual promotional landing page for the Maqro City development. Its centerpiece is a payment-plan calculator that switches between USD and GEL using the National Bank of Georgia exchange rate, next to a validated contact form and a media slider.",
+          highlights: [
+            "Payment-plan calculator with live USD/GEL conversion from the National Bank of Georgia rate, plus discount and installment math",
+            "Contact form with Zod validation, a phone input with country codes and an email API route",
+            "Swiper slider with separate mobile behavior and an embedded map",
+            "10 CMS sections loaded in parallel, refreshed every 15 minutes",
           ],
         },
-        "lumen-builder": {
-          title: "Lumen",
-          summary: "Drag-and-drop site builder for freelancers",
-          about:
-            "A drag-and-drop site builder aimed at freelancers who wanted a portfolio site without touching code. Focused on a small set of well-designed templates over endless configuration.",
-          built: [
-            "Built a drag-and-drop editor backed by a small set of curated templates",
-            "Kept the publishing flow to a single click from draft to live",
+        "healthy-water": {
+          tagline: "Corporate site for a drinks producer.",
+          description:
+            "A bilingual corporate site for a Georgian drinks producer. I contributed front-end polish and bug fixes across the main pages, added CMS-driven product fields, and made content updates show up faster.",
+          highlights: [
+            "Front-end polish and bug fixes across the header, product, export, about and factory pages",
+            "Brand-specific product fields and optional page videos driven by the CMS",
+            "Made Georgian the default language and reworked the language switcher",
+            "CSS hover animations for the site's arrow buttons",
+            "Tuned ISR so CMS changes appear in 2 minutes instead of 15",
           ],
         },
-        "tidal-booking": {
-          title: "Tidal Booking",
-          summary: "Class booking widget for surf and dive schools",
-          about:
-            "A booking widget for small surf and dive schools to manage class reservations and capacity, replacing manual phone bookings. Kept the embed lightweight enough to drop into an existing site.",
-          built: [
-            "Built a capacity-aware booking widget to replace manual phone bookings",
-            "Kept the embeddable widget lightweight enough for existing marketing sites",
-          ],
-        },
-        "orbit-notes": {
-          title: "Orbit Notes",
-          summary: "Offline-first note-taking app with quick capture",
-          about:
-            "A note-taking app built around fast capture and offline-first sync, so ideas can be jotted down instantly and organized later. Focused on keyboard shortcuts and a minimal, distraction-free editor.",
-          built: [
-            "Built offline-first sync so notes work without a connection",
-            "Designed a keyboard-driven quick capture flow",
+        "nabeghlavi": {
+          tagline: "History page for a mineral water brand.",
+          description:
+            "One of my first projects: the History page of a well-known Georgian mineral water brand. I built a scroll-animated banner and a year-by-year timeline, fed from content models I defined in the CMS, plus the history slider on the home page.",
+          highlights: [
+            "Built the History page: scroll-animated banner and year-by-year chronology timeline",
+            "Custom scroll hook driving the page's scroll-based animations",
+            "Responsive history slider on the home page",
+            "CMS content models for all of it, Georgian localization fixes and a reusable language switcher",
           ],
         },
       },
@@ -311,13 +310,14 @@ export const translations = {
       closeLabel: "Cerrar",
       moreLabel: "Más proyectos",
       yearLabel: "Año",
-      stackLabel: "Stack",
+      stackLabel: "Tecnologías",
       aboutLabel: "Sobre el proyecto",
-      builtLabel: "Qué construí",
+      highlightsLabel: "Puntos clave",
+      clientLabel: "Cliente",
+      languagesLabel: "Idiomas",
       screensLabel: "Pantallas",
       screenLabel: "Pantalla",
-      visitSite: "Visitar sitio",
-      walkthrough: "Recorrido bajo pedido",
+      visitSite: "Ver sitio",
       prevProject: "Anterior",
       nextProject: "Siguiente",
       showAll: "Ver todos",
@@ -325,115 +325,113 @@ export const translations = {
       viewProject: "Ver proyecto",
       roleLabel: "Rol",
       statusLabel: "Estado",
-      roles: { solo: "Desarrollador Frontend (en solitario)", team: "Desarrollador Frontend" },
-      statuses: { live: "En vivo", ongoing: "En curso" },
+      roles: { built: "Creado por mí", "main-contributor": "Colaborador principal", contributor: "Colaborador" },
+      statuses: { live: "En producción", maintained: "En producción · mantenimiento", ongoing: "En curso" },
       items: {
         "white-square": {
-          title: "White Square",
-          summary: "Plataforma inmobiliaria con navegación interactiva de apartamentos.",
-          about:
-            "Una plataforma inmobiliaria para explorar y buscar apartamentos. Construí todo el frontend yo solo, desde cero hasta el lanzamiento, incluyendo una vista SVG interactiva que lleva desde el edificio hasta cada unidad individual.",
-          built: [
-            "Construí todo el frontend desde cero hasta el lanzamiento",
-            "Búsqueda de apartamentos",
-            "Navegación SVG interactiva desde el edificio hasta cada unidad",
+          tagline: "Plataforma inmobiliaria con navegación interactiva de apartamentos.",
+          description:
+            "Una plataforma inmobiliaria multilingüe donde el comprador explora proyectos y elige un apartamento navegando por planos SVG interactivos: del edificio al bloque, la planta y la unidad. Construí todo el frontend yo solo, desde cero hasta el lanzamiento, y sigo manteniéndolo. Todo el contenido viene de un CMS headless y el sitio está pensado para SEO desde el principio.",
+          highlights: [
+            "Selector de planos SVG interactivo (edificio → bloque → planta → unidad), generado con datos del CMS",
+            "Exportación de informes a PDF en el servidor con Puppeteer, con caché y renderizados duplicados unificados",
+            "Listados de apartamentos y locales con filtros sincronizados con la URL, favoritos guardados y mapa MapLibre",
+            "Formularios de contacto con React Hook Form + Zod, enviados por una ruta de servidor que protege la clave de la API",
+            "SEO: sitemaps por idioma, JSON-LD y un generador de metadatos compartido; 3 idiomas con prefijo en la URL",
           ],
         },
         "digital-academy": {
-          title: "Digital Academy / XPUP",
-          summary: "Plataforma educativa que funciona en 4 países.",
-          about:
-            "Una plataforma educativa activa en cuatro países. Me uní antes del lanzamiento completo y entregué un nuevo diseño y contenido para los mercados de CZ y KZ, con un CMS y un entorno de pruebas separados para no afectar nunca a los sitios activos de GE y GB. También integré pagos a plazos con TBC y BOG.",
-          built: [
-            "Lancé un nuevo diseño y contenido para los mercados checo y kazajo",
-            "CMS y entorno de pruebas separados, para que los sitios activos de Georgia y Reino Unido siguieran funcionando sin problemas",
-            "Migraciones de CMS y trabajo de contenido para cada país",
-            "Rescaté una rama de desarrollo rota revisando más de 99 archivos en conflicto entre dos ramas divergentes",
-            "Integré pagos a plazos con bancos georgianos (TBC y BOG)",
+          tagline: "Plataforma educativa que funciona en 4 países.",
+          description:
+            "Una plataforma educativa activa en cuatro países, cada uno con su propio dominio y contenido. Me uní antes del lanzamiento completo y me convertí en uno de los desarrolladores principales del proyecto. Entregué un nuevo diseño y contenido para los mercados checo y kazajo en un CMS y un entorno de pruebas separados, para que los sitios activos de Georgia y Reino Unido siguieran funcionando sin problemas. También integré pagos a plazos con bancos georgianos.",
+          highlights: [
+            "Nuevo diseño y contenido para los mercados checo y kazajo",
+            "CMS y entorno de pruebas separados, sin afectar nunca a los sitios activos de Georgia y Reino Unido",
+            "Migraciones del CMS y trabajo de contenido para cada país",
+            "Recuperé una rama de desarrollo rota: revisé más de 99 archivos en conflicto entre dos ramas divergentes para que el equipo pudiera volver a probar y publicar",
+            "Pagos a plazos con bancos georgianos (TBC y BOG)",
           ],
         },
         "maqro-city": {
-          title: "Maqro City Tbilisi",
-          summary: "Sitio inmobiliario multilingüe con navegación interactiva del edificio.",
-          about:
-            "Un sitio de propiedades en cuatro idiomas (EN, KA, TR, RU) para un complejo residencial en Tiflis. Mi primer proyecto inmobiliario en solitario: todo el frontend, incluida la navegación interactiva del edificio, que se convirtió en la base de proyectos inmobiliarios posteriores.",
-          built: [
-            "Construí todo el frontend yo solo",
-            "Sitio de propiedades multilingüe (EN, KA, TR, RU)",
-            "Navegación interactiva del edificio, la base de proyectos inmobiliarios posteriores",
+          tagline: "Sitio inmobiliario multilingüe con buscador interactivo de apartamentos.",
+          description:
+            "Un sitio inmobiliario en cuatro idiomas para un complejo residencial en Tiflis, con dos modos de contenido, \"vivir\" e \"invertir\", para distintos compradores. Fue mi primer proyecto inmobiliario: construí todo el frontend, incluido el buscador interactivo de apartamentos, que se convirtió en la base de mis siguientes proyectos inmobiliarios. Sigo manteniendo el sitio.",
+          highlights: [
+            "Buscador de apartamentos SVG interactivo (edificio → bloque → planta → apartamento) con filtros",
+            "4 idiomas (EN, KA, TR, RU) y dos modos de contenido: \"vivir\" e \"invertir\"",
+            "SEO: JSON-LD, 5 sitemaps XML, middleware que normaliza URLs con redirecciones 301, ISR",
+            "El contenido se actualiza solo cuando el visitante vuelve a una pestaña antigua",
+            "Formularios validados con Zod con seguimiento UTM y un visor de revista PDF integrado",
           ],
         },
-        "wayfarer-app": {
-          title: "Wayfarer",
-          summary: "App de planificación de viajes para viajeros independientes",
-          about:
-            "Una aplicación web de planificación de viajes para esbozar itinerarios y compartirlos con amigos. Se exploró una interfaz lúdica basada en tarjetas, con transiciones suaves y un fuerte enfoque en la usabilidad móvil.",
-          built: [
-            "Diseñé un creador de itinerarios basado en tarjetas con reordenamiento",
-            "Añadí enlaces de viaje compartibles para planificar con amigos",
-            "Ajusté todo el flujo priorizando la usabilidad móvil",
+        "namr-gov": {
+          tagline: "Web gubernamental de la agencia de minería y licencias de Georgia.",
+          description:
+            "La web oficial de la agencia nacional de recursos minerales de Georgia: licencias, subastas, geología, información pública y medios, en georgiano e inglés. La construí desde cero hasta el lanzamiento, con unas 13 páginas alimentadas por un CMS headless y un diseño responsive que escala con precisión a partir de los diseños de escritorio y móvil.",
+          highlights: [
+            "Construida desde cero hasta el lanzamiento: unas 13 páginas (licencias, subastas, geología, sector minero, información pública, medios)",
+            "Contenido del CMS actualizado cada 15 minutos, con tipos TypeScript generados desde el esquema del CMS",
+            "Diseño responsive escalado al viewport según los diseños de 1440px (escritorio) y 390px (móvil)",
+            "Interfaz y contenido del CMS bilingües, con idioma por defecto como respaldo",
+            "Cabecera que se oculta al hacer scroll, sliders de línea de tiempo y galería, animaciones al hacer scroll",
           ],
         },
-        "meridian-crm": {
-          title: "Meridian CRM",
-          summary: "CRM ligero para un pequeño equipo de ventas",
-          about:
-            "Un CRM ligero creado para un pequeño equipo de ventas B2B, para hacer seguimiento de leads y negocios sin la complejidad de una herramienta empresarial. Centrado en una entrada de datos rápida y una vista de pipeline que todo el equipo usaba de verdad.",
-          built: [
-            "Construí un tablero de pipeline con arrastrar y soltar para las etapas de cada negocio",
-            "Simplifiqué la entrada de leads a unos pocos campos obligatorios",
-            "Añadí recordatorios por email para negocios que llevaban tiempo sin movimiento",
+        "efes-georgia": {
+          tagline: "Sitio web corporativo de una empresa de bebidas.",
+          description:
+            "Un sitio corporativo bilingüe para una de las mayores empresas de bebidas de Georgia. Fui el colaborador principal del frontend: construí el flujo de empleo y solicitudes, los formularios de contacto, la verificación de edad y un componente SEO reutilizable, y me encargué de gran parte del control de calidad del diseño antes del lanzamiento.",
+          highlights: [
+            "Páginas de empleo y vacantes (rutas dinámicas), formulario de solicitud con subida de CV, formulario de contacto",
+            "Verificación de edad en todo el sitio y un componente SEO reutilizable (Open Graph y Twitter) en todas las páginas",
+            "Rutas en inglés y georgiano, con slugs en inglés para el contenido georgiano",
+            "Página de cobertura con navegación alfabética (EN y KA) y modelado de contenido en el CMS",
+            "Control de calidad del diseño al píxel y correcciones para iOS y Safari antes del lanzamiento",
           ],
         },
-        "foundry-blog": {
-          title: "Foundry Blog",
-          summary: "Blog estático con un flujo de escritura tranquilo",
-          about:
-            "Una plataforma de blogging rápida y minimalista para escritores independientes, centrada en una tipografía cuidada y cargas de página casi instantáneas. Mantuve la experiencia de escritura libre de distracciones sin dejar de soportar borradores y programación de publicaciones.",
-          built: [
-            "Configuré generación estática para cargas de página casi instantáneas",
-            "Diseñé un flujo de escritura y programación libre de distracciones",
+        "maqro": {
+          tagline: "Sitio corporativo multilingüe de un grupo de desarrollo.",
+          description:
+            "La web corporativa de Maqro Group, en cuatro idiomas, con sus sectores de desarrollo, construcción, turismo y negocios. Inicié el proyecto y fui responsable del frontend, y reconstruí páginas para que coincidieran exactamente con el diseño.",
+          highlights: [
+            "Inicié el proyecto y fui responsable del frontend; reconstruí páginas para que coincidieran al píxel con el diseño",
+            "Script que genera tipos TypeScript desde el esquema del CMS",
+            "SEO y analítica: Open Graph, hreflang, JSON-LD, gtag",
+            "4 idiomas, con páginas estáticas actualizadas desde el CMS cada 15 minutos",
+            "Páginas de sector con carrusel de proyectos y galería de vídeos propios",
           ],
         },
-        "northwind-inventory": {
-          title: "Northwind Inventory",
-          summary: "Control de stock en tiempo real para un almacén",
-          about:
-            "Una herramienta de control de inventario para una pequeña operación de almacén, que sustituyó una hoja de cálculo compartida por conteos de stock en tiempo real y alertas de stock bajo. Construida para funcionar de forma fiable en tablets en el almacén.",
-          built: [
-            "Sustituí una hoja de cálculo compartida por seguimiento de stock en tiempo real",
-            "Añadí alertas de stock bajo para evitar retrasos en los pedidos",
-            "Optimicé la interfaz para su uso en tablets dentro del almacén",
+        "maqro-promo": {
+          tagline: "Landing promocional con calculadora de planes de pago.",
+          description:
+            "Una landing promocional bilingüe para el desarrollo Maqro City. Su pieza central es una calculadora de planes de pago que cambia entre USD y GEL con el tipo de cambio del Banco Nacional de Georgia, junto a un formulario de contacto validado y un slider multimedia.",
+          highlights: [
+            "Calculadora de planes de pago con conversión USD/GEL en tiempo real según el Banco Nacional de Georgia, con descuentos y cuotas",
+            "Formulario de contacto con validación Zod, campo de teléfono con prefijos de país y una ruta API que envía el email",
+            "Slider con Swiper con comportamiento propio en móvil y un mapa integrado",
+            "10 secciones del CMS cargadas en paralelo, actualizadas cada 15 minutos",
           ],
         },
-        "lumen-builder": {
-          title: "Lumen",
-          summary: "Constructor de webs drag-and-drop para freelancers",
-          about:
-            "Un creador de sitios de arrastrar y soltar pensado para freelancers que querían un portfolio sin tocar código. Centrado en un pequeño conjunto de plantillas bien diseñadas en lugar de una configuración interminable.",
-          built: [
-            "Construí un editor de arrastrar y soltar respaldado por un pequeño conjunto de plantillas cuidadas",
-            "Reduje la publicación a un solo clic entre borrador y sitio en vivo",
+        "healthy-water": {
+          tagline: "Sitio corporativo de un productor de bebidas.",
+          description:
+            "Un sitio corporativo bilingüe para un productor de bebidas georgiano. Contribuí con mejoras de interfaz y corrección de errores en las páginas principales, añadí campos de producto gestionados desde el CMS e hice que las actualizaciones de contenido aparecieran más rápido.",
+          highlights: [
+            "Mejoras de interfaz y corrección de errores en la cabecera y las páginas de producto, exportación, empresa y fábrica",
+            "Campos de producto por marca y vídeos opcionales gestionados desde el CMS",
+            "El georgiano pasó a ser el idioma por defecto y rehíce el selector de idioma",
+            "Animaciones CSS al pasar el ratón en los botones de flecha",
+            "Ajuste de ISR para que los cambios del CMS aparezcan en 2 minutos en vez de 15",
           ],
         },
-        "tidal-booking": {
-          title: "Tidal Booking",
-          summary: "Widget de reservas para escuelas de surf y buceo",
-          about:
-            "Un widget de reservas para pequeñas escuelas de surf y buceo, para gestionar reservas de clases y aforo, sustituyendo las reservas manuales por teléfono. Mantuve el widget lo bastante ligero para integrarlo en un sitio ya existente.",
-          built: [
-            "Construí un widget de reservas consciente del aforo para sustituir las reservas manuales por teléfono",
-            "Mantuve el widget lo bastante ligero para sitios de marketing existentes",
-          ],
-        },
-        "orbit-notes": {
-          title: "Orbit Notes",
-          summary: "App de notas offline-first con captura rápida",
-          about:
-            "Una app de notas construida en torno a la captura rápida y la sincronización offline-first, para apuntar ideas al instante y organizarlas después. Centrada en atajos de teclado y un editor minimalista sin distracciones.",
-          built: [
-            "Implementé sincronización offline-first para que las notas funcionen sin conexión",
-            "Diseñé un flujo de captura rápida guiado por teclado",
+        "nabeghlavi": {
+          tagline: "Página de historia de una marca de agua mineral.",
+          description:
+            "Uno de mis primeros proyectos: la página de Historia de una conocida marca georgiana de agua mineral. Construí un banner animado con el scroll y una línea de tiempo año a año, alimentados por modelos de contenido que definí en el CMS, además del slider de historia en la página principal.",
+          highlights: [
+            "Construí la página de Historia: banner animado con el scroll y línea de tiempo año a año",
+            "Hook de scroll propio que controla las animaciones de la página",
+            "Slider de historia responsive en la página principal",
+            "Modelos de contenido en el CMS, correcciones de localización al georgiano y un selector de idioma reutilizable",
           ],
         },
       },

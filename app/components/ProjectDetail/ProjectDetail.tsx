@@ -23,7 +23,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
   const [activeScreen, setActiveScreen] = useState(pendingProjectScreen);
 
   const found = findProject(slug);
-  const title = found ? t.work.items[found.project.slug].title : null;
+  const title = found?.project.title ?? null;
 
   useEffect(() => {
     clearProjectScreen();
@@ -86,25 +86,32 @@ export function ProjectDetail({ slug }: { slug: string }) {
       <motion.div className={styles.body} initial="hidden" animate="visible" variants={fadeItem}>
         <header className={styles.heading}>
           <h2 id={PROJECT_TITLE_ID} className={styles.title}>
-            {text.title}
+            {project.title}
           </h2>
-          {project.href ? (
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.visit}
+            title={project.href}
+          >
+            {t.work.visitSite}
+            <span className={styles.visitArrow}>
+              <ArrowUpRight size={16} strokeWidth={1.75} />
+            </span>
+          </a>
+          <p className={styles.summary}>{text.tagline}</p>
+          {project.secondaryHref && (
             <a
-              href={project.href}
+              href={project.secondaryHref}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.visit}
-              title={project.href}
+              className={styles.secondaryLink}
             >
-              {t.work.visitSite}
-              <span className={styles.visitArrow}>
-                <ArrowUpRight size={16} strokeWidth={1.75} />
-              </span>
+              {new URL(project.secondaryHref).hostname}
+              <ArrowUpRight size={14} strokeWidth={1.75} />
             </a>
-          ) : (
-            <span className={styles.walkthrough}>{t.work.walkthrough}</span>
           )}
-          <p className={styles.summary}>{text.summary}</p>
         </header>
 
         {mainImage && (
@@ -121,7 +128,7 @@ export function ProjectDetail({ slug }: { slug: string }) {
                 >
                   <Image
                     src={mainImage}
-                    alt={`${text.title} — ${t.work.screenLabel} ${activeScreen + 1}`}
+                    alt={`${project.title} — ${t.work.screenLabel} ${activeScreen + 1}`}
                     fill
                     sizes="(min-width: 640px) 560px, 100vw"
                     className={styles.polaroidImageEl}
@@ -155,18 +162,24 @@ export function ProjectDetail({ slug }: { slug: string }) {
         <dl className={styles.meta}>
           <div className={styles.metaCell}>
             <dt className={styles.label}>{t.work.yearLabel}</dt>
-            <dd className={styles.metaValue}>{project.year}</dd>
+            <dd className={styles.metaValue}>{project.period}</dd>
           </div>
-          {project.role && (
+          <div className={styles.metaCell}>
+            <dt className={styles.label}>{t.work.clientLabel}</dt>
+            <dd className={styles.metaValue}>{project.client}</dd>
+          </div>
+          <div className={styles.metaCell}>
+            <dt className={styles.label}>{t.work.roleLabel}</dt>
+            <dd className={styles.metaValue}>{t.work.roles[project.role]}</dd>
+          </div>
+          <div className={styles.metaCell}>
+            <dt className={styles.label}>{t.work.statusLabel}</dt>
+            <dd className={styles.metaValue}>{t.work.statuses[project.status]}</dd>
+          </div>
+          {project.languages && (
             <div className={styles.metaCell}>
-              <dt className={styles.label}>{t.work.roleLabel}</dt>
-              <dd className={styles.metaValue}>{t.work.roles[project.role]}</dd>
-            </div>
-          )}
-          {project.status && (
-            <div className={styles.metaCell}>
-              <dt className={styles.label}>{t.work.statusLabel}</dt>
-              <dd className={styles.metaValue}>{t.work.statuses[project.status]}</dd>
+              <dt className={styles.label}>{t.work.languagesLabel}</dt>
+              <dd className={styles.metaValue}>{project.languages.join(" · ")}</dd>
             </div>
           )}
           <div className={styles.metaCell}>
@@ -183,13 +196,13 @@ export function ProjectDetail({ slug }: { slug: string }) {
 
         <section className={styles.block}>
           <SectionLabel>{t.work.aboutLabel}</SectionLabel>
-          <p className={styles.paragraph}>{text.about}</p>
+          <p className={styles.paragraph}>{text.description}</p>
         </section>
 
         <section className={styles.block}>
-          <SectionLabel>{t.work.builtLabel}</SectionLabel>
+          <SectionLabel>{t.work.highlightsLabel}</SectionLabel>
           <ol className={styles.builtList}>
-            {text.built.map((item, i) => (
+            {text.highlights.map((item, i) => (
               <li key={item} className={styles.builtItem}>
                 <span className={styles.builtNumber}>{pad(i + 1)}</span>
                 <span>{item}</span>
@@ -201,8 +214,8 @@ export function ProjectDetail({ slug }: { slug: string }) {
 
       <footer className={styles.footer}>
         <nav className={styles.nav}>
-          {navLink(prev, `← ${t.work.prevProject}`, `${t.work.prevProject}: ${t.work.items[prev.slug].title}`)}
-          {navLink(next, `${t.work.nextProject} →`, `${t.work.nextProject}: ${t.work.items[next.slug].title}`)}
+          {navLink(prev, `← ${t.work.prevProject}`, `${t.work.prevProject}: ${prev.title}`)}
+          {navLink(next, `${t.work.nextProject} →`, `${t.work.nextProject}: ${next.title}`)}
         </nav>
       </footer>
     </article>

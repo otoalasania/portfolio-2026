@@ -12,5 +12,5 @@ export async function generateMetadata({ params }: WorkParams): Promise<Metadata
   const found = findProject((await params).slug);
   if (!found) return {};
   const text = translations.en.work.items[found.project.slug];
-  return { title: text.title, description: text.summary };
+  return { title: found.project.title, description: text.tagline };
 }

@@ -28,7 +28,7 @@ export function Work() {
                 href={`/work/${card.slug}`}
                 scroll={false}
                 className={styles.card}
-                aria-label={t.work.items[card.slug].title}
+                aria-label={card.title}
                 data-project-card={card.slug}
                 onClick={() => openProjectAt(card.image)}
               >

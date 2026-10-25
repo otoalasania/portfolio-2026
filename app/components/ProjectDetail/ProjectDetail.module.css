@@ -43,7 +43,7 @@
 
 .summary,
 .paragraph,
-.walkthrough {
+.secondaryLink {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -258,7 +258,12 @@
   color: var(--foreground);
 }
 
-.heading .walkthrough {
+.heading .secondaryLink {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  justify-self: start;
   font-size: 14px;
   line-height: 20px;
 }
@@ -266,6 +271,10 @@
 @media (hover: hover) and (pointer: fine) {
   .visit:hover .visitArrow {
     transform: translate(2px, -2px);
+  }
+
+  .secondaryLink:hover {
+    color: var(--foreground);
   }
 }
 
@@ -288,6 +297,7 @@
 .close:focus-visible,
 .navButton:focus-visible,
 .visit:focus-visible,
+.secondaryLink:focus-visible,
 .thumb:focus-visible {
   outline: 2px solid var(--foreground-subdued);
   outline-offset: 2px;

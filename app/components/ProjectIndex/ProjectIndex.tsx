@@ -75,8 +75,8 @@ export function ProjectIndex() {
             <>
               <span className={styles.year}>{project.year}</span>
               <span className={styles.text}>
-                <span className={styles.title}>{text.title}</span>
-                <span className={styles.summary}>{text.summary}</span>
+                <span className={styles.title}>{project.title}</span>
+                <span className={styles.summary}>{text.tagline}</span>
               </span>
               <span className={styles.stackName}>{project.stack[0]}</span>
               <motion.span className={styles.arrow} variants={arrowVariants}>
@@ -122,10 +122,10 @@ export function ProjectIndex() {
                   onClick={() => setOpenSlug(open ? null : project.slug)}
                 >
                   <span className={styles.triggerTop}>
-                    <span className={styles.title}>{text.title}</span>
+                    <span className={styles.title}>{project.title}</span>
                     <span className={styles.year}>{project.year}</span>
                   </span>
-                  <span className={styles.touchSummary}>{text.summary}</span>
+                  <span className={styles.touchSummary}>{text.tagline}</span>
                   <span className={styles.chevron} data-open={open}>
                     <ChevronIcon />
                   </span>

@@ -56,124 +56,215 @@ export type ProjectSlug = keyof (typeof translations)["en"]["work"]["items"];
 
 export type Project = {
   slug: ProjectSlug;
+  title: string;
+  company: string;
+  client: string;
   year: number;
-  stack: string[];
+  period: string;
   featured: boolean;
-  href?: string;
-  role?: "solo" | "team";
-  status?: "live" | "ongoing";
+  role: "built" | "main-contributor" | "contributor";
+  status: "live" | "maintained" | "ongoing";
+  languages?: string[];
+  href: string;
+  secondaryHref?: string;
+  stack: string[];
   images: string[];
 };
 
-// TODO: swap for real screenshots — picsum.photos placeholders, stable per project via seed
-function projectImages(seed: string, count: number): string[] {
+function placeholderImages(seed: string, count: number): string[] {
   return Array.from({ length: count }, (_, i) => `https://picsum.photos/seed/${seed}-${i + 1}/960/720`);
 }
 
 const projects: Project[] = [
   {
     slug: "white-square",
+    title: "White Square",
+    company: "Noxtton",
+    client: "Tetri Kvadrati (White Square)",
     year: 2026,
-    stack: ["Next.js", "TypeScript"],
+    period: "2026",
     featured: true,
-    href: "https://w2.ge/",
-    role: "solo",
+    role: "built",
     status: "live",
+    languages: ["KA", "EN", "RU"],
+    href: "https://w2.ge/",
+    stack: [
+      "Next.js 15 (App Router)",
+      "React 19",
+      "TypeScript",
+      "CSS Modules",
+      "framer-motion",
+      "React Hook Form",
+      "Zod",
+      "MapLibre",
+      "Puppeteer",
+      "in-house CMS",
+    ],
     images: [
-      "/assets/screenshots/w2/w2ge-1.png",
-      "/assets/screenshots/w2/w2ge-2.png",
-      "/assets/screenshots/w2/w2ge-3.png",
+      "/assets/screenshots/w2/w2ge-1.webp",
+      "/assets/screenshots/w2/w2ge-2.webp",
+      "/assets/screenshots/w2/w2ge-3.webp",
     ],
   },
   {
     slug: "digital-academy",
+    title: "Digital Academy / XPUP",
+    company: "Noxtton",
+    client: "Digital Academy (XPUP)",
     year: 2025,
-    stack: ["Next.js", "TypeScript", "Custom CMS", "TBC & BOG installments"],
+    period: "2025–present",
     featured: true,
-    href: "https://xpup.com",
-    role: "team",
+    role: "main-contributor",
     status: "ongoing",
+    href: "https://xpup.com",
+    secondaryHref: "https://digitaledu.ge",
+    stack: ["Next.js", "TypeScript", "in-house CMS", "TBC and BOG installment payments"],
     images: [
-      "/assets/screenshots/academy/academy-1.png",
-      "/assets/screenshots/academy/academy-2.png",
+      "/assets/screenshots/academy/academy-1.webp",
+      "/assets/screenshots/academy/academy-2.webp",
       "/assets/screenshots/academy/academy-3.png",
     ],
   },
   {
     slug: "maqro-city",
+    title: "Maqro City Tbilisi",
+    company: "Noxtton",
+    client: "Maqro City",
     year: 2025,
-    stack: ["Next.js", "TypeScript"],
+    period: "2025–2026",
     featured: true,
+    role: "built",
+    status: "maintained",
+    languages: ["EN", "KA", "TR", "RU"],
     href: "https://maqrocitytbilisi.com/en/",
-    role: "solo",
-    status: "live",
+    stack: [
+      "Next.js 13 (Pages Router)",
+      "React 18",
+      "TypeScript",
+      "styled-jsx",
+      "React Hook Form",
+      "Zod",
+      "Swiper",
+      "pdf.js",
+      "in-house CMS",
+    ],
     images: [
-      "/assets/screenshots/maqro-city/maqro-city-1.png",
-      "/assets/screenshots/maqro-city/maqro-city-2.png",
-      "/assets/screenshots/maqro-city/maqro-city-3.png",
+      "/assets/screenshots/maqro-city/maqro-city-1.webp",
+      "/assets/screenshots/maqro-city/maqro-city-2.webp",
+      "/assets/screenshots/maqro-city/maqro-city-3.webp",
     ],
   },
   {
-    slug: "wayfarer-app",
-    year: 2024,
-    stack: ["Next.js", "TypeScript", "Figma"],
-    featured: false,
-    href: "#",
-    images: projectImages("wayfarer-app", 5),
+    slug: "namr-gov",
+    title: "National Agency of Mineral Resources",
+    company: "Noxtton",
+    client: "National Agency of Mineral Resources of Georgia (NAMR)",
+    year: 2022,
+    period: "2022–2023",
+    featured: true,
+    role: "built",
+    status: "live",
+    languages: ["KA", "EN"],
+    href: "https://www.namr.gov.ge/",
+    stack: ["Next.js", "TypeScript", "Swiper", "AOS", "in-house CMS"],
+    images: placeholderImages("namr-gov", 3),
   },
   {
-    slug: "meridian-crm",
+    slug: "efes-georgia",
+    title: "Efes Georgia",
+    company: "Noxtton",
+    client: "Efes Georgia (Natakhtari)",
+    year: 2022,
+    period: "2022–2024",
+    featured: false,
+    role: "main-contributor",
+    status: "live",
+    languages: ["EN", "KA"],
+    href: "https://efesgeorgia.com/",
+    stack: ["Next.js 12", "TypeScript", "Swiper", "in-house CMS"],
+    images: placeholderImages("efes-georgia", 3),
+  },
+  {
+    slug: "maqro",
+    title: "Maqro",
+    company: "Noxtton",
+    client: "Maqro Group",
     year: 2025,
-    stack: ["Next.js", "TypeScript"],
+    period: "2025–2026",
     featured: false,
-    href: "#",
-    images: projectImages("meridian-crm", 3),
+    role: "built",
+    status: "live",
+    languages: ["EN", "KA", "TR", "RU"],
+    href: "https://maqro.ge/",
+    stack: [
+      "Next.js 13 (Pages Router)",
+      "TypeScript",
+      "styled-jsx",
+      "Tailwind",
+      "Radix UI",
+      "Zod",
+      "Swiper",
+      "in-house CMS",
+    ],
+    images: placeholderImages("maqro", 3),
   },
   {
-    slug: "foundry-blog",
-    year: 2023,
-    stack: ["Next.js", "TypeScript", "Figma"],
+    slug: "maqro-promo",
+    title: "Maqro City Promo",
+    company: "Noxtton",
+    client: "Maqro City",
+    year: 2025,
+    period: "2025",
     featured: false,
-    href: "#",
-    images: projectImages("foundry-blog", 2),
+    role: "built",
+    status: "live",
+    languages: ["KA", "EN"],
+    href: "https://promo.maqrocitytbilisi.com/",
+    stack: [
+      "Next.js 13 (Pages Router)",
+      "TypeScript",
+      "styled-jsx",
+      "React Hook Form",
+      "Zod",
+      "Swiper",
+      "in-house CMS",
+    ],
+    images: placeholderImages("maqro-promo", 2),
   },
   {
-    slug: "northwind-inventory",
-    year: 2024,
-    stack: ["TypeScript"],
-    featured: false,
-    images: projectImages("northwind-inventory", 4),
-  },
-  {
-    slug: "lumen-builder",
-    year: 2023,
-    stack: ["Next.js", "Figma"],
-    featured: false,
-    href: "#",
-    images: projectImages("lumen-builder", 3),
-  },
-  {
-    slug: "tidal-booking",
+    slug: "healthy-water",
+    title: "Healthy Water",
+    company: "Noxtton",
+    client: "Healthy Water",
     year: 2022,
-    stack: ["Next.js", "TypeScript"],
+    period: "2022–2026",
     featured: false,
-    href: "#",
-    images: projectImages("tidal-booking", 1),
+    role: "contributor",
+    status: "maintained",
+    languages: ["KA", "EN"],
+    href: "https://healthywater.ge/",
+    stack: ["Next.js 12", "TypeScript", "in-house CMS"],
+    images: placeholderImages("healthy-water", 2),
   },
   {
-    slug: "orbit-notes",
+    slug: "nabeghlavi",
+    title: "Nabeghlavi",
+    company: "Noxtton",
+    client: "Nabeghlavi",
     year: 2022,
-    stack: ["TypeScript", "Figma"],
+    period: "2022–2024",
     featured: false,
-    href: "#",
-    images: projectImages("orbit-notes", 2),
+    role: "contributor",
+    status: "live",
+    languages: ["KA", "EN"],
+    href: "https://nabeghlavi.ge/history",
+    stack: ["Next.js 12", "TypeScript", "AOS", "Swiper", "in-house CMS"],
+    images: placeholderImages("nabeghlavi", 2),
   },
 ];
 
-const newestFirst = (a: Project, b: Project) => b.year - a.year;
-
-export const featuredProjects = projects.filter((p) => p.featured).sort(newestFirst);
-export const moreProjects = projects.filter((p) => !p.featured).sort(newestFirst);
+export const featuredProjects = projects.filter((p) => p.featured);
+export const moreProjects = projects.filter((p) => !p.featured);
 
 export const allProjects = [...featuredProjects, ...moreProjects];
 
@@ -184,11 +275,10 @@ const heroCardPicks: { slug: ProjectSlug; image: number }[] = [
   { slug: "maqro-city", image: 1 },
 ];
 
-export const heroCards = heroCardPicks.map(({ slug, image }) => ({
-  slug,
-  image,
-  src: projects.find((p) => p.slug === slug)!.images[image]!,
-}));
+export const heroCards = heroCardPicks.map(({ slug, image }) => {
+  const project = projects.find((p) => p.slug === slug)!;
+  return { slug, image, title: project.title, src: project.images[image]! };
+});
 
 export function findProject(slug: string) {
   for (const group of [featuredProjects, moreProjects]) {
