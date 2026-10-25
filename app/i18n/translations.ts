@@ -23,7 +23,7 @@ export const translations = {
       bioLocationPrefix: ", based in",
       bioLocation: "Alicante",
       bioAfter:
-        "and originally from Tbilisi. I've spent the last 5 years building production web apps with React, Next.js and TypeScript.",
+        "and originally from Georgia. I've spent the last 5 years building production web apps with React, Next.js and TypeScript.",
       bioShort:
         "Frontend developer at Noxtton, based in Alicante. I build fast, accessible interfaces with clean UI engineering.",
       verified: "Verified",
@@ -166,6 +166,10 @@ export const translations = {
     footer: {
       location: "Alicante, Spain",
     },
+    cv: {
+      toast: "CV.pdf, here you go",
+      takeCv: "Download CV",
+    },
     experience: {
       title: "Experience",
       subtitle:
@@ -302,7 +306,7 @@ export const translations = {
       bioLocationPrefix: ", con base en",
       bioLocation: "Alicante",
       bioAfter:
-        "y originario de Tiflis. Llevo 5 años creando aplicaciones web en producción con React, Next.js y TypeScript.",
+        "y originario de Georgia. Llevo 5 años creando aplicaciones web en producción con React, Next.js y TypeScript.",
       bioShort:
         "Desarrollador frontend en Noxtton, con base en Alicante. Construyo interfaces rápidas y accesibles con una ingeniería de UI limpia.",
       verified: "Verificado",
@@ -444,6 +448,10 @@ export const translations = {
     },
     footer: {
       location: "Alicante, España",
+    },
+    cv: {
+      toast: "CV.pdf, aquí lo tienes",
+      takeCv: "Descargar CV",
     },
     experience: {
       title: "Experiencia",

@@ -12,6 +12,7 @@ import { Contact } from "../Contact/Contact";
 import { Footer } from "../Footer/Footer";
 import { Dock } from "../Dock/Dock";
 import { NeurosisToast } from "../NeurosisToast/NeurosisToast";
+import { CvToast } from "../CvToast/CvToast";
 import { HIDDEN_SECTIONS } from "../../data";
 import styles from "./PortfolioHome.module.css";
 
@@ -37,6 +38,7 @@ export default function PortfolioHome() {
 
       <Dock />
       <NeurosisToast />
+      <CvToast />
     </div>
   );
 }

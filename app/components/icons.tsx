@@ -245,3 +245,17 @@ export const PauseIcon = () => (
     <path d="M8.5 6v12M15.5 6v12" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
   </Icon>
 );
+
+export const ArrowDownIcon = ({ size = 14 }: { size?: number }) => (
+  <svg viewBox="0 0 24 24" fill="none" width={size} height={size} style={{ flexShrink: 0 }}>
+    <path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export const DocumentDownIcon = () => (
+  <Icon size={20}>
+    <path d="M7.5 3.5h6L18 8v11a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1.5-1.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+    <path d="M13 3.5V8h5" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+    <path data-arrow d="M12 10.5v6M9.5 14l2.5 2.5 2.5-2.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </Icon>
+);

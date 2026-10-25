@@ -1,0 +1,129 @@
+.slot {
+  position: relative;
+  width: 58px;
+  height: 58px;
+}
+
+.carry {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.carry[data-phase="grabbed"] {
+  visibility: hidden;
+}
+
+.avatar {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.carry[data-phase="busy"] .avatar {
+  pointer-events: none;
+}
+
+.cv {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 12px;
+  background: var(--button-bg);
+  color: var(--foreground);
+  box-shadow: 0 0 0 1px var(--divider);
+  cursor: pointer;
+}
+
+.cv:hover {
+  background: var(--button-bg-hover);
+}
+
+.cv:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.cv [data-arrow] {
+  transform: translateY(0);
+}
+
+.cv:hover [data-arrow],
+.cv:focus-visible [data-arrow] {
+  transform: translateY(1.5px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cv {
+    transition: background-color 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .cv [data-arrow] {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+.cvTitle {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--foreground-subdued);
+}
+
+.cvTooltip {
+  composes: tooltip from "../ui.module.css";
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .slot:has(.carry[data-phase="grabbed"]) .cv:hover + .cvTooltip,
+  .slot:has(.carry[data-phase="grabbed"]) .cv:focus-visible + .cvTooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.arm {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  visibility: hidden;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.3));
+}
+
+.arm[data-side="right"] {
+  flex-direction: row-reverse;
+}
+
+.arm[data-side="right"] .armFur {
+  margin-right: 0;
+  margin-left: -1px;
+}
+
+.arm[data-side="right"] img {
+  scale: -1 1;
+}
+
+.armFur {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  margin-right: -1px;
+  object-fit: fill;
+}
+
+.hand {
+  flex: none;
+  width: auto;
+  height: 100%;
+}
