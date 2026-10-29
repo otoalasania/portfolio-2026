@@ -19,7 +19,7 @@
 @property --foreground-subdued {
   syntax: "<color>";
   inherits: true;
-  initial-value: #7e7e7e;
+  initial-value: #737373;
 }
 
 @property --hover-surface {
@@ -55,42 +55,44 @@
 @property --input-border {
   syntax: "<color>";
   inherits: true;
-  initial-value: #f8f8f8;
+  initial-value: #f0f0f0;
 }
 
 @property --button-bg {
   syntax: "<color>";
   inherits: true;
-  initial-value: #f8f8f8;
+  initial-value: #f2f2f2;
 }
 
 @property --button-bg-hover {
   syntax: "<color>";
   inherits: true;
-  initial-value: #f2f2f2;
+  initial-value: #ebebeb;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #121212;
-  --foreground-subdued: #7e7e7e;
+  color-scheme: light dark;
+
+  --background: light-dark(#ffffff, #0d0d0d);
+  --foreground: light-dark(#121212, #ffffff);
+  --foreground-subdued: light-dark(#737373, #8f8f8f);
 
   --color-white: #ffffff;
   --color-black: #000000;
   --color-accent-online: #16bf5e;
 
-  --hover-surface: #fafafa;
-  --divider: #ededed;
-  --player-panel: #f8f8f8;
-  --player-track: rgba(18, 18, 18, 0.1);
+  --hover-surface: light-dark(#fafafa, #141414);
+  --divider: light-dark(#ededed, #1f1f1f);
+  --player-panel: light-dark(#f8f8f8, #141414);
+  --player-track: light-dark(rgba(18, 18, 18, 0.1), rgba(255, 255, 255, 0.12));
   --belt-fabric: #ffffff;
   --belt-stitch: rgba(0, 0, 0, 0.06);
-  --belt-outline: rgba(0, 0, 0, 0.12);
-  --input-bg: #f8f8f8;
-  --input-border: #f8f8f8;
-  --button-bg: #f8f8f8;
-  --button-bg-hover: #f2f2f2;
-  --focus-ring: rgba(18, 18, 18, 0.1);
+  --belt-outline: light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.24));
+  --input-bg: light-dark(#f8f8f8, #141414);
+  --input-border: light-dark(#f0f0f0, #1c1c1c);
+  --button-bg: light-dark(#f2f2f2, #1c1c1c);
+  --button-bg-hover: light-dark(#ebebeb, #212121);
+  --focus-ring: light-dark(rgba(18, 18, 18, 0.1), rgba(255, 255, 255, 0.1));
 
   --neurosis-red: #ff1f3d;
 
@@ -103,22 +105,12 @@
   --black-70: rgba(0, 0, 0, 0.7);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0d0d0d;
-    --foreground: #ffffff;
-    --foreground-subdued: #8f8f8f;
-    --hover-surface: #141414;
-    --divider: #1f1f1f;
-    --player-panel: #141414;
-    --player-track: rgba(255, 255, 255, 0.12);
-    --belt-outline: rgba(255, 255, 255, 0.24);
-    --input-bg: #141414;
-    --input-border: #1c1c1c;
-    --button-bg: #1c1c1c;
-    --button-bg-hover: #212121;
-    --focus-ring: rgba(255, 255, 255, 0.1);
-  }
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -139,6 +131,7 @@
 }
 
 :root[data-neurosis] {
+  color-scheme: light;
   --background: #ebe7ff;
   --foreground: #07090f;
   --foreground-subdued: #3d3a66;

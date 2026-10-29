@@ -26,7 +26,6 @@ export const FIRST_PORTFOLIO_URL = "https://otoalasania.github.io/portfolio-webs
 
 export const profile = {
   name: "Otar Alasania",
-  timeZone: "Europe/Madrid",
   company: { name: "Noxtton", logo: "/noxtton-logo.png", url: "https://noxtton.com/" },
 };
 

@@ -1,58 +1,73 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { ClockIcon, GlobeIcon } from "../icons";
-import { profile } from "../../data";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
+import { GlobeIcon, MoonIcon, SunIcon } from "../icons";
 import { useLocale } from "../../i18n/LocaleContext";
+import { currentTheme, toggleTheme } from "../../lib/theme";
 import styles from "./Header.module.css";
 
-const clock = new Intl.DateTimeFormat("en-GB", {
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-  hourCycle: "h23",
-  timeZone: profile.timeZone,
-  timeZoneName: "shortOffset",
-});
+const WAKE_UP_SRC = "/wake-up.webp";
+
+function preloadWakeUp() {
+  new window.Image().src = WAKE_UP_SRC;
+}
 
 export function Header() {
-  const [now, setNow] = useState("");
   const { t, locale, setLocale } = useLocale();
-  const barRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const [wakeUp, setWakeUp] = useState(0);
 
   useEffect(() => {
-    function tick() {
-      setNow(clock.format(new Date()));
-    }
-    let id: ReturnType<typeof setInterval> | undefined;
-    const observer = new IntersectionObserver(([entry]) => {
-      clearInterval(id);
-      if (!entry?.isIntersecting) return;
-      tick();
-      id = setInterval(tick, 1000);
-    });
-    observer.observe(barRef.current!);
-    return () => {
-      observer.disconnect();
-      clearInterval(id);
-    };
+    if (currentTheme() === "dark") preloadWakeUp();
   }, []);
 
+  function switchTheme() {
+    if (toggleTheme() === "dark") preloadWakeUp();
+    else if (!reduce) setWakeUp((n) => n + 1);
+  }
+
   return (
-    <div id="top" ref={barRef} className={styles.bar}>
+    <div id="top" className={styles.bar}>
       <button
         type="button"
         onClick={() => setLocale(locale === "en" ? "es" : "en")}
-        className={styles.langSwitcher}
+        className={styles.switcher}
         aria-label={t.header.switchLanguage}
       >
         <GlobeIcon />
         {locale.toUpperCase()}
       </button>
-      <span className={styles.clock} title={t.header.clockLabel}>
-        <ClockIcon />
-        {now || " "}
-      </span>
+      <button type="button" onClick={switchTheme} className={styles.switcher} aria-label={t.header.switchTheme}>
+        <span className={styles.light}>
+          <SunIcon />
+          {t.header.themeLight}
+        </span>
+        <span className={styles.dark}>
+          <MoonIcon />
+          {t.header.themeDark}
+        </span>
+      </button>
+      {wakeUp > 0 &&
+        createPortal(
+          <motion.div
+            key={wakeUp}
+            className={styles.wakeUp}
+            aria-hidden="true"
+            animate={{
+              opacity: [0, 0.42, 0.42, 0],
+              scale: [0.97, 1, 1.01, 1.06],
+              filter: ["blur(14px)", "blur(0px)", "blur(0px)", "blur(18px)"],
+            }}
+            transition={{ duration: 1.5, times: [0, 0.18, 0.4, 1], ease: "easeInOut" }}
+            onAnimationComplete={() => setWakeUp(0)}
+          >
+            <Image src={WAKE_UP_SRC} alt="" width={600} height={595} unoptimized className={styles.wakeUpImage} />
+          </motion.div>,
+          document.body
+        )}
     </div>
   );
 }

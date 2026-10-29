@@ -47,13 +47,6 @@ export const MailIcon = ({ size = 16 }: { size?: number }) => (
   </Icon>
 );
 
-export const ClockIcon = ({ strokeWidth = 1.6 }: { strokeWidth?: number }) => (
-  <Icon>
-    <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth={strokeWidth} />
-    <path d="M12 7.5V12l3 2" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" />
-  </Icon>
-);
-
 export const PinIcon = () => (
   <Icon>
     <path
@@ -87,6 +80,17 @@ export const SunIcon = () => (
       stroke="currentColor"
       strokeWidth="1.75"
       strokeLinecap="round"
+    />
+  </Icon>
+);
+
+export const MoonIcon = () => (
+  <Icon>
+    <path
+      d="M19.5 14.6A7.75 7.75 0 0 1 9.4 4.5a7.75 7.75 0 1 0 10.1 10.1Z"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinejoin="round"
     />
   </Icon>
 );

@@ -13,7 +13,9 @@ export const translations = {
     },
     header: {
       switchLanguage: "Switch to Spanish",
-      clockLabel: "Local time in Alicante",
+      switchTheme: "Switch color theme",
+      themeLight: "Light",
+      themeDark: "Dark",
     },
     profile: {
       role: "Frontend Developer",
@@ -248,7 +250,9 @@ export const translations = {
     },
     header: {
       switchLanguage: "Cambiar a inglés",
-      clockLabel: "Hora local en Alicante",
+      switchTheme: "Cambiar tema de color",
+      themeLight: "Claro",
+      themeDark: "Oscuro",
     },
     profile: {
       role: "Desarrollador Frontend",

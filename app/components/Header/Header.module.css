@@ -5,7 +5,7 @@
   gap: 10px;
 }
 
-.langSwitcher {
+.switcher {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -22,21 +22,52 @@
   transition: color 0.15s ease;
 }
 
-.langSwitcher:hover {
+.switcher:hover {
   color: var(--foreground);
 }
 
-.clock {
+.light,
+.dark {
   display: flex;
-  width: 132px;
   align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 16px;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-  color: var(--foreground-subdued);
+  gap: 6px;
+}
+
+.dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .light {
+    display: none;
+  }
+
+  :root:not([data-theme="light"]) .dark {
+    display: flex;
+  }
+}
+
+:root[data-theme="dark"] .light {
+  display: none;
+}
+
+:root[data-theme="dark"] .dark {
+  display: flex;
+}
+
+.wakeUp {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+.wakeUpImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mask-image:
+    linear-gradient(to right, transparent, #000 15%, #000 85%, transparent),
+    linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+  mask-composite: intersect;
 }
