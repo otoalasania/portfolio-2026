@@ -20,7 +20,8 @@ export function Header() {
     const el = wakeUpRef.current;
     if (toggleTheme() === "dark" || reduce || !el) return;
     el.getAnimations().forEach((a) => a.cancel());
-    el.animate(
+    el.hidden = false;
+    const flash = el.animate(
       [
         { opacity: 0, easing: "cubic-bezier(0.37, 0, 0.63, 1)" },
         { opacity: 0.42, offset: 0.4, easing: "cubic-bezier(0.37, 0, 0.63, 1)" },
@@ -28,6 +29,7 @@ export function Header() {
       ],
       1200
     );
+    flash.finished.then(() => (el.hidden = true)).catch(() => {});
   }
 
   return (
@@ -53,7 +55,7 @@ export function Header() {
       </button>
       {mounted &&
         createPortal(
-          <div ref={wakeUpRef} className={styles.wakeUp} aria-hidden="true">
+          <div ref={wakeUpRef} className={styles.wakeUp} hidden aria-hidden="true">
             <Image
               src="/wake-up.webp"
               alt=""

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { dock } from "../../data";
 import { useLocale } from "../../i18n/LocaleContext";
+import { scrollToSection } from "../../lib/scrollToSection";
 import styles from "./Dock.module.css";
 
 export function Dock() {
@@ -23,10 +24,6 @@ export function Dock() {
     };
   }, []);
 
-  function scrollTo(id: string) {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
   return (
     <nav className={styles.nav} data-hidden={hidden} aria-label={t.nav.label}>
       <div className={styles.row}>
@@ -35,7 +32,7 @@ export function Dock() {
           const ItemIcon = item.icon;
           return (
             <span key={item.id} className={styles.itemWrap}>
-              <button type="button" aria-label={label} onClick={() => scrollTo(item.id)} className={styles.item}>
+              <button type="button" aria-label={label} onClick={() => scrollToSection(item.id)} className={styles.item}>
                 <ItemIcon />
               </button>
               <span className={styles.tooltip} aria-hidden="true">

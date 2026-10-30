@@ -83,6 +83,26 @@
   }
 }
 
+.open {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: var(--foreground-subdued);
+}
+
+.current {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--foreground);
+}
+
+.currentArrow {
+  display: flex;
+}
+
 .location {
   display: inline-flex;
   align-items: center;
