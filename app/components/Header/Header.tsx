@@ -1,32 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
+import { useReducedMotion } from "motion/react";
 import { GlobeIcon, MoonIcon, SunIcon } from "../icons";
 import { useLocale } from "../../i18n/LocaleContext";
-import { currentTheme, toggleTheme } from "../../lib/theme";
+import { toggleTheme } from "../../lib/theme";
+import { useClientValue } from "../../lib/useClientValue";
 import styles from "./Header.module.css";
-
-const WAKE_UP_SRC = "/wake-up.webp";
-
-function preloadWakeUp() {
-  new window.Image().src = WAKE_UP_SRC;
-}
 
 export function Header() {
   const { t, locale, setLocale } = useLocale();
+  const mounted = useClientValue(() => true, false);
   const reduce = useReducedMotion();
-  const [wakeUp, setWakeUp] = useState(0);
-
-  useEffect(() => {
-    if (currentTheme() === "dark") preloadWakeUp();
-  }, []);
+  const wakeUpRef = useRef<HTMLDivElement>(null);
 
   function switchTheme() {
-    if (toggleTheme() === "dark") preloadWakeUp();
-    else if (!reduce) setWakeUp((n) => n + 1);
+    const el = wakeUpRef.current;
+    if (toggleTheme() === "dark" || reduce || !el) return;
+    el.getAnimations().forEach((a) => a.cancel());
+    el.animate(
+      [
+        { opacity: 0, easing: "cubic-bezier(0.37, 0, 0.63, 1)" },
+        { opacity: 0.42, offset: 0.4, easing: "cubic-bezier(0.37, 0, 0.63, 1)" },
+        { opacity: 0 },
+      ],
+      1200
+    );
   }
 
   return (
@@ -50,22 +51,21 @@ export function Header() {
           {t.header.themeDark}
         </span>
       </button>
-      {wakeUp > 0 &&
+      {mounted &&
         createPortal(
-          <motion.div
-            key={wakeUp}
-            className={styles.wakeUp}
-            aria-hidden="true"
-            animate={{
-              opacity: [0, 0.42, 0.42, 0],
-              scale: [0.97, 1, 1.01, 1.06],
-              filter: ["blur(14px)", "blur(0px)", "blur(0px)", "blur(18px)"],
-            }}
-            transition={{ duration: 1.5, times: [0, 0.18, 0.4, 1], ease: "easeInOut" }}
-            onAnimationComplete={() => setWakeUp(0)}
-          >
-            <Image src={WAKE_UP_SRC} alt="" width={600} height={595} unoptimized className={styles.wakeUpImage} />
-          </motion.div>,
+          <div ref={wakeUpRef} className={styles.wakeUp} aria-hidden="true">
+            <Image
+              src="/wake-up.webp"
+              alt=""
+              width={600}
+              height={595}
+              unoptimized
+              loading="eager"
+              fetchPriority="low"
+              onLoad={(e) => e.currentTarget.decode().catch(() => {})}
+              className={styles.wakeUpImage}
+            />
+          </div>,
           document.body
         )}
     </div>
