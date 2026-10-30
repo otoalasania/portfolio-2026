@@ -16,7 +16,7 @@
   flex-direction: column;
   width: 100%;
   max-width: 640px;
-  height: calc(100dvh - 24px);
+  height: calc(100dvh / var(--page-zoom) - 24px);
   margin: 0 auto;
   overflow: hidden;
   border-radius: 12px 12px 0 0;
@@ -42,7 +42,7 @@
 @media (min-width: 640px) {
   .sheet {
     height: auto;
-    max-height: calc(100dvh - 48px);
+    max-height: calc(100dvh / var(--page-zoom) - 48px);
   }
 
   .scroll {

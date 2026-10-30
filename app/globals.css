@@ -103,6 +103,8 @@
   --white-90: rgba(255, 255, 255, 0.9);
 
   --black-70: rgba(0, 0, 0, 0.7);
+
+  --page-zoom: 1;
 }
 
 :root[data-theme="light"] {
@@ -111,6 +113,24 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --page-zoom: 1.1;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --page-zoom: 1.2;
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --page-zoom: 1.33;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -230,6 +250,7 @@
 }
 
 html {
+  zoom: var(--page-zoom);
   -webkit-text-size-adjust: 100%;
 }
 
