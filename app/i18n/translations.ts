@@ -13,17 +13,21 @@ export const translations = {
     },
     header: {
       switchLanguage: "Switch to Spanish",
-      clockLabel: "Local time in Alicante",
+      switchTheme: "Switch color theme",
+      themeLight: "Light",
+      themeDark: "Dark",
     },
     profile: {
       role: "Frontend Developer",
-      bioBefore: "I'm Otar, a frontend developer at",
-      bioLocationPrefix: ", based in",
+      bioBefore: "I'm Otar, a frontend developer based in",
       bioLocation: "Alicante",
       bioAfter:
-        "and originally from Georgia. I've spent the last 5 years building production web apps with React, Next.js and TypeScript.",
+        ", originally from Georgia. I've been building production web apps with React, Next.js and TypeScript for almost 5 years.",
+      bioCurrent: "Currently working full-time",
+      bioOpen:
+        "Always happy to join a team I can grow with, work on cool projects and pick up new things along the way.",
       bioShort:
-        "Frontend developer at Noxtton, based in Alicante. I build fast, accessible interfaces with clean UI engineering.",
+        "Frontend developer based in Alicante. I build fast, accessible interfaces with clean UI engineering.",
       verified: "Verified",
     },
     work: {
@@ -248,17 +252,21 @@ export const translations = {
     },
     header: {
       switchLanguage: "Cambiar a inglés",
-      clockLabel: "Hora local en Alicante",
+      switchTheme: "Cambiar tema de color",
+      themeLight: "Claro",
+      themeDark: "Oscuro",
     },
     profile: {
       role: "Desarrollador Frontend",
-      bioBefore: "Soy Otar, desarrollador frontend en",
-      bioLocationPrefix: ", con base en",
+      bioBefore: "Soy Otar, desarrollador frontend con base en",
       bioLocation: "Alicante",
       bioAfter:
-        "y originario de Georgia. Llevo 5 años creando aplicaciones web en producción con React, Next.js y TypeScript.",
+        ", originario de Georgia. Llevo casi 5 años creando aplicaciones web en producción con React, Next.js y TypeScript.",
+      bioCurrent: "Actualmente trabajando a tiempo completo",
+      bioOpen:
+        "Siempre con ganas de unirme a un equipo con el que crecer, trabajar en proyectos interesantes y aprender cosas nuevas por el camino.",
       bioShort:
-        "Desarrollador frontend en Noxtton, con base en Alicante. Construyo interfaces rápidas y accesibles con una ingeniería de UI limpia.",
+        "Desarrollador frontend con base en Alicante. Construyo interfaces rápidas y accesibles con una ingeniería de UI limpia.",
       verified: "Verificado",
     },
     work: {

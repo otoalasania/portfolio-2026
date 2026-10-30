@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import { Providers } from "./components/Providers";
 import { rootMetadata } from "./lib/seo";
+import { themeScript } from "./lib/theme";
 import styles from "./layout.module.css";
 import "./globals.css";
 
@@ -32,7 +33,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${geistMono.variable} ${styles.html}`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className={styles.body}>
         <Providers>
           {children}

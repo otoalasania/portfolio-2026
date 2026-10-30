@@ -1,5 +1,5 @@
 .page {
-  min-height: 100vh;
+  min-height: calc(100vh / var(--page-zoom));
   overflow-x: clip;
   background: var(--background);
   color: var(--foreground);

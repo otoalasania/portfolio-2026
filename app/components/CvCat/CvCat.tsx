@@ -6,6 +6,7 @@ import Image from "next/image";
 import { animate, motion, useReducedMotion } from "motion/react";
 import { useLocale } from "../../i18n/LocaleContext";
 import { downloadCv } from "../../lib/cv";
+import { cssRect } from "../../lib/pageZoom";
 import { useClientValue } from "../../lib/useClientValue";
 import { DocumentDownIcon } from "../icons";
 import styles from "./CvCat.module.css";
@@ -31,7 +32,7 @@ export function CvCat({ label, children }: { label: string; children: React.Reac
   }, []);
 
   function placeArm() {
-    const slot = slotRef.current!.getBoundingClientRect();
+    const slot = cssRect(slotRef.current!);
     const arm = armRef.current!;
     const height = slot.height * 1.5;
     const handWidth = height * HAND_RATIO;

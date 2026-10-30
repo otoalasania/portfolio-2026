@@ -6,8 +6,8 @@
 @media (min-width: 640px) {
   .stage {
     left: 50%;
-    width: 100vw;
-    margin-left: -50vw;
+    width: calc(100vw / var(--page-zoom));
+    margin-left: calc(-50vw / var(--page-zoom));
     overflow: hidden;
     background-image: radial-gradient(color-mix(in srgb, var(--foreground) 12%, transparent) 1px, transparent 1px);
     background-size: 18px 18px;

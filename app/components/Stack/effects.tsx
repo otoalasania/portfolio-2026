@@ -17,6 +17,7 @@ import {
   type AnimationOptions,
   type DOMKeyframesDefinition,
 } from "motion/react";
+import { cssRect } from "../../lib/pageZoom";
 import styles from "./Stack.module.css";
 
 export type StackEffectProps = {
@@ -86,12 +87,12 @@ function usePillPlacement(anchor: RefObject<HTMLSpanElement | null>, pill: RefOb
     if (!item || !row || !tip) return;
 
     const place = () => {
-      const itemBox = item.getBoundingClientRect();
-      const rowBox = row.getBoundingClientRect();
+      const itemBox = cssRect(item);
+      const rowBox = cssRect(row);
       const center = itemBox.left + itemBox.width / 2 - rowBox.left;
       const width = tip.offsetWidth;
       const start = Math.min(Math.max(center - width / 2, 0), Math.max(rowBox.width - width, 0));
-      const above = Array.from(row.children).some((el) => el.getBoundingClientRect().top >= itemBox.bottom);
+      const above = Array.from(row.children).some((el) => cssRect(el).top >= itemBox.bottom);
       setPlacement({ left: start - (itemBox.left - rowBox.left), caret: center - start, above });
     };
 

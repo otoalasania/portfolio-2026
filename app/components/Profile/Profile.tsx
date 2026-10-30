@@ -1,15 +1,43 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 import FlagSpain from "@assets/svgs/flags/flag-spain.svg";
 import VerifiedBadge from "@assets/svgs/badges/verified.svg";
 import { profile } from "../../data";
-import { CompanyTag } from "../CompanyTag/CompanyTag";
 import { useLocale } from "../../i18n/LocaleContext";
 import { staggerContainer, staggerItem } from "../../lib/motion";
+import { scrollToSection } from "../../lib/scrollToSection";
 import { CvCat } from "../CvCat/CvCat";
+import { ArrowDownIcon } from "../icons";
 import styles from "./Profile.module.css";
+
+const arrowNudge: Variants = {
+  rest: { y: 0 },
+  hover: { y: 2, transition: { type: "spring", stiffness: 400, damping: 12 } },
+};
+
+function CurrentWork({ label }: { label: string }) {
+  return (
+    <motion.a
+      href="#experience"
+      className={styles.current}
+      onClick={(e) => {
+        e.preventDefault();
+        scrollToSection("experience");
+      }}
+      initial="rest"
+      animate="rest"
+      whileHover="hover"
+      whileFocus="hover"
+    >
+      {label}
+      <motion.span className={styles.currentArrow} variants={arrowNudge}>
+        <ArrowDownIcon />
+      </motion.span>
+    </motion.a>
+  );
+}
 
 export function Profile() {
   const { t } = useLocale();
@@ -40,16 +68,17 @@ export function Profile() {
 
       <motion.p className={styles.bio} variants={staggerItem}>
         {t.profile.bioBefore}{" "}
-        <CompanyTag />
-        {t.profile.bioLocationPrefix}{" "}
         <span className={styles.location}>
           {t.profile.bioLocation}
           <FlagSpain className={styles.flag} aria-hidden="true" />
-        </span>{" "}
-        {t.profile.bioAfter}
+        </span>
+        {t.profile.bioAfter} <CurrentWork label={t.profile.bioCurrent} />
       </motion.p>
       <motion.p className={styles.bioShort} variants={staggerItem}>
-        {t.profile.bioShort}
+        {t.profile.bioShort} <CurrentWork label={t.profile.bioCurrent} />
+      </motion.p>
+      <motion.p className={styles.open} variants={staggerItem}>
+        {t.profile.bioOpen}
       </motion.p>
     </motion.div>
   );
